@@ -1,14 +1,30 @@
 import React from "react";
+
 import PropTypes from "prop-types";
 import "./PetsittersList.css";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
+import Petsitter from "./Petsitter";
 
 const PetsittersList = ({ petsitters, loadPetsitterOnclick }) => {
   const getPetsittersCards = (petsitters) => {
     return petsitters.map((petsitter) => (
-      <li key={petsitter.id} onClick={() => loadPetsitterOnclick(petsitter)}>
-        {petsitter.name}
-      </li>
+      <Petsitter
+        key={petsitter.id}
+        id={petsitter.id}
+        name={petsitter.name}
+        email={petsitter.email}
+        zipcode={petsitter.zipcode}
+        city={petsitter.city}
+        isAvailableHelp={petsitter.isAvailableHelp}
+        petType={petsitter.petType}
+      />
+      // <li key={petsitter.id} onClick={() => loadPetsitterOnclick(petsitter)}>
+      //   {petsitter.name}
+      //   <br></br>
+      // {/* <Button variant="outline-primary">Edit</Button>
+      // <Button variant="outline-primary">Delete</Button> */}
+
+      // </li>
     ));
   };
   return (
@@ -16,7 +32,6 @@ const PetsittersList = ({ petsitters, loadPetsitterOnclick }) => {
       <ul className="petsitters-list-no-bullet">
         {getPetsittersCards(petsitters)}
       </ul>
-      <Button variant="outline-primary">Edit</Button>
     </div>
   );
 };
@@ -26,11 +41,11 @@ PetsittersList.propTypes = {
     PropTypes.shape({
       id: PropTypes.number,
       name: PropTypes.string.isRequired,
-      //   email: PropTypes.string.isRequired,
-      //   zipcode: PropTypes.string.isRequired,
-      //   city: PropTypes.string.isRequired,
-      //   isAvailableHelp: PropTypes.bool.isRequired,
-      //   pet_type: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      zipcode: PropTypes.string.isRequired,
+      city: PropTypes.string.isRequired,
+      // isAvailableHelp: PropTypes.bool.isRequired,
+      petType: PropTypes.string.isRequired,
     })
   ).isRequired,
   //   loadPetsitterOnclick: PropTypes.func.isRequired,
