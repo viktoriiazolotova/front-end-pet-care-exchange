@@ -1,44 +1,14 @@
-/* .petsitters__item__toggle {
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-    padding: 0.85em 2.25em 0.85em 1em;
-    background-color: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
-  .petsitters__item {
-    display: flex;
-    align-items: top;
-  }
-  
-  .petsitters__item__toggle:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-    border-color: rgba(0, 0, 0, 0.15);
-  }
-   */
+
   
   .petsitters__item__toggle--available {
     color: green;
     /* background-color: rgba(30, 179, 30, 0.15); */
     border-color: rgba(0, 128, 0, 0.2);
   }
-/*   
-  .petsitters__item__toggle {
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-    padding: 0.85em 2.25em 0.85em 1em;
-    background-color: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+
+  .card-petsitter {
+    display: flex;
+    /* flex-wrap: wrap; */
+    /* flex-direction: row; */
+    /* align-items: center; */
   }
-  
-  button.petsitters__item__remove {
-    top: 50%;
-    right: 0;
-    height: 100%;
-    /* transform: translateY(-50%); */
-    /* padding: 0.85em 2.25em 0.85em 1em; */
-    /* font-size: 100%;
-    margin: 0;
-  }  */

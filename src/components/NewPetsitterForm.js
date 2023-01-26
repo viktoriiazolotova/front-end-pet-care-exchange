@@ -1,12 +1,4 @@
-// const NewPetsitterForm = () => {
-//   return <h1>I want to become petsitter</h1>;
-// };
-
-// export default NewPetsitterForm;
 import React from "react";
-// import  Button from "react-bootstrap";
-// import Form from "react-bootstrap";
-// import Input from "reactstrap";
 import { Button, Form, FormGroup, Label, Row, Col, Input } from "reactstrap";
 import PropTypes from "prop-types";
 import { useState } from "react";
@@ -20,7 +12,10 @@ const INITIAL_FORM_DATA = {
   pet_type: "",
 };
 
-const NewPetsitterForm = ({ addPetsitterCallbackFunc, responseAddsitter }) => {
+const NewPetsitterForm = ({
+  addPetsitterCallbackFunc,
+  responseToPostSitterRequest,
+}) => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
   const handleNewDataChange = (e) => {
@@ -132,10 +127,12 @@ const NewPetsitterForm = ({ addPetsitterCallbackFunc, responseAddsitter }) => {
 
         <Button type="submit">Submit form</Button>
       </Form>
-      <p> {responseAddsitter ? `${responseAddsitter}` : " "}</p>
+      <p>
+        {" "}
+        {responseToPostSitterRequest ? `${responseToPostSitterRequest}` : " "}
+      </p>
     </div>
   );
-  //
 };
 
 NewPetsitterForm.propTypes = {

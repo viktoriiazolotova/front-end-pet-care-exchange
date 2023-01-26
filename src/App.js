@@ -13,7 +13,7 @@ import SignIn from "./pages/SignIn";
 
 function App() {
   const [petsittersList, setPetsitterList] = useState([]);
-  const [responseAddsitter, setResponse] = useState("");
+  const [responseToPostSitterRequest, setResponse] = useState("");
   // const [selectedPetsitter, setSelectedPetsitter] = useState(null);
 
   const API_URL = "http://localhost:8000/api/petsitters/";
@@ -22,7 +22,7 @@ function App() {
     axios
       .get(API_URL)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         const petsittersAPIResCopy = res.data.map((petsitter) => {
           return {
             id: petsitter.pk,
@@ -34,7 +34,6 @@ function App() {
             petType: petsitter.pet_type,
           };
         });
-        console.log(petsittersAPIResCopy);
         setPetsitterList(petsittersAPIResCopy);
       })
       .catch((err) => {
@@ -50,6 +49,7 @@ function App() {
   // };
 
   const addPetsitter = (newPetsitterInfo) => {
+    // in order to handle data from reactstrap form needed to in this way below:
     const formData = new FormData();
     formData.append("name", newPetsitterInfo.name);
     formData.append("email", newPetsitterInfo.email);
@@ -57,37 +57,51 @@ function App() {
     formData.append("city", newPetsitterInfo.city);
     formData.append("pet_type", newPetsitterInfo.pet_type);
 
-    console.log("add Petsitter function called");
-    console.log("here formdata", formData);
+    // console.log("add Petsitter function called");
+    // console.log("here formdata", formData);
     axios
       .post("http://localhost:8000/api/petsitters/", formData)
       .then((response) => {
-        // console.log("data from new form", newPetsitterInfo);
-        // console.log("add Petsitter function inside");
         // fetchAllPetsitters();
-        console.log("here is my response", response);
-        const responseAddsitter = response.data + ".";
-
-        setResponse(responseAddsitter);
+        // console.log("here is my response", response);
+        const responseToPostSitterRequest = `${response.data.name} successfully added.`;
+        setResponse(responseToPostSitterRequest);
         const newPetsittersList = [...petsittersList];
         const newPetsitterJSON = {
           ...newPetsitterInfo,
-          // id: response.data.task.id,
-          // isComplete: response.data.task.is_complete,
-          // id: response.config.data.petsitter.pk,
-          // isAvailableHelp: response.config.data.petsitter.is_available_help,
+          id: response.data.pk,
+          isAvailableHelp: response.data.is_available_help,
         };
-        console.log(newPetsitterJSON);
         newPetsittersList.push(newPetsitterJSON);
+        // console.log("new list", newPetsittersList);
         setPetsitterList(newPetsittersList);
       })
       .catch((error) => {
         console.log(error);
-        let newResponseAddsitter =
+        let responseToPostSitterRequest =
           "Check all fields, the field may not be blank or Enter a valid email address.";
-        setResponse(newResponseAddsitter);
+        setResponse(responseToPostSitterRequest);
       });
   };
+
+  const deletePetsitter = (id) => {
+    // console.log("deletePetsitter Called");
+    axios
+      .delete(`${API_URL}${id}/`)
+      .then(() => {
+        const newPetsittersList = [];
+        for (const petsitter of petsittersList) {
+          if (petsitter.id !== id) {
+            newPetsittersList.push(petsitter);
+          }
+        }
+        setPetsitterList(newPetsittersList);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <BrowserRouter>
       <Routes>
@@ -95,7 +109,12 @@ function App() {
           <Route index element={<Home />} />
           <Route
             path="petsitters"
-            element={<PetsittersList petsitters={petsittersList} />}
+            element={
+              <PetsittersList
+                petsitters={petsittersList}
+                deletePetsitter={deletePetsitter}
+              />
+            }
           />
           <Route path="petsitter" element={<Petsitter />} />
           <Route
@@ -103,7 +122,7 @@ function App() {
             element={
               <NewPetsitterForm
                 addPetsitterCallbackFunc={addPetsitter}
-                responseAddsitter={responseAddsitter}
+                responseToPostSitterRequest={responseToPostSitterRequest}
               />
             }
           />

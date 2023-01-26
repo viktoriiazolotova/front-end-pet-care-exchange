@@ -5,7 +5,11 @@ import "./PetsittersList.css";
 // import Button from "react-bootstrap/Button";
 import Petsitter from "./Petsitter";
 
-const PetsittersList = ({ petsitters, loadPetsitterOnclick }) => {
+const PetsittersList = ({
+  petsitters,
+  loadPetsitterOnclick,
+  deletePetsitter,
+}) => {
   const getPetsittersCards = (petsitters) => {
     return petsitters.map((petsitter) => (
       <Petsitter
@@ -17,6 +21,7 @@ const PetsittersList = ({ petsitters, loadPetsitterOnclick }) => {
         city={petsitter.city}
         isAvailableHelp={petsitter.isAvailableHelp}
         petType={petsitter.petType}
+        deletePetsitter={deletePetsitter}
       />
       // <li key={petsitter.id} onClick={() => loadPetsitterOnclick(petsitter)}>
       //   {petsitter.name}
@@ -45,10 +50,11 @@ PetsittersList.propTypes = {
       zipcode: PropTypes.string.isRequired,
       city: PropTypes.string.isRequired,
       // isAvailableHelp: PropTypes.bool.isRequired,
-      petType: PropTypes.string.isRequired,
+      // petType: PropTypes.string.isRequired,
     })
   ).isRequired,
   //   loadPetsitterOnclick: PropTypes.func.isRequired,
+  deletePetsitter: PropTypes.func.isRequired,
 };
 
 export default PetsittersList;
