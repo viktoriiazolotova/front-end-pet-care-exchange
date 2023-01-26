@@ -56,7 +56,7 @@ function App() {
     formData.append("zipcode", newPetsitterInfo.zipcode);
     formData.append("city", newPetsitterInfo.city);
     formData.append("pet_type", newPetsitterInfo.pet_type);
-
+    formData.append("is_available_help", newPetsitterInfo.is_available_help);
     // console.log("add Petsitter function called");
     // console.log("here formdata", formData);
     axios
@@ -70,7 +70,7 @@ function App() {
         const newPetsitterJSON = {
           ...newPetsitterInfo,
           id: response.data.pk,
-          isAvailableHelp: response.data.is_available_help,
+          // isAvailableHelp: response.data.is_available_help,
         };
         newPetsittersList.push(newPetsitterJSON);
         // console.log("new list", newPetsittersList);

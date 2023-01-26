@@ -4,6 +4,7 @@ import { Button, CardFooter } from "reactstrap";
 import "./Petsitter.css";
 import { Link } from "react-router-dom";
 import { IoPaw } from "react-icons/io5";
+import { BsCheckCircle } from "react-icons/bs";
 
 import { Card, CardBody, CardTitle, CardSubtitle, CardText } from "reactstrap";
 // import Col from "react-bootstrap/Col";
@@ -20,8 +21,8 @@ const Petsitter = ({
   deletePetsitter,
 }) => {
   let buttonClass = isAvailableHelp
-    ? "petsitters__item__toggle--available"
-    : "";
+    ? "petsitters-available"
+    : "petsitters-not-available";
   // const updatePetsitterStatus = () => {
   //   updatePetsitter(id, !isAvailableHelp);
   // };
@@ -52,7 +53,6 @@ const Petsitter = ({
     //   ))}
     // </Row>
     <Card
-      className="card-petsitter"
       style={{
         width: "18rem",
       }}
@@ -62,13 +62,17 @@ const Petsitter = ({
         // src="https://media.istockphoto.com/id/1322123064/photo/portrait-of-an-adorable-white-cat-in-sunglasses-and-an-shirt-lies-on-a-fabric-hammock.jpg?s=612x612&w=0&k=20&c=-G6l2c4jNI0y4cenh-t3qxvIQzVCOqOYZNvrRA7ZU5o="
       />
       <CardBody>
-        <CardTitle className={`tasks__item__toggle ${buttonClass}`} tag="h5">
-          {name}
-        </CardTitle>
+        <CardTitle tag="h5">{name}</CardTitle>
         <CardSubtitle className="mb-2 text-muted" tag="h6">
           {city}, {zipcode}
         </CardSubtitle>
-        <CardText>I can help you with {petType}.</CardText>
+        <CardText>
+          <BsCheckCircle
+            size="20px"
+            className={`${buttonClass}`}
+          ></BsCheckCircle>
+          I can help you with {petType}.
+        </CardText>
         <CardText>
           <p>
             <span> 0 </span>
@@ -80,7 +84,6 @@ const Petsitter = ({
         <Button>Edit</Button>
       </CardBody>
       <CardFooter>
-        {" "}
         <Link className="card__link" to={`/petsitter/`}>
           View Details
         </Link>

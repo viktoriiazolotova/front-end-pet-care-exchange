@@ -1,7 +1,14 @@
 
   
-  .petsitters__item__toggle--available {
+  .petsitters-available {
     color: green;
+
+    /* background-color: rgba(30, 179, 30, 0.15); */
+    border-color: rgba(0, 128, 0, 0.2);
+  }
+  .petsitters-not-available {
+    color: rgb(212, 23, 23);
+
     /* background-color: rgba(30, 179, 30, 0.15); */
     border-color: rgba(0, 128, 0, 0.2);
   }

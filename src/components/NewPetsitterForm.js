@@ -10,6 +10,7 @@ const INITIAL_FORM_DATA = {
   zipcode: "",
   city: "",
   pet_type: "",
+  is_available_help: false,
 };
 
 const NewPetsitterForm = ({
@@ -19,11 +20,17 @@ const NewPetsitterForm = ({
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
   const handleNewDataChange = (e) => {
-    console.log(e.target.name);
+    console.log(e.target.value);
+    console.log(e.target.checked);
     const newFormData = {
       ...formData,
       [e.target.name]: e.target.value,
     };
+    let isChecked = e.target.checked;
+    if (isChecked) {
+      newFormData.is_available_help = true;
+    }
+
     // console.log("here is the new form data", newFormData);
     setFormData(newFormData);
   };
@@ -98,12 +105,18 @@ const NewPetsitterForm = ({
             </FormGroup>
           </Col>
         </Row>
-        {/* <FormGroup check>
-        <Input id="exampleCheck" name="check" type="checkbox" />
-        <Label check for="exampleCheck">
-          Avaialble to help
-        </Label>
-      </FormGroup> */}
+        <FormGroup check>
+          <Input
+            id="is_available_help"
+            name="is_available_help"
+            type="checkbox"
+            value={formData.is_available_help}
+            onChange={handleNewDataChange}
+          />
+          <Label check for="is_available_help">
+            Avaialble to help
+          </Label>
+        </FormGroup>
         <Row>
           <Col md={2}>
             <FormGroup>
@@ -128,7 +141,6 @@ const NewPetsitterForm = ({
         <Button type="submit">Submit form</Button>
       </Form>
       <p>
-        {" "}
         {responseToPostSitterRequest ? `${responseToPostSitterRequest}` : " "}
       </p>
     </div>
