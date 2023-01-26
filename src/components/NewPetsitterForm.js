@@ -20,8 +20,8 @@ const NewPetsitterForm = ({
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
   const handleNewDataChange = (e) => {
-    console.log(e.target.value);
-    console.log(e.target.checked);
+    // console.log(e.target.value);
+    // console.log(e.target.checked);
     const newFormData = {
       ...formData,
       [e.target.name]: e.target.value,
@@ -29,6 +29,8 @@ const NewPetsitterForm = ({
     let isChecked = e.target.checked;
     if (isChecked) {
       newFormData.is_available_help = true;
+    } else {
+      newFormData.is_available_help = false;
     }
 
     // console.log("here is the new form data", newFormData);

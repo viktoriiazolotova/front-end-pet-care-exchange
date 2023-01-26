@@ -22,7 +22,7 @@ function App() {
     axios
       .get(API_URL)
       .then((res) => {
-        // console.log(res);
+        // console.log(res.data[0].name);
         const petsittersAPIResCopy = res.data.map((petsitter) => {
           return {
             id: petsitter.pk,
@@ -59,18 +59,26 @@ function App() {
     formData.append("is_available_help", newPetsitterInfo.is_available_help);
     // console.log("add Petsitter function called");
     // console.log("here formdata", formData);
+
     axios
       .post("http://localhost:8000/api/petsitters/", formData)
+
       .then((response) => {
+        // console.log(formData);
+        // console.log(newPetsitterInfo);
         // fetchAllPetsitters();
         // console.log("here is my response", response);
         const responseToPostSitterRequest = `${response.data.name} successfully added.`;
         setResponse(responseToPostSitterRequest);
         const newPetsittersList = [...petsittersList];
+        // const newPetsittersList = JSON.parse(JSON.stringify(petsittersList));
+        // const newPetinfo = JSON.parse(JSON.stringify(newPetsitterInfo));
         const newPetsitterJSON = {
+          // ...newPetinfo,
           ...newPetsitterInfo,
           id: response.data.pk,
-          // isAvailableHelp: response.data.is_available_help,
+          isAvailableHelp: response.data.is_available_help,
+          petType: response.data.pet_type,
         };
         newPetsittersList.push(newPetsitterJSON);
         // console.log("new list", newPetsittersList);
@@ -116,7 +124,7 @@ function App() {
               />
             }
           />
-          <Route path="petsitter" element={<Petsitter />} />
+          <Route path="petsitter" element={<div></div>} />
           <Route
             path="petsitteraccount"
             element={

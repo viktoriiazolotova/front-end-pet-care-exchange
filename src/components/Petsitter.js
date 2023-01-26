@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, CardFooter } from "reactstrap";
-import "./Petsitter.css";
-import { Link } from "react-router-dom";
-import { IoPaw } from "react-icons/io5";
 import { BsCheckCircle } from "react-icons/bs";
+import { Button, CardFooter } from "reactstrap";
+import { IoPaw } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import "./Petsitter.css";
 
 import { Card, CardBody, CardTitle, CardSubtitle, CardText } from "reactstrap";
 // import Col from "react-bootstrap/Col";
@@ -74,14 +74,12 @@ const Petsitter = ({
           I can help you with {petType}.
         </CardText>
         <CardText>
-          <p>
-            <span> 0 </span>
-            <IoPaw size="30px" color="#38bac4"></IoPaw>
-          </p>
+          <span> 0 </span>
+          <IoPaw size="30px" color="#38bac4"></IoPaw>
         </CardText>
 
         <Button onClick={() => deletePetsitter(id)}>Delete</Button>
-        <Button>Edit</Button>
+        {/* <Button>Edit</Button> */}
       </CardBody>
       <CardFooter>
         <Link className="card__link" to={`/petsitter/`}>

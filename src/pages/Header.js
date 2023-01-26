@@ -5,11 +5,12 @@ import { GiHollowCat } from "react-icons/gi";
 import { GrSearch } from "react-icons/gr";
 import { LinkContainer } from "react-router-bootstrap";
 import { Outlet } from "react-router-dom";
+import "./Header.css";
 
 const Header = () => {
   return (
     <>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="light" expand="lg" className="nav-bar">
         <LinkContainer to="/">
           <Navbar.Brand>
             <GiHollowCat size="30px" color="#38bac4"></GiHollowCat>

@@ -1,9 +1,8 @@
 import React from "react";
-
 import PropTypes from "prop-types";
 import "./PetsittersList.css";
-// import Button from "react-bootstrap/Button";
 import Petsitter from "./Petsitter";
+// import Button from "react-bootstrap/Button";
 
 const PetsittersList = ({
   petsitters,
@@ -49,8 +48,8 @@ PetsittersList.propTypes = {
       email: PropTypes.string.isRequired,
       zipcode: PropTypes.string.isRequired,
       city: PropTypes.string.isRequired,
-      // isAvailableHelp: PropTypes.bool.isRequired,
-      // petType: PropTypes.string.isRequired,
+      isAvailableHelp: PropTypes.bool.isRequired,
+      petType: PropTypes.string.isRequired,
     })
   ).isRequired,
   //   loadPetsitterOnclick: PropTypes.func.isRequired,
