@@ -1,4 +1,5 @@
 import React from "react";
+import Alert from "react-bootstrap/Alert";
 import { Button, Form, FormGroup, Label, Row, Col, Input } from "reactstrap";
 import PropTypes from "prop-types";
 import { useState } from "react";
@@ -18,6 +19,7 @@ const NewPetsitterForm = ({
   responseToPostSitterRequest,
 }) => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleNewDataChange = (e) => {
     // console.log(e.target.value);
@@ -140,11 +142,43 @@ const NewPetsitterForm = ({
           </Col>
         </Row>
 
-        <Button type="submit">Submit form</Button>
+        {/* <Button type="submit">Submit form</Button> */}
+
+        <Button type="submit" onClick={() => setShowAlert(true)}>
+          Submit form
+        </Button>
       </Form>
-      <p>
+      <Row>
+        <Col md={4}>
+          <>
+            <Alert
+              className="petsitter-alert"
+              show={showAlert}
+              variant="secondary"
+            >
+              {/* <Alert.Heading>How's it going?!</Alert.Heading> */}
+              <p>
+                {responseToPostSitterRequest
+                  ? `${responseToPostSitterRequest}`
+                  : " "}
+              </p>
+
+              <div className="d-flex justify-content-end">
+                <Button
+                  onClick={() => setShowAlert(false)}
+                  variant="outline-success"
+                >
+                  Close
+                </Button>
+              </div>
+            </Alert>
+          </>
+        </Col>
+      </Row>
+
+      {/* <p>
         {responseToPostSitterRequest ? `${responseToPostSitterRequest}` : " "}
-      </p>
+      </p> */}
     </div>
   );
 };
