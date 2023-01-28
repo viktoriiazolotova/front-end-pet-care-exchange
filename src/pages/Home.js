@@ -1,5 +1,10 @@
 const Home = () => {
-  return <h1>Home</h1>;
+  return (
+    <div>
+      <h1>Welcome to the PetCareExchange!</h1>
+      <p>We are pet owners community!</p>
+    </div>
+  );
 };
 
 export default Home;

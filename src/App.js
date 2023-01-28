@@ -7,9 +7,9 @@ import Home from "./pages/Home";
 import NewPetsitterForm from "./components/NewPetsitterForm";
 import NoPage from "./pages/NoPage";
 import PetsittersList from "./components/PetsittersList";
-import Petsitter from "./components/Petsitter";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
+import PetsList from "./components/PetsList";
 
 function App() {
   const [petsittersList, setPetsitterList] = useState([]);
@@ -124,7 +124,14 @@ function App() {
               />
             }
           />
-          <Route path="petsitter" element={<div></div>} />
+          <Route
+            path="pets"
+            element={
+              <div>
+                <PetsList></PetsList>
+              </div>
+            }
+          />
           <Route
             path="petsitteraccount"
             element={

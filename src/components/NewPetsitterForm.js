@@ -47,7 +47,7 @@ const NewPetsitterForm = ({
   return (
     <div>
       <Form className="petsitter-form" onSubmit={handleNewPetsitterAdd}>
-        <h2>Submit a form to become PetSitter</h2>
+        <h1>Submit a form to become PetSitter</h1>
         <Row>
           <Col md={3}>
             <FormGroup>

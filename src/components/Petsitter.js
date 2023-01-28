@@ -57,10 +57,11 @@ const Petsitter = ({
         width: "18rem",
       }}
     >
-      <img
+      {/* <img
         alt="Sample"
         // src="https://media.istockphoto.com/id/1322123064/photo/portrait-of-an-adorable-white-cat-in-sunglasses-and-an-shirt-lies-on-a-fabric-hammock.jpg?s=612x612&w=0&k=20&c=-G6l2c4jNI0y4cenh-t3qxvIQzVCOqOYZNvrRA7ZU5o="
-      />
+        src="https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"
+      /> */}
       <CardBody>
         <CardTitle tag="h5">{name}</CardTitle>
         <CardSubtitle className="mb-2 text-muted" tag="h6">
@@ -74,7 +75,7 @@ const Petsitter = ({
           I can help you with {petType}.
         </CardText>
         <CardText>
-          <span> 0 </span>
+          {/* <span> 0 </span> */}
           <IoPaw size="30px" color="#38bac4"></IoPaw>
         </CardText>
 
