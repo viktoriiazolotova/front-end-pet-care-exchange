@@ -1,3 +1,9 @@
 .petsitters-list-no-bullet {
     list-style: none;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-around;
 }
+/* .petsitters-list {
+  
+} */

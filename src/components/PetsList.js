@@ -16,7 +16,7 @@ const PetsList = () => {
           return {
             petId: pet.pk,
             petName: pet.pet_name,
-            petTypeNeedsCare: pet.pet_type_needs_care,
+            petType: pet.pet_type,
             petNeedsDescription: pet.pet_needs_description,
             isNeedsCare: pet.is_needs_care,
             petsitterId: pet.petsitter,
@@ -54,7 +54,7 @@ const PetsList = () => {
         key={pet.petId}
         petId={pets.petId}
         petName={pet.petName}
-        petTypeNeedsCare={pet.petTypeNeedsCare}
+        petType={pet.petType}
         petNeedsDescription={pet.petNeedsDescription}
         isNeedsCare={pet.petTypeNeedsCare}
         petsitterId={pet.petsitterId}

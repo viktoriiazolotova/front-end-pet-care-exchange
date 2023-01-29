@@ -31,7 +31,7 @@ function App() {
             zipcode: petsitter.zipcode,
             city: petsitter.city,
             isAvailableHelp: petsitter.is_available_help,
-            petType: petsitter.pet_type,
+            petTypeTakeCare: petsitter.pet_type_take_care,
           };
         });
         setPetsitterList(petsittersAPIResCopy);
@@ -55,7 +55,7 @@ function App() {
     formData.append("email", newPetsitterInfo.email);
     formData.append("zipcode", newPetsitterInfo.zipcode);
     formData.append("city", newPetsitterInfo.city);
-    formData.append("pet_type", newPetsitterInfo.pet_type);
+    formData.append("pet_type_take_care", newPetsitterInfo.pet_type_take_care);
     formData.append("is_available_help", newPetsitterInfo.is_available_help);
     // console.log("add Petsitter function called");
     // console.log("here formdata", formData);
@@ -78,7 +78,7 @@ function App() {
           ...newPetsitterInfo,
           id: response.data.pk,
           isAvailableHelp: response.data.is_available_help,
-          petType: response.data.pet_type,
+          petTypeTakeCare: response.data.pet_type_take_care,
         };
         newPetsittersList.push(newPetsitterJSON);
         // console.log("new list", newPetsittersList);

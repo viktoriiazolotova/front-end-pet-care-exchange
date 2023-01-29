@@ -10,7 +10,7 @@ const INITIAL_FORM_DATA = {
   email: "",
   zipcode: "",
   city: "",
-  pet_type: "",
+  pet_type_take_care: "",
   is_available_help: false,
 };
 
@@ -124,19 +124,19 @@ const NewPetsitterForm = ({
         <Row>
           <Col md={2}>
             <FormGroup>
-              <Label for="pet_type">Select pet types</Label>
+              <Label for="pet_type_take_care">Select pet types</Label>
               <Input
-                id="pet_type"
-                name="pet_type"
+                id="pet_type_take_care"
+                name="pet_type_take_care"
                 type="select"
-                value={formData.pet_type}
+                value={formData.pet_type_take_care}
                 onChange={handleNewDataChange}
               >
                 <option></option>
                 <option>Cat</option>
                 <option>Dog</option>
                 <option>Bird</option>
-                <option>All</option>
+                <option>Any</option>
               </Input>
             </FormGroup>
           </Col>
