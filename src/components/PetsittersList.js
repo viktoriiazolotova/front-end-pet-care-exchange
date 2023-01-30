@@ -18,8 +18,11 @@ const PetsittersList = ({
         email={petsitter.email}
         zipcode={petsitter.zipcode}
         city={petsitter.city}
+        state={petsitter.state}
         isAvailableHelp={petsitter.isAvailableHelp}
+        isLookingForHelp={petsitter.isLookingForHelp}
         petTypeTakeCare={petsitter.petTypeTakeCare}
+        photoPetsitter={petsitter.photoPetsitter}
         deletePetsitter={deletePetsitter}
       />
       // <li key={petsitter.id} onClick={() => loadPetsitterOnclick(petsitter)}>
@@ -49,8 +52,11 @@ PetsittersList.propTypes = {
       email: PropTypes.string.isRequired,
       zipcode: PropTypes.string.isRequired,
       city: PropTypes.string.isRequired,
+      state: PropTypes.string.isRequired,
       isAvailableHelp: PropTypes.bool.isRequired,
+      isLookingForHelp: PropTypes.bool.isRequired,
       petTypeTakeCare: PropTypes.string.isRequired,
+      photoPetsitter: PropTypes.string.isRequired,
     })
   ).isRequired,
   //   loadPetsitterOnclick: PropTypes.func.isRequired,

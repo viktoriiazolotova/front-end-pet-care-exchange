@@ -10,9 +10,15 @@ const INITIAL_FORM_DATA = {
   email: "",
   zipcode: "",
   city: "",
+  state: "",
   pet_type_take_care: "",
   is_available_help: false,
+  is_looking_for_help: false,
 };
+
+// const isChecked = (param) => {
+//   return param ? true : false;
+// };
 
 const NewPetsitterForm = ({
   addPetsitterCallbackFunc,
@@ -20,22 +26,35 @@ const NewPetsitterForm = ({
 }) => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const [showAlert, setShowAlert] = useState(false);
+  const [isAvailableHelp, setIsavailable] = useState(false);
+  const [isLookingForHelp, setLookingForHelp] = useState(false);
+  // console.log(isAvailableHelp);
+  // console.log(isLookingForHelp);
 
   const handleNewDataChange = (e) => {
     // console.log(e.target.value);
-    // console.log(e.target.checked);
+    console.log(e.target.name, e.target.value, e.target.checked);
+    // console.log("inside", isAvailableHelp);
+    // console.log("inside looking", isLookingForHelp);
+    setIsavailable(!isAvailableHelp);
+    setLookingForHelp(!isLookingForHelp);
     const newFormData = {
       ...formData,
       [e.target.name]: e.target.value,
+      is_available_help: isAvailableHelp,
+      is_looking_for_help: isLookingForHelp,
     };
-    let isChecked = e.target.checked;
-    if (isChecked) {
-      newFormData.is_available_help = true;
-    } else {
-      newFormData.is_available_help = false;
-    }
+    // console.log("inside available", newFormData.is_available_help);
+    // console.log("inside looking", newFormData.is_looking_for_help);
 
-    // console.log("here is the new form data", newFormData);
+    // let isChecked = e.target.checked;
+    // if (isChecked) {
+    //   newFormData.is_available_help = true;
+    // } else {
+    //   newFormData.is_available_help = false;
+    // }
+
+    console.log("here is the new form data", newFormData);
     setFormData(newFormData);
   };
 
@@ -95,6 +114,21 @@ const NewPetsitterForm = ({
           </Col>
         </Row>
         <Row>
+          <Col md={3}>
+            <FormGroup>
+              <Label for="state">State</Label>
+              <Input
+                id="state"
+                name="state"
+                placeholder="XX"
+                type="text"
+                value={formData.state}
+                onChange={handleNewDataChange}
+              />
+            </FormGroup>
+          </Col>
+        </Row>
+        <Row>
           <Col md={2}>
             <FormGroup>
               <Label for="zipcode">Zip</Label>
@@ -114,17 +148,37 @@ const NewPetsitterForm = ({
             id="is_available_help"
             name="is_available_help"
             type="checkbox"
-            value={formData.is_available_help}
+            // checked={isAvailableHelp}
+            // onChange={() => {
+            //   setIsavailable(isAvailableHelp);
+            // }}
+            // value={formData.is_available_help}
             onChange={handleNewDataChange}
           />
           <Label check for="is_available_help">
-            Avaialble to help
+            Available to help
+          </Label>
+        </FormGroup>
+        <FormGroup check>
+          <Input
+            id="is_looking_for_help"
+            name="is_looking_for_help"
+            type="checkbox"
+            // checked={isLookingForHelp}
+            // onChange={() => setLookingForHelp(isLookingForHelp)}
+            // value={formData.is_looking_for_help}
+            onChange={handleNewDataChange}
+          />
+          <Label check for="is_looking_for_help">
+            Looking for help
           </Label>
         </FormGroup>
         <Row>
           <Col md={2}>
             <FormGroup>
-              <Label for="pet_type_take_care">Select pet types</Label>
+              <Label for="pet_type_take_care">
+                Select pet types you can help with:
+              </Label>
               <Input
                 id="pet_type_take_care"
                 name="pet_type_take_care"

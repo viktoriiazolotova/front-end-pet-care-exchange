@@ -22,7 +22,7 @@ function App() {
     axios
       .get(API_URL)
       .then((res) => {
-        // console.log(res.data[0].name);
+        console.log(res.data);
         const petsittersAPIResCopy = res.data.map((petsitter) => {
           return {
             id: petsitter.pk,
@@ -30,8 +30,11 @@ function App() {
             email: petsitter.email,
             zipcode: petsitter.zipcode,
             city: petsitter.city,
+            state: petsitter.state,
             isAvailableHelp: petsitter.is_available_help,
+            isLookingForHelp: petsitter.is_looking_for_help,
             petTypeTakeCare: petsitter.pet_type_take_care,
+            photoPetsitter: petsitter.photo_petsitter,
           };
         });
         setPetsitterList(petsittersAPIResCopy);
@@ -55,10 +58,16 @@ function App() {
     formData.append("email", newPetsitterInfo.email);
     formData.append("zipcode", newPetsitterInfo.zipcode);
     formData.append("city", newPetsitterInfo.city);
+    formData.append("state", newPetsitterInfo.state);
     formData.append("pet_type_take_care", newPetsitterInfo.pet_type_take_care);
     formData.append("is_available_help", newPetsitterInfo.is_available_help);
+    formData.append(
+      "is_looking_for_help",
+      newPetsitterInfo.is_looking_for_help
+    );
+
     // console.log("add Petsitter function called");
-    // console.log("here formdata", formData);
+    console.log("here formdata", formData);
 
     axios
       .post("http://localhost:8000/api/petsitters/", formData)
@@ -79,9 +88,11 @@ function App() {
           id: response.data.pk,
           isAvailableHelp: response.data.is_available_help,
           petTypeTakeCare: response.data.pet_type_take_care,
+          isLookingForHelp: response.data.is_looking_for_help,
+          photoPetsitter: response.data.photo_petsitter,
         };
         newPetsittersList.push(newPetsitterJSON);
-        // console.log("new list", newPetsittersList);
+        console.log("new list", newPetsittersList);
         setPetsitterList(newPetsittersList);
       })
       .catch((error) => {

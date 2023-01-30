@@ -17,16 +17,23 @@ const Petsitter = ({
   email,
   zipcode,
   city,
+  state,
   petTypeTakeCare,
   isAvailableHelp,
+  isLookingForHelp,
   deletePetsitter,
+  photoPetsitter,
 }) => {
-  let buttonClass = isAvailableHelp
+  let buttonClassAvailableHelp = isAvailableHelp
+    ? "petsitters-available"
+    : "petsitters-not-available";
+  let buttonClassLookingForHelp = isLookingForHelp
     ? "petsitters-available"
     : "petsitters-not-available";
   // const updatePetsitterStatus = () => {
   //   updatePetsitter(id, !isAvailableHelp);
   // };
+  console.log(photoPetsitter);
 
   return (
     // <Row xs={1} md={2} className="g-4">
@@ -61,33 +68,34 @@ const Petsitter = ({
         width: "40rem",
         display: "flex",
         flexDirection: "row",
-        justifyContent: "center",
+        justifyContent: "space-evenly",
         padding: "3%",
         margin: "2%",
       }}
     >
+      {/* <Row> */}
+      {/* <Col> */}
+      <img
+        width="200px"
+        height="200px"
+        alt="Sample"
+        src={`${photoPetsitter}`}
+      ></img>
+
+      {/* </Col> */}
       <Row>
-        <Col>
-          <img
-            width="200px"
-            height="200px"
-            alt="Sample"
-            src="https://media.istockphoto.com/id/1322123064/photo/portrait-of-an-adorable-white-cat-in-sunglasses-and-an-shirt-lies-on-a-fabric-hammock.jpg?s=612x612&w=0&k=20&c=-G6l2c4jNI0y4cenh-t3qxvIQzVCOqOYZNvrRA7ZU5o="
-            // src="https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"
-          />
-        </Col>
         <Col>
           <CardBody>
             <CardTitle tag="h3">{name}</CardTitle>
             <CardSubtitle className="mb-2 text-muted" tag="h6">
-              {city}, {zipcode}
+              {city}, {zipcode}, {state}
             </CardSubtitle>
 
             <CardText tag="h6">Availability:</CardText>
             <CardText>
               <BsCheckCircle
                 size="20px"
-                className={`${buttonClass}`}
+                className={`${buttonClassAvailableHelp}`}
               ></BsCheckCircle>{" "}
               {isAvailableHelp
                 ? `I can help you with ${petTypeTakeCare}.`
@@ -98,9 +106,9 @@ const Petsitter = ({
             <CardText>
               <BsCheckCircle
                 size="20px"
-                className={`${buttonClass}`}
+                className={`${buttonClassLookingForHelp}`}
               ></BsCheckCircle>{" "}
-              {isAvailableHelp
+              {isLookingForHelp
                 ? `I need help with ${petTypeTakeCare}.`
                 : "No need help at this moment."}
             </CardText>
@@ -133,9 +141,12 @@ Petsitter.propTypes = {
   email: PropTypes.string.isRequired,
   zipcode: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
+  state: PropTypes.string.isRequired,
   petTypeTakeCare: PropTypes.string.isRequired,
   isAvailableHelp: PropTypes.bool.isRequired,
+  isLookingForHelp: PropTypes.bool.isRequired,
   deletePetsitter: PropTypes.func.isRequired,
+  photoPetsitter: PropTypes.string.isRequired,
 };
 
 export default Petsitter;
