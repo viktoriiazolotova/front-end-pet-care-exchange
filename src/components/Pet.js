@@ -5,7 +5,7 @@ const Pet = ({
   petTypeNeedsCare,
   petNeedsDescription,
   isNeedsCare,
-  petsitterId,
+  petsitterName,
 }) => {
   console.log(petName);
 
@@ -15,13 +15,10 @@ const Pet = ({
       <p>Pet type: {petTypeNeedsCare}</p>
       <p>Pet needs: {petNeedsDescription}</p>
       <p>
-        Looking for someone to take care me?{" "}
+        Looking for someone to take care me?
         {isNeedsCare ? "yes, needs care" : "no needed care right now"}
       </p>
-      <a href="/petsitters/">
-        {" "}
-        Will be link to the contact info of the pet owner id: {petsitterId}
-      </a>
+      <a href="/petsitters/"> Contact my owner {petsitterName}</a>
       <hr></hr>
     </div>
   );

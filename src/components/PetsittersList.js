@@ -6,7 +6,7 @@ import Petsitter from "./Petsitter";
 
 const PetsittersList = ({
   petsitters,
-  loadPetsitterOnclick,
+  loadPetsitterOnClick,
   deletePetsitter,
 }) => {
   const getPetsittersCards = (petsitters) => {
@@ -24,21 +24,26 @@ const PetsittersList = ({
         petTypeTakeCare={petsitter.petTypeTakeCare}
         photoPetsitter={petsitter.photoPetsitter}
         deletePetsitter={deletePetsitter}
+        loadPetsitterOnClick={loadPetsitterOnClick}
+        // onClick={() => loadPetsitterOnClick(petsitter)}
       />
-      // <li key={petsitter.id} onClick={() => loadPetsitterOnclick(petsitter)}>
-      //   {petsitter.name}
-      //   <br></br>
-      // {/* <Button variant="outline-primary">Edit</Button>
-      // <Button variant="outline-primary">Delete</Button> */}
-
-      // </li>
     ));
   };
+
+  // const selectPetsitterOnClick = (petsitters) => {
+  //   return petsitters.map((petsitter) => {
+  //     <li key={petsitter.id} onClick={() => loadPetsitterOnClick(petsitter)}>
+  //       {petsitter.name}
+  //     </li>;
+  //   });
+  // };
+
   return (
     <div className="petsitters-list">
       <h1>Here are the petsitters:</h1>
       <ul className="petsitters-list-no-bullet">
         {getPetsittersCards(petsitters)}
+        {/* {selectPetsitterOnClick(petsitters)} */}
       </ul>
     </div>
   );
@@ -59,8 +64,8 @@ PetsittersList.propTypes = {
       photoPetsitter: PropTypes.string.isRequired,
     })
   ).isRequired,
-  //   loadPetsitterOnclick: PropTypes.func.isRequired,
   deletePetsitter: PropTypes.func.isRequired,
+  loadPetsitterOnClick: PropTypes.func.isRequired,
 };
 
 export default PetsittersList;

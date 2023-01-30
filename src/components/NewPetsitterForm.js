@@ -26,27 +26,43 @@ const NewPetsitterForm = ({
 }) => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const [showAlert, setShowAlert] = useState(false);
-  const [isAvailableHelp, setIsavailable] = useState(false);
-  const [isLookingForHelp, setLookingForHelp] = useState(false);
-  // console.log(isAvailableHelp);
-  // console.log(isLookingForHelp);
+
+  // const isAvailableHelpChecked = (e, isChecked) => {
+  //   if (e.target.name === "is_available_help" && e.target.checked) {
+  //     // console.log(e.target.name, e.target.value, e.target.checked);
+  //     formData.is_available_help = true;
+  //   } else {
+  //     formData.is_available_help = false;
+  //   }
+  //   setFormData(formData);
+  // };
 
   const handleNewDataChange = (e) => {
     // console.log(e.target.value);
-    console.log(e.target.name, e.target.value, e.target.checked);
-    // console.log("inside", isAvailableHelp);
-    // console.log("inside looking", isLookingForHelp);
-    setIsavailable(!isAvailableHelp);
-    setLookingForHelp(!isLookingForHelp);
+    // console.log(e.target.name, e.target.value, e.target.checked);
+
     const newFormData = {
       ...formData,
       [e.target.name]: e.target.value,
-      is_available_help: isAvailableHelp,
-      is_looking_for_help: isLookingForHelp,
     };
     // console.log("inside available", newFormData.is_available_help);
     // console.log("inside looking", newFormData.is_looking_for_help);
 
+    // console.log(e);
+    // console.log(e.target.name, e.target.value, e.target.checked);
+    if (e.target.name === "is_available_help" && e.target.checked) {
+      // console.log(e.target.name, e.target.value, e.target.checked);
+      formData.is_available_help = true;
+    } else {
+      formData.is_available_help = false;
+    }
+    if (e.target.name === "is_looking_for_help" && e.target.checked) {
+      newFormData.is_looking_for_help = true;
+    } else {
+      newFormData.is_looking_for_help = false;
+    }
+    console.log("inside available", newFormData.is_available_help);
+    console.log("inside looking", newFormData.is_looking_for_help);
     // let isChecked = e.target.checked;
     // if (isChecked) {
     //   newFormData.is_available_help = true;
@@ -64,7 +80,7 @@ const NewPetsitterForm = ({
   };
 
   return (
-    <div>
+    <div className="petsitter-form-page">
       <Form className="petsitter-form" onSubmit={handleNewPetsitterAdd}>
         <h1>Submit a form to become PetSitter</h1>
         <Row>
@@ -148,10 +164,8 @@ const NewPetsitterForm = ({
             id="is_available_help"
             name="is_available_help"
             type="checkbox"
-            // checked={isAvailableHelp}
-            // onChange={() => {
-            //   setIsavailable(isAvailableHelp);
-            // }}
+            // checked={formData.is_available_help}
+            // onChange={() => isAvailableHelpChecked(checked)}
             // value={formData.is_available_help}
             onChange={handleNewDataChange}
           />
@@ -164,8 +178,7 @@ const NewPetsitterForm = ({
             id="is_looking_for_help"
             name="is_looking_for_help"
             type="checkbox"
-            // checked={isLookingForHelp}
-            // onChange={() => setLookingForHelp(isLookingForHelp)}
+            // onChange={() => isAvailableHelpChecked(!isLookingForHelp)}
             // value={formData.is_looking_for_help}
             onChange={handleNewDataChange}
           />
@@ -174,7 +187,7 @@ const NewPetsitterForm = ({
           </Label>
         </FormGroup>
         <Row>
-          <Col md={2}>
+          <Col md={3}>
             <FormGroup>
               <Label for="pet_type_take_care">
                 Select pet types you can help with:

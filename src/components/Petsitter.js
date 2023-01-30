@@ -23,6 +23,7 @@ const Petsitter = ({
   isLookingForHelp,
   deletePetsitter,
   photoPetsitter,
+  loadPetsitterOnClick,
 }) => {
   let buttonClassAvailableHelp = isAvailableHelp
     ? "petsitters-available"
@@ -33,7 +34,7 @@ const Petsitter = ({
   // const updatePetsitterStatus = () => {
   //   updatePetsitter(id, !isAvailableHelp);
   // };
-  console.log(photoPetsitter);
+  // console.log(photoPetsitter);
 
   return (
     // <Row xs={1} md={2} className="g-4">
@@ -119,7 +120,25 @@ const Petsitter = ({
             </CardText>
             <Button onClick={() => deletePetsitter(id)}>Delete</Button>
             {/* <Button>Edit</Button> */}
-            <Link className="card__link" to={`/petsitter/`}>
+            <Link
+              className="card__link"
+              to={`/petsitter/${id}`}
+              // to={`/petsitters/`}
+              onClick={() =>
+                loadPetsitterOnClick({
+                  id,
+                  name,
+                  email,
+                  zipcode,
+                  city,
+                  state,
+                  petTypeTakeCare,
+                  isAvailableHelp,
+                  isLookingForHelp,
+                  photoPetsitter,
+                })
+              }
+            >
               View Details
             </Link>
           </CardBody>
@@ -147,6 +166,7 @@ Petsitter.propTypes = {
   isLookingForHelp: PropTypes.bool.isRequired,
   deletePetsitter: PropTypes.func.isRequired,
   photoPetsitter: PropTypes.string.isRequired,
+  // loadPetsitterOnClick: PropTypes.func.isRequired,
 };
 
 export default Petsitter;
