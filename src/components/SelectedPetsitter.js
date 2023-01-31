@@ -12,6 +12,11 @@ import {
 import Pet from "./Pet";
 import { Col, Row } from "react-bootstrap";
 
+// import { BiSmile } from "react-icons/bi";
+// import { CiFaceFrown } from "react-icons/ci";
+import { BsCheckCircle } from "react-icons/bs";
+import "./SelectedPetsitter.css";
+
 // const SelectedPetsitter = ({ pets, SelectedPetsitter }) => {
 //   const [petsList, setPetsList] = useState([]);
 //   const API_URL = "http://localhost:8000/api/petsitters/";
@@ -80,15 +85,7 @@ const SelectedPetsitter = ({ pets, selectedPetsitter }) => {
       //   }}
     >
       <Container>
-        <Row
-          style={{
-            display: "flex",
-            backgroundColor: "#38bac4",
-            height: "200px",
-            margin: "5%",
-            // width: "auto",
-          }}
-        >
+        <Row className="profile-info-div">
           <div>
             <div className="Card">
               <div
@@ -110,29 +107,39 @@ const SelectedPetsitter = ({ pets, selectedPetsitter }) => {
                     src={`${selectedPetsitter.photo_petsitter}`}
                     // width="100px"
                     // height="100px"
-                    style={{ width: "150px", height: "150px", zIndex: "1" }}
+                    style={{
+                      width: "150px",
+                      height: "150px",
+                      zIndex: "1",
+                      borderRadius: "100px",
+                    }}
                   ></img>
                   <Button size="sm" type="button">
                     Edit profile
                   </Button>
                 </div>
                 <div
-                //   style={{
-                //     marginTop: "130px",
-                //   }}
+                  style={{
+                    paddingTop: "50%",
+                    paddingLeft: "60%",
+                  }}
                 >
                   <CardTitle
-                    tag="h6"
-                    // style={{
-                    //   height: "100px",
-                    //   alignItems: "center",
-                    // }}
+                    tag="h4"
+                    style={{
+                      width: "300px",
+
+                      //   alignItems: "center",
+                    }}
                   >
                     {selectedPetsitter.name}
                   </CardTitle>
-                  <CardText className="mb-2 text-muted">
-                    {/* {selectedPetsitter.city}, {selectedPetsitter.state}, */}
-                    {/* {selectedPetsitter.zipcode} */}
+                  <CardText
+                    className="mb-2 text-muted"
+                    style={{ paddingTop: "5%" }}
+                  >
+                    {selectedPetsitter.city}, {selectedPetsitter.state},
+                    {selectedPetsitter.zipcode}
                   </CardText>
                 </div>
               </div>
@@ -171,34 +178,48 @@ const SelectedPetsitter = ({ pets, selectedPetsitter }) => {
               >
                 <CardBody>
                   <div>
-                    <CardSubtitle tag="h6">
+                    <CardSubtitle style={{ padding: "2%" }} tag="h5">
                       Here is my detailed info:
                     </CardSubtitle>
 
                     <div
                       style={{
                         backgroundColor: "#f8f9fa",
-                        // textAlign: "center",
-                        padding: "5%",
+                        padding: "3%",
                       }}
                     >
                       <CardText>
+                        {/* <BiSmile className="icons-status" size="20px"></BiSmile> */}
+                        <BsCheckCircle size="20px"></BsCheckCircle>
                         Availability:
-                        {/* {selectedPetsitter.is_available_help
-                          ? "Ready to help"
-                          : "Unfortunately, I am busy at the moment"} */}
+                        <span>
+                          {selectedPetsitter.is_available_help
+                            ? "Ready to help"
+                            : "Unfortunately, I am busy at the moment"}
+                        </span>
                       </CardText>
                       <CardText>
-                        Looking for help:{" "}
-                        {/* {selectedPetsitter.is_looking_for_help
-                          ? "I am looking for help"
-                          : "Dont need help right now"} */}
+                        {" "}
+                        {/* <CiFaceFrown
+                          className="icons-status"
+                          size="20px"
+                        ></CiFaceFrown> */}
+                        <BsCheckCircle size="20px"></BsCheckCircle>
+                        Looking for help:
+                        <span>
+                          {selectedPetsitter.is_looking_for_help
+                            ? "I am looking for help"
+                            : "Dont need help right now"}
+                        </span>
                       </CardText>
                       <CardText></CardText>
                     </div>
                   </div>
                   <Row>
-                    <CardSubtitle tag="h6"> My Pets</CardSubtitle>
+                    <CardSubtitle style={{ padding: "3%" }} tag="h5">
+                      {" "}
+                      My Pets
+                    </CardSubtitle>
                     <ul>{getPetsCards(pets)}</ul>
                     {/* <Col sm="6">
                       <img alt="pet_photo1"></img>

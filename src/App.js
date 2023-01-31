@@ -146,7 +146,7 @@ function App() {
         // console.log(formData);
         // console.log(newPetsitterInfo);
         // fetchAllPetsitters();
-        // console.log("here is my response", response);
+        console.log("here is my response", response);
         const responseToPostSitterRequest = `${response.data.name} successfully added.`;
         setResponse(responseToPostSitterRequest);
         const newPetsittersList = [...petsittersList];
@@ -168,7 +168,7 @@ function App() {
       .catch((error) => {
         console.log(error);
         let responseToPostSitterRequest =
-          "Check all fields, the field may not be blank or Enter a valid email address.";
+          "Check all fields, the field may not be blank or exceed the limit of chars or Enter a valid email address.";
         setResponse(responseToPostSitterRequest);
       });
   };
@@ -185,6 +185,7 @@ function App() {
           }
         }
         setPetsitterList(newPetsittersList);
+        console.log(newPetsittersList);
       })
       .catch((err) => {
         console.log(err);

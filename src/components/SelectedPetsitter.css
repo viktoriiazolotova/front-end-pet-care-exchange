@@ -1,0 +1,15 @@
+.profile-info-div {
+    border-radius: 20px;
+    background: #38bac4;
+    display: flex;
+    height: 200px;
+    margin: 5%;  
+    /* background: rgb(98,90,240);
+    background: linear-gradient(90deg, rgba(98,90,240,1) 0%, rgba(57,206,213,1) 39%, rgba(0,212,255,1) 100%); */
+    /* background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(165,241,245,1) 100%); */
+}
+.icons-status {
+    size: 50px;
+    color: green
+}
