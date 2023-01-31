@@ -15,7 +15,18 @@ import SelectedPetsitter from "./components/SelectedPetsitter";
 function App() {
   const [petsittersList, setPetsitterList] = useState([]);
   const [responseToPostSitterRequest, setResponse] = useState("");
-  const [selectedPetsitter, setSelectedPetsitter] = useState(null);
+  const [selectedPetsitter, setSelectedPetsitter] = useState({
+    id: "",
+    name: "",
+    email: "",
+    zipcode: "",
+    city: "",
+    state: "",
+    is_available_help: false,
+    is_looking_for_help: false,
+    pet_type_take_care: "",
+    photo_petsitter: "",
+  });
   const [petsList, setPetsList] = useState([]);
 
   const API_URL = "http://localhost:8000/api/petsitters/";

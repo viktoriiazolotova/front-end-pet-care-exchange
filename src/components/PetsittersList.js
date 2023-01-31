@@ -13,7 +13,9 @@ const PetsittersList = ({
   deletePetsitter,
 }) => {
   const getPetsittersCards = (petsitters) => {
+    console.log(petsitters);
     return petsitters.map((petsitter) => (
+      // console.log({`${petsitter.photoPetsitter}`})
       <li key={petsitter.id}>
         <Card
           style={{
