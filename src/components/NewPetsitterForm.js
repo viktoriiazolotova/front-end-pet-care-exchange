@@ -27,41 +27,24 @@ const NewPetsitterForm = ({
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const [showAlert, setShowAlert] = useState(false);
 
-  const handleNewDataChange = (e) => {
-    // console.log(e.target.value);
-    // console.log(e.target.name, e.target.value, e.target.checked);
-
+  const handleNewTextDataChange = (e) => {
     const newFormData = {
       ...formData,
       [e.target.name]: e.target.value,
     };
-    // console.log("inside available", newFormData.is_available_help);
-    // console.log("inside looking", newFormData.is_looking_for_help);
-
-    // console.log(e);
-    // console.log(e.target.name, e.target.value, e.target.checked);
-    if (e.target.name === "is_available_help" && e.target.checked) {
-      // console.log(e.target.name, e.target.value, e.target.checked);
-      newFormData.is_available_help = true;
-    } else if (e.target.name === "is_available_help" && !e.target.checked) {
-      newFormData.is_available_help = false;
-    }
-    if (e.target.name === "is_looking_for_help" && e.target.checked) {
-      newFormData.is_looking_for_help = true;
-    } else if (e.target.name === "is_looking_for_help" && !e.target.checked) {
-      newFormData.is_looking_for_help = false;
-    }
-    console.log("inside available", newFormData.is_available_help);
-    console.log("inside looking", newFormData.is_looking_for_help);
-    // let isChecked = e.target.checked;
-    // if (isChecked) {
-    //   newFormData.is_available_help = true;
-    // } else {
-    //   newFormData.is_available_help = false;
-    // }
-
     console.log("here is the new form data", newFormData);
     setFormData(newFormData);
+  };
+
+  const handleNewDataChecked = (e) => {
+    const newFormData = {
+      ...formData,
+      [e.target.name]: e.target.checked,
+    };
+    console.log("here is the new form data", newFormData);
+    setFormData(newFormData);
+    // console.log("inside available", newFormData.is_available_help);
+    // console.log("inside looking", newFormData.is_looking_for_help);
   };
 
   const handleNewPetsitterAdd = (e) => {
@@ -83,7 +66,7 @@ const NewPetsitterForm = ({
                 placeholder="name placeholder"
                 type="text"
                 value={formData.name}
-                onChange={handleNewDataChange}
+                onChange={handleNewTextDataChange}
               />
             </FormGroup>
           </Col>
@@ -97,7 +80,7 @@ const NewPetsitterForm = ({
                   placeholder="email placeholder"
                   type="text"
                   value={FormData.email}
-                  onChange={handleNewDataChange}
+                  onChange={handleNewTextDataChange}
                 />
               </FormGroup>
             </Col>
@@ -114,7 +97,7 @@ const NewPetsitterForm = ({
                 placeholder="Seattle"
                 type="text"
                 value={formData.city}
-                onChange={handleNewDataChange}
+                onChange={handleNewTextDataChange}
               />
             </FormGroup>
           </Col>
@@ -129,7 +112,7 @@ const NewPetsitterForm = ({
                 placeholder="XX"
                 type="text"
                 value={formData.state}
-                onChange={handleNewDataChange}
+                onChange={handleNewTextDataChange}
               />
             </FormGroup>
           </Col>
@@ -144,7 +127,7 @@ const NewPetsitterForm = ({
                 placeholder="00000"
                 type="text"
                 value={formData.zipcode}
-                onChange={handleNewDataChange}
+                onChange={handleNewTextDataChange}
               />
             </FormGroup>
           </Col>
@@ -154,10 +137,9 @@ const NewPetsitterForm = ({
             id="is_available_help"
             name="is_available_help"
             type="checkbox"
-            // checked={formData.is_available_help}
-            // onChange={() => isAvailableHelpChecked(checked)}
-            // value={formData.is_available_help}
-            onChange={handleNewDataChange}
+            onChange={handleNewDataChecked}
+
+            //   onChange={handleNewTextDataChange}
           />
           <Label check for="is_available_help">
             Available to help
@@ -168,9 +150,8 @@ const NewPetsitterForm = ({
             id="is_looking_for_help"
             name="is_looking_for_help"
             type="checkbox"
-            // onChange={() => isAvailableHelpChecked(!isLookingForHelp)}
-            // value={formData.is_looking_for_help}
-            onChange={handleNewDataChange}
+            onChange={handleNewDataChecked}
+            // onChange={handleNewTextDataChange}
           />
           <Label check for="is_looking_for_help">
             Looking for help
@@ -187,7 +168,7 @@ const NewPetsitterForm = ({
                 name="pet_type_take_care"
                 type="select"
                 value={formData.pet_type_take_care}
-                onChange={handleNewDataChange}
+                onChange={handleNewTextDataChange}
               >
                 <option></option>
                 <option>Cat</option>
@@ -213,7 +194,6 @@ const NewPetsitterForm = ({
               show={showAlert}
               variant="secondary"
             >
-              {/* <Alert.Heading>How's it going?!</Alert.Heading> */}
               <p>
                 {responseToPostSitterRequest
                   ? `${responseToPostSitterRequest}`
@@ -232,10 +212,6 @@ const NewPetsitterForm = ({
           </>
         </Col>
       </Row>
-
-      {/* <p>
-        {responseToPostSitterRequest ? `${responseToPostSitterRequest}` : " "}
-      </p> */}
     </div>
   );
 };

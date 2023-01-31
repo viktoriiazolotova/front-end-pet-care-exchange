@@ -76,7 +76,7 @@ const PetsittersList = ({
                   {/* <span> 0 </span> */}
                   <IoPaw size="30px" color="#38bac4"></IoPaw>
                 </CardText>
-                <Button onClick={() => deletePetsitter(petsitter)}>
+                <Button onClick={() => deletePetsitter(petsitter.id)}>
                   Delete
                 </Button>
                 {/* <Button>Edit</Button> */}
