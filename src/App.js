@@ -9,9 +9,8 @@ import NoPage from "./pages/NoPage";
 import PetsittersList from "./components/PetsittersList";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
-import PetsList from "./components/PetsList";
+
 import SelectedPetsitter from "./components/SelectedPetsitter";
-import Petsitter from "./components/Petsitter";
 
 function App() {
   const [petsittersList, setPetsitterList] = useState([]);
@@ -48,15 +47,35 @@ function App() {
   };
 
   useEffect(fetchAllPetsitters, []);
-
-  const loadPetsitterOnClick = (petsitter) => {
-    // console.log("load petsitter function called");
-    console.log("petsitter", petsitter);
-    // setSelectedPetsitter(petsitter);
-    // console.log("selected", selectedPetsitter);
-    console.log(`${API_URL}${petsitter.id}/pets/`);
+  // did not work
+  // const loadPetsitterOnClick = (petsitter) => {
+  //   console.log(`${API_URL}${petsitter.id}/pets/`);
+  //   axios
+  //     .get(`${API_URL}${petsitter.id}/pets/`)
+  //     .then((res) => {
+  //       const petsAPIResCopy = res.data.map((pet) => {
+  //         return {
+  //           petId: pet.pk,
+  //           petName: pet.pet_name,
+  //           petType: pet.pet_type,
+  //           petNeedsDescription: pet.pet_needs_description,
+  //           isNeedsCare: pet.is_needs_care,
+  //           petsitterName: pet.petsitter,
+  //         };
+  //       });
+  //       setPetsList(petsAPIResCopy);
+  //       console.log(petsAPIResCopy);
+  //       setSelectedPetsitter(petsitter);
+  //       console.log("selected", petsitter);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+  const loadPets = (id) => {
+    console.log(`${API_URL}${id}/pets/`);
     axios
-      .get(`${API_URL}${petsitter.id}/pets/`)
+      .get(`${API_URL}${id}/pets/`)
       .then((res) => {
         const petsAPIResCopy = res.data.map((pet) => {
           return {
@@ -70,8 +89,21 @@ function App() {
         });
         setPetsList(petsAPIResCopy);
         console.log(petsAPIResCopy);
-        setSelectedPetsitter(petsitter);
-        console.log("selected", selectedPetsitter);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const loadPetsitterOnClick = (id) => {
+    console.log(`${API_URL}${id}/`);
+    axios
+      .get(`${API_URL}${id}/`)
+      .then((res) => {
+        setSelectedPetsitter(res.data);
+        console.log("selected petsitter", res.data);
+        console.log(selectedPetsitter);
+        loadPets(id);
       })
       .catch((err) => {
         console.log(err);
@@ -163,17 +195,16 @@ function App() {
               />
             }
           />
-          {/* <Route
-            path="pets"
-            element={
-              <div>
-                <PetsList pets={petsList}></PetsList>
-              </div>
-            }
-          /> */}
+
           <Route
-            path={`petsitter/${3}`}
-            element={<PetsList pets={petsList}></PetsList>}
+            // path={`petsitter/${selectedPetsitter.id}/`}
+            path={"petsitter/:petsitterId/"}
+            element={
+              <SelectedPetsitter
+                pets={petsList}
+                selectedPetsitter={selectedPetsitter}
+              ></SelectedPetsitter>
+            }
           />
           <Route
             path="petsitteraccount"
