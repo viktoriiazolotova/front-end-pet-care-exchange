@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   CardBody,
   CardText,
@@ -7,72 +8,23 @@ import {
   CardSubtitle,
   Button,
 } from "reactstrap";
-// import { useState, useEffect } from "react";
-// import axios from "axios";
 import Pet from "./Pet";
 import { Col, Row } from "react-bootstrap";
-
-// import { BiSmile } from "react-icons/bi";
-// import { CiFaceFrown } from "react-icons/ci";
 import { BsCheckCircle } from "react-icons/bs";
 import "./SelectedPetsitter.css";
 
-// const SelectedPetsitter = ({ pets, SelectedPetsitter }) => {
-//   const [petsList, setPetsList] = useState([]);
-//   const API_URL = "http://localhost:8000/api/petsitters/";
-//   const API_URL_PETS = "http://localhost:8000/api/pets/";
-//   const fetchAllPets = () => {
-//     axios
-//       .get(API_URL_PETS)
-//       .then((res) => {
-//         console.log("all_pets", res.data);
-//         const petsAPIResCopy = res.data.map((pet) => {
-//           return {
-//             petId: pet.pk,
-//             petName: pet.pet_name,
-//             petType: pet.pet_type,
-//             petNeedsDescription: pet.pet_needs_description,
-//             isNeedsCare: pet.is_needs_care,
-//             petsitterId: pet.petsitter,
-//           };
-//         });
-//         console.log("petsAPIcopy", petsAPIResCopy);
-//         setPetsList(petsAPIResCopy);
-//       })
-
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   };
-//   useEffect(fetchAllPets, []);
-
-// #function to get all pets for one petsitter
-//   let id = 3;
-//   const loadPetsPerPersitter = () => {
-//     axios
-//       .get(`${API_URL}${id}/pets/`)
-//       .then((res) => {
-//         console.log("load pets for one petsitter", res.data);
-//       })
-
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   };
-
-//   useEffect(loadPetsPerPersitter, []);
-
-const SelectedPetsitter = ({ pets, selectedPetsitter }) => {
+const SelectedPetsitter = ({ pets, selectedPetsitter, removePet }) => {
   const getPetsCards = (pets) => {
     return pets.map((pet) => (
       <Pet
         key={pet.petId}
-        petId={pets.petId}
+        petId={pet.petId}
         petName={pet.petName}
-        petType={pet.petType}
+        petTypeNeedsCare={pet.petTypeNeedsCare}
         petNeedsDescription={pet.petNeedsDescription}
-        isNeedsCare={pet.petTypeNeedsCare}
+        isNeedsCare={pet.isNeedsCare}
         petsitterName={pet.petsitterName}
+        removePet={removePet}
       />
     ));
   };
@@ -177,15 +129,23 @@ const SelectedPetsitter = ({ pets, selectedPetsitter }) => {
                 }}
               >
                 <CardBody>
-                  <div>
-                    <CardSubtitle style={{ padding: "2%" }} tag="h5">
-                      Here is my detailed info:
+                  <div
+                    style={{
+                      padding: "2%",
+                      paddingTop: "4%",
+                    }}
+                  >
+                    <CardSubtitle style={{ paddingBottom: "4%" }} tag="h5">
+                      Here is my Contact info: {selectedPetsitter.email}
                     </CardSubtitle>
+
+                    <Button>Contact me</Button>
 
                     <div
                       style={{
                         backgroundColor: "#f8f9fa",
                         padding: "3%",
+                        marginTop: "3%",
                       }}
                     >
                       <CardText>
@@ -241,12 +201,35 @@ const SelectedPetsitter = ({ pets, selectedPetsitter }) => {
             </div>
           </div>
         </Row>
-        {/* <h1>Hi, here is detail info about me</h1>
-        <h2> Here are our loves pets:</h2> */}
-        {/* <ul>{getPetsCards(pets)}</ul> */}
       </Container>
     </div>
   );
+};
+
+SelectedPetsitter.propTypes = {
+  pets: PropTypes.arrayOf(
+    PropTypes.shape({
+      petId: PropTypes.number.isRequired,
+      petName: PropTypes.string.isRequired,
+      petTypeNeedsCare: PropTypes.string.isRequired,
+      petNeedsDescription: PropTypes.string.isRequired,
+      isNeedsCare: PropTypes.bool.isRequired,
+      petsitterName: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  selectedPetsitter: PropTypes.shape({
+    pk: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    zipcode: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired,
+    is_available_help: PropTypes.bool.isRequired,
+    is_looking_for_help: PropTypes.bool.isRequired,
+    pet_type_take_care: PropTypes.string.isRequired,
+    photo_petsitter: PropTypes.string.isRequired,
+  }).isRequired,
+  removePet: PropTypes.func.isRequired,
 };
 
 export default SelectedPetsitter;

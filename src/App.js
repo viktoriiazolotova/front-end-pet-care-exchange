@@ -16,7 +16,7 @@ function App() {
   const [petsittersList, setPetsitterList] = useState([]);
   const [responseToPostSitterRequest, setResponse] = useState("");
   const [selectedPetsitter, setSelectedPetsitter] = useState({
-    id: "",
+    pk: 0,
     name: "",
     email: "",
     zipcode: "",
@@ -30,7 +30,7 @@ function App() {
   const [petsList, setPetsList] = useState([]);
 
   const API_URL = "http://localhost:8000/api/petsitters/";
-
+  const API_URL_PETS = "http://localhost:8000/api/pets/";
   const fetchAllPetsitters = () => {
     axios
       .get(API_URL)
@@ -88,11 +88,12 @@ function App() {
     axios
       .get(`${API_URL}${id}/pets/`)
       .then((res) => {
+        console.log("res.data:", res.data);
         const petsAPIResCopy = res.data.map((pet) => {
           return {
             petId: pet.pk,
             petName: pet.pet_name,
-            petType: pet.pet_type,
+            petTypeNeedsCare: pet.pet_type_needs_care,
             petNeedsDescription: pet.pet_needs_description,
             isNeedsCare: pet.is_needs_care,
             petsitterName: pet.petsitter,
@@ -153,7 +154,6 @@ function App() {
         // const newPetsittersList = JSON.parse(JSON.stringify(petsittersList));
         // const newPetinfo = JSON.parse(JSON.stringify(newPetsitterInfo));
         const newPetsitterJSON = {
-          // ...newPetinfo,
           ...newPetsitterInfo,
           id: response.data.pk,
           isAvailableHelp: response.data.is_available_help,
@@ -192,6 +192,25 @@ function App() {
       });
   };
 
+  const removePet = (petId) => {
+    console.log("delete pet called");
+    axios
+      .delete(`${API_URL_PETS}${petId}/`)
+      .then(() => {
+        const newPetList = [];
+        for (const pet of petsList) {
+          if (pet.pk !== petId) {
+            newPetList.push(pet);
+          }
+        }
+        setPetsList(newPetList);
+        loadPetsitterOnClick(selectedPetsitter);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <BrowserRouter>
       <Routes>
@@ -204,6 +223,7 @@ function App() {
                 petsitters={petsittersList}
                 deletePetsitter={deletePetsitter}
                 loadPetsitterOnClick={loadPetsitterOnClick}
+                removePet={removePet}
               />
             }
           />
@@ -215,6 +235,7 @@ function App() {
               <SelectedPetsitter
                 pets={petsList}
                 selectedPetsitter={selectedPetsitter}
+                removePet={removePet}
               ></SelectedPetsitter>
             }
           />

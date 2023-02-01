@@ -68,7 +68,7 @@ const PetsittersList = ({
                     }`}
                   ></BsCheckCircle>{" "}
                   {petsitter.isLookingForHelp
-                    ? `I need help with ${petsitter.petTypeTakeCare}.`
+                    ? "I need help with my pet."
                     : "No need help at this moment."}
                 </CardText>
 
@@ -110,7 +110,7 @@ const PetsittersList = ({
 PetsittersList.propTypes = {
   petsitters: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
       zipcode: PropTypes.string.isRequired,

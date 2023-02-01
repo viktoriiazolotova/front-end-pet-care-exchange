@@ -218,6 +218,7 @@ const NewPetsitterForm = ({
 
 NewPetsitterForm.propTypes = {
   addPetsitterCallbackFunc: PropTypes.func.isRequired,
+  responseToPostSitterRequest: PropTypes.string.isRequired,
 };
 
 export default NewPetsitterForm;

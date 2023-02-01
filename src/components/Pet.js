@@ -1,13 +1,17 @@
 import React from "react";
+import { Button } from "reactstrap";
+import PropTypes from "prop-types";
 
 const Pet = ({
+  petId,
   petName,
   petTypeNeedsCare,
   petNeedsDescription,
   isNeedsCare,
   petsitterName,
+  removePet,
 }) => {
-  console.log(petName);
+  console.log(petName, petTypeNeedsCare);
 
   return (
     <div>
@@ -19,9 +23,21 @@ const Pet = ({
         {isNeedsCare ? "yes, needs care" : "no needed care right now"}
       </p>
       <a href="/petsitters/"> Contact my owner {petsitterName}</a>
+
+      <Button onClick={() => removePet(petId)}>Pet is adopted </Button>
       <hr></hr>
     </div>
   );
+};
+
+Pet.propTypes = {
+  petId: PropTypes.number.isRequired,
+  petName: PropTypes.string.isRequired,
+  petTypeNeedsCare: PropTypes.string.isRequired,
+  petNeedsDescription: PropTypes.string.isRequired,
+  isNeedsCare: PropTypes.bool.isRequired,
+  petsitterName: PropTypes.string.isRequired,
+  removePet: PropTypes.func.isRequired,
 };
 
 export default Pet;
