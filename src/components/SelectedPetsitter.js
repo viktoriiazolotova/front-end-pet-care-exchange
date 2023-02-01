@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useState } from "react";
 import {
   CardBody,
   CardText,
@@ -8,12 +9,22 @@ import {
   CardSubtitle,
   Button,
 } from "reactstrap";
+import Alert from "react-bootstrap/Alert";
 import Pet from "./Pet";
+import NewPetForm from "./NewPetForm";
 import { Col, Row } from "react-bootstrap";
 import { BsCheckCircle } from "react-icons/bs";
 import "./SelectedPetsitter.css";
 
-const SelectedPetsitter = ({ pets, selectedPetsitter, removePet }) => {
+const SelectedPetsitter = ({
+  pets,
+  selectedPetsitter,
+  removePet,
+  addPetCallbackFunc,
+  responseToPostPetRequest,
+}) => {
+  const [showNewFormAddPet, setNewFormAddPet] = useState(false);
+
   const getPetsCards = (pets) => {
     return pets.map((pet) => (
       <Pet
@@ -149,7 +160,6 @@ const SelectedPetsitter = ({ pets, selectedPetsitter, removePet }) => {
                       }}
                     >
                       <CardText>
-                        {/* <BiSmile className="icons-status" size="20px"></BiSmile> */}
                         <BsCheckCircle size="20px"></BsCheckCircle>
                         Availability:
                         <span>
@@ -159,11 +169,6 @@ const SelectedPetsitter = ({ pets, selectedPetsitter, removePet }) => {
                         </span>
                       </CardText>
                       <CardText>
-                        {" "}
-                        {/* <CiFaceFrown
-                          className="icons-status"
-                          size="20px"
-                        ></CiFaceFrown> */}
                         <BsCheckCircle size="20px"></BsCheckCircle>
                         Looking for help:
                         <span>
@@ -176,10 +181,32 @@ const SelectedPetsitter = ({ pets, selectedPetsitter, removePet }) => {
                     </div>
                   </div>
                   <Row>
-                    <CardSubtitle style={{ padding: "3%" }} tag="h5">
-                      {" "}
-                      My Pets
-                    </CardSubtitle>
+                    <Row>
+                      <CardSubtitle style={{ padding: "3%" }} tag="h5">
+                        My Pets
+                      </CardSubtitle>
+                      <Col sm="6">
+                        <Button
+                          size="med"
+                          onClick={() => setNewFormAddPet(true)}
+                        >
+                          Add Pet
+                        </Button>
+                        <Button
+                          size="med"
+                          color="success"
+                          onClick={() => setNewFormAddPet(false)}
+                        >
+                          Discard
+                        </Button>
+                      </Col>
+                    </Row>
+                    <Alert show={showNewFormAddPet}>
+                      <NewPetForm
+                        responseToPostPetRequest={responseToPostPetRequest}
+                        addPetCallbackFunc={addPetCallbackFunc}
+                      />
+                    </Alert>
                     <ul>{getPetsCards(pets)}</ul>
                     {/* <Col sm="6">
                       <img alt="pet_photo1"></img>

@@ -12,7 +12,7 @@ const Pet = ({
   removePet,
 }) => {
   console.log(petName, petTypeNeedsCare);
-
+  
   return (
     <div>
       <p>Name: {petName}</p>

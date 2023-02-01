@@ -86,6 +86,7 @@ const PetsittersList = ({
                   to={`/petsitter/${petsitter.id}/`}
                   key={petsitter.id}
                   onClick={() => loadPetsitterOnClick(petsitter.id)}
+                  // onClick={() => loadPetsitterOnClick(petsitter)}
                 >
                   View Details
                 </Link>
