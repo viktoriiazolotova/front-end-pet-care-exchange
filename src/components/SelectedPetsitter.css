@@ -14,12 +14,19 @@
     color: green
 }
 
-.button-selected-petsitter {
+/* .button-selected-petsitter {
     background: #38bac4;
     margin-right: 5%;
     color:black;
-}
+} */
 .pets-cards {
     margin-top: 5%;
-    padding-left:3%;
+    padding-left:6%;
+} 
+
+.petsitters-available {
+    color: green;
+}
+.petsitters-not-available {
+    color: rgb(212, 23, 23);
 }

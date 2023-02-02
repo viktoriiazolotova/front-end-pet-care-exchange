@@ -33,7 +33,6 @@ const PetsittersList = ({
             alt="Sample"
             src={`${petsitter.photoPetsitter}`}
           ></img>
-
           <Row>
             <Col>
               <CardBody>
@@ -57,7 +56,6 @@ const PetsittersList = ({
                     : "Sorry, I am busy right now."}
                 </CardText>
                 <CardText tag="h6">Looking for help:</CardText>
-
                 <CardText>
                   <BsCheckCircle
                     size="20px"
@@ -71,16 +69,12 @@ const PetsittersList = ({
                     ? "I need help with my pet."
                     : "No need help at this moment."}
                 </CardText>
-
                 <CardText>
-                  {/* <span> 0 </span> */}
                   <IoPaw size="30px" color="#38bac4"></IoPaw>
                 </CardText>
                 <Button onClick={() => deletePetsitter(petsitter.id)}>
                   Delete
                 </Button>
-                {/* <Button>Edit</Button> */}
-
                 <Link
                   className="card__link"
                   to={`/petsitter/${petsitter.id}/`}
@@ -125,6 +119,7 @@ PetsittersList.propTypes = {
   ).isRequired,
   deletePetsitter: PropTypes.func.isRequired,
   loadPetsitterOnClick: PropTypes.func.isRequired,
+  // updatePetsitterAvailability: PropTypes.func.isRequired,
 };
 
 export default PetsittersList;

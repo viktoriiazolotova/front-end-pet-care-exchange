@@ -22,8 +22,29 @@ const SelectedPetsitter = ({
   removePet,
   addPetCallbackFunc,
   responseToPostPetRequest,
+  updatePetsitterAvailability,
 }) => {
   const [showNewFormAddPet, setNewFormAddPet] = useState(false);
+
+  let classPetsitterIsAvailable = selectedPetsitter.is_available_help
+    ? "petsitters-available"
+    : "petsitters-not-available";
+
+  let availabilityStatus = selectedPetsitter.is_available_help
+    ? "Ready to help"
+    : "Unfortunately, I am busy at the moment";
+
+  let classPetsitterIsLookingForHelp = selectedPetsitter.is_looking_for_help
+    ? "petsitters-available"
+    : "petsitters-not-available";
+
+  let lookingHelpStatus = selectedPetsitter.is_looking_for_help
+    ? "I am looking for help"
+    : "Dont need help right now";
+
+  const updatePetsitterStatus = () => {
+    updatePetsitterAvailability(!selectedPetsitter.is_available_help);
+  };
 
   const getPetsCards = (pets) => {
     return pets.map((pet) => (
@@ -128,7 +149,7 @@ const SelectedPetsitter = ({
                   </div>
                   <div>
                     <p tag="h5">0</p>
-                    <p>Pets</p>
+                    <p>Messages</p>
                   </div>
                 </div>
               </div>
@@ -150,36 +171,46 @@ const SelectedPetsitter = ({
                       Here is my Contact info: {selectedPetsitter.email}
                     </CardSubtitle>
 
-                    <Button className="button-selected-petsitter">
-                      Contact me
+                    <Button
+                      //   className="button-selected-petsitter"
+                      style={{ background: "#38bac4" }}
+                      //   color="info"
+                    >
+                      Contact me (does not work)
                     </Button>
 
                     <div
                       style={{
                         backgroundColor: "#f8f9fa",
                         padding: "3%",
-                        marginTop: "3%",
+                        marginTop: "10%",
+                        marginBottom: "3%",
                       }}
                     >
-                      <CardText>
-                        <BsCheckCircle size="20px"></BsCheckCircle>
+                      <CardText style={{ paddingBottom: "3%" }}>
+                        Click on the circle to change status:
+                      </CardText>
+                      <CardSubtitle tag="h6" style={{ marginBottom: "2%" }}>
+                        <BsCheckCircle
+                          size="40px"
+                          style={{ marginRight: "2%" }}
+                          className={classPetsitterIsAvailable}
+                          onClick={() => {
+                            updatePetsitterStatus();
+                          }}
+                        ></BsCheckCircle>
                         Availability:
-                        <span>
-                          {selectedPetsitter.is_available_help
-                            ? "Ready to help"
-                            : "Unfortunately, I am busy at the moment"}
-                        </span>
-                      </CardText>
-                      <CardText>
-                        <BsCheckCircle size="20px"></BsCheckCircle>
+                      </CardSubtitle>
+                      <CardText>{availabilityStatus}</CardText>
+                      <CardSubtitle tag="h6" style={{ marginBottom: "2%" }}>
+                        <BsCheckCircle
+                          className={classPetsitterIsLookingForHelp}
+                          size="40px"
+                          style={{ marginRight: "2%" }}
+                        ></BsCheckCircle>
                         Looking for help:
-                        <span>
-                          {selectedPetsitter.is_looking_for_help
-                            ? "I am looking for help"
-                            : "Dont need help right now"}
-                        </span>
-                      </CardText>
-                      <CardText></CardText>
+                      </CardSubtitle>
+                      <CardText>{lookingHelpStatus}</CardText>
                     </div>
                   </div>
                   <Row>
@@ -189,7 +220,8 @@ const SelectedPetsitter = ({
                       </CardSubtitle>
                       <Col sm="6">
                         <Button
-                          className="button-selected-petsitter"
+                          //   className="button-selected-petsitter"
+                          style={{ background: "#38bac4", marginRight: "5%" }}
                           size="med"
                           onClick={() => setNewFormAddPet(true)}
                         >
@@ -198,6 +230,7 @@ const SelectedPetsitter = ({
                         <Button
                           size="med"
                           onClick={() => setNewFormAddPet(false)}
+                          disabled={!showNewFormAddPet}
                         >
                           Discard
                         </Button>
@@ -259,6 +292,7 @@ SelectedPetsitter.propTypes = {
     photo_petsitter: PropTypes.string.isRequired,
   }).isRequired,
   removePet: PropTypes.func.isRequired,
+  updatePetsitterAvailability: PropTypes.func.isRequired,
 };
 
 export default SelectedPetsitter;

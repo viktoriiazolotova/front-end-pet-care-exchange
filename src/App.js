@@ -164,21 +164,21 @@ function App() {
 
   const addPet = (newPetInfo) => {
     // in order to handle data from reactstrap form needed to in this way below:
-    console.log(newPetInfo);
+    // console.log(newPetInfo);
     console.log("selected petsitter", selectedPetsitter.pk);
     const formData = new FormData();
     for (const field in newPetInfo) {
       formData.append(field, newPetInfo[field]);
       formData.append("petsitter", selectedPetsitter.pk);
     }
-    console.log("add Pet function called");
-    console.log("here formdata", formData);
+    // console.log("add Pet function called");
+    // console.log("here formdata", formData);
 
     axios
       .post(API_URL_PETS, formData)
       .then((response) => {
         // fetchAllPetsitters();
-        console.log("here is my response", response);
+        // console.log("here is my response", response);
         const responseToPostPetRequest = `${response.data.pet_name} successfully added.`;
         setResponseToPetRequest(responseToPostPetRequest);
         const newPetsList = [...petsList];
@@ -201,8 +201,41 @@ function App() {
       .catch((error) => {
         console.log(error);
         let responseToPostPetRequest =
-          "Check all fields, the field may not be blank.";
+          "Check the pet name field, it may not be blank.";
         setResponseToPetRequest(responseToPostPetRequest);
+      });
+  };
+
+  const updatePetsitterAvailability = (updatedStatus) => {
+    console.log("updateStatusAvailability called");
+    console.log("updated status passed is", updatedStatus, {
+      is_available_help: updatedStatus,
+    });
+    console.log(`${API_URL}${selectedPetsitter.pk}/`);
+    const newPetsittersList = [];
+    axios
+      .patch(`${API_URL}${selectedPetsitter.pk}/`, {
+        is_available_help: updatedStatus,
+      })
+      .then((response) => {
+        console.log("here is my response", response);
+        for (const petsitter of petsittersList) {
+          if (petsitter.id !== selectedPetsitter.pk) {
+            newPetsittersList.push(petsitter);
+          } else {
+            const newPetsitter = {
+              ...petsitter,
+              isAvailableHelp: updatedStatus,
+              // isComplete: !task.isComplete
+            };
+            newPetsittersList.push(newPetsitter);
+          }
+        }
+        setPetsitterList(newPetsittersList);
+        loadPetsitterOnClick(selectedPetsitter.pk);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -271,6 +304,7 @@ function App() {
                 removePet={removePet}
                 addPetCallbackFunc={addPet}
                 responseToPostPetRequest={responseToPostPetRequest}
+                updatePetsitterAvailability={updatePetsitterAvailability}
               ></SelectedPetsitter>
             }
           />

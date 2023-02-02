@@ -15,7 +15,7 @@ const Pet = ({
   console.log(petName, petTypeNeedsCare);
 
   return (
-    <div>
+    <div className="pet-card">
       <p>Name: {petName}</p>
       <p>Pet type: {petTypeNeedsCare}</p>
       <p>Pet needs: {petNeedsDescription}</p>
