@@ -36,7 +36,7 @@ function App() {
     axios
       .get(API_URL)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         const petsittersAPIResCopy = res.data.map((petsitter) => {
           return {
             id: petsitter.pk,
@@ -126,9 +126,11 @@ function App() {
   const addPetsitter = (newPetsitterInfo) => {
     // in order to handle data from reactstrap form needed to in this way below:
     const formData = new FormData();
+
     for (const field in newPetsitterInfo) {
       formData.append(field, newPetsitterInfo[field]);
     }
+    // camelToSnake[field]
     // console.log("add Petsitter function called");
     // console.log("here formdata", formData);
 
@@ -136,7 +138,7 @@ function App() {
       .post("http://localhost:8000/api/petsitters/", formData)
       .then((response) => {
         // fetchAllPetsitters();
-        // console.log("here is my response", response);
+        console.log("here is my response", response);
         const responseToPostSitterRequest = `${response.data.name} successfully added.`;
         setResponseToPetsitterRequest(responseToPostSitterRequest);
         const newPetsittersList = [...petsittersList];
@@ -151,7 +153,7 @@ function App() {
           photoPetsitter: response.data.photo_petsitter,
         };
         newPetsittersList.push(newPetsitterJSON);
-        // console.log("new list", newPetsittersList);
+        console.log("new list after adding new petsitetr", newPetsittersList);
         setPetsitterList(newPetsittersList);
       })
       .catch((error) => {
@@ -207,7 +209,7 @@ function App() {
   };
 
   const updatePetsitterAvailability = (updatedStatus) => {
-    console.log("updateStatusAvailability called");
+    // console.log("updateStatusAvailability called");
     console.log("updated status passed is", updatedStatus, {
       is_available_help: updatedStatus,
     });

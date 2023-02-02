@@ -50,6 +50,7 @@ const NewPetsitterForm = ({
   const handleNewPetsitterAdd = (e) => {
     e.preventDefault();
     addPetsitterCallbackFunc(formData);
+    setFormData(INITIAL_FORM_DATA);
   };
 
   return (

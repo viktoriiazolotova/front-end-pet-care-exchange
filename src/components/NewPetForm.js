@@ -22,7 +22,7 @@ const NewPetForm = ({ addPetCallbackFunc, responseToPostPetRequest }) => {
       ...formData,
       [e.target.name]: e.target.value,
     };
-    console.log("here is the new form data for pet", newFormData);
+    // console.log("here is the new form data for pet", newFormData);
     setFormData(newFormData);
   };
 
@@ -31,7 +31,7 @@ const NewPetForm = ({ addPetCallbackFunc, responseToPostPetRequest }) => {
       ...formData,
       [e.target.name]: e.target.checked,
     };
-    console.log("here is the new form data for pet", newFormData);
+    // console.log("here is the new form data for pet", newFormData);
     setFormData(newFormData);
     // console.log("inside available", newFormData.is_available_help);
     // console.log("inside looking", newFormData.is_looking_for_help);
@@ -40,6 +40,8 @@ const NewPetForm = ({ addPetCallbackFunc, responseToPostPetRequest }) => {
   const handleNewPetAdd = (e) => {
     e.preventDefault();
     addPetCallbackFunc(formData);
+    // #it does not clear pets needs field
+    setFormData(INITIAL_FORM_DATA);
   };
 
   return (
