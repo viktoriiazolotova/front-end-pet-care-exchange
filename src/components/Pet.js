@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "reactstrap";
 import PropTypes from "prop-types";
+import "./Pet.css";
 
 const Pet = ({
   petId,
@@ -12,7 +13,7 @@ const Pet = ({
   removePet,
 }) => {
   console.log(petName, petTypeNeedsCare);
-  
+
   return (
     <div>
       <p>Name: {petName}</p>
@@ -22,9 +23,11 @@ const Pet = ({
         Looking for someone to take care me?
         {isNeedsCare ? "yes, needs care" : "no needed care right now"}
       </p>
-      <a href="/petsitters/"> Contact my owner {petsitterName}</a>
+      {/* <a href="/petsitters/"> Contact my owner {petsitterName}</a> */}
 
-      <Button onClick={() => removePet(petId)}>Pet is adopted </Button>
+      <Button className="pet-card-button" onClick={() => removePet(petId)}>
+        Pet is adopted{" "}
+      </Button>
       <hr></hr>
     </div>
   );

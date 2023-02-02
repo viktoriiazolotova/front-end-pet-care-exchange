@@ -150,7 +150,9 @@ const SelectedPetsitter = ({
                       Here is my Contact info: {selectedPetsitter.email}
                     </CardSubtitle>
 
-                    <Button>Contact me</Button>
+                    <Button className="button-selected-petsitter">
+                      Contact me
+                    </Button>
 
                     <div
                       style={{
@@ -181,12 +183,13 @@ const SelectedPetsitter = ({
                     </div>
                   </div>
                   <Row>
-                    <Row>
-                      <CardSubtitle style={{ padding: "3%" }} tag="h5">
+                    <Row style={{ padding: "3%" }}>
+                      <CardSubtitle style={{ paddingBottom: "3%" }} tag="h5">
                         My Pets
                       </CardSubtitle>
                       <Col sm="6">
                         <Button
+                          className="button-selected-petsitter"
                           size="med"
                           onClick={() => setNewFormAddPet(true)}
                         >
@@ -194,7 +197,6 @@ const SelectedPetsitter = ({
                         </Button>
                         <Button
                           size="med"
-                          color="success"
                           onClick={() => setNewFormAddPet(false)}
                         >
                           Discard
@@ -207,7 +209,7 @@ const SelectedPetsitter = ({
                         addPetCallbackFunc={addPetCallbackFunc}
                       />
                     </Alert>
-                    <ul>{getPetsCards(pets)}</ul>
+                    <ul className="pets-cards">{getPetsCards(pets)}</ul>
                     {/* <Col sm="6">
                       <img alt="pet_photo1"></img>
                     </Col>

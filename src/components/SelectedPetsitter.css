@@ -13,3 +13,13 @@
     size: 50px;
     color: green
 }
+
+.button-selected-petsitter {
+    background: #38bac4;
+    margin-right: 5%;
+    color:black;
+}
+.pets-cards {
+    margin-top: 5%;
+    padding-left:3%;
+}
