@@ -29,6 +29,18 @@ function App() {
     photo_petsitter: "",
   });
   const [petsList, setPetsList] = useState([]);
+  const toSnakeCase = {
+    isAvailableHelp: "is_available_help",
+    isLookingForHelp: "is_looking_for_help",
+    petTypeTakeCare: "pet_type_take_care",
+    photoPetsitter: "photo_petsitter",
+    petId: "pk",
+    petName: "pet_name",
+    petTypeNeedsCare: "pet_type_needs_care",
+    petNeedsDescription: "pet_needs_description",
+    isNeedsCare: "is_needs_care",
+    petsitterName: "petsitter",
+  };
 
   const API_URL = "http://localhost:8000/api/petsitters/";
   const API_URL_PETS = "http://localhost:8000/api/pets/";
@@ -166,21 +178,21 @@ function App() {
 
   const addPet = (newPetInfo) => {
     // in order to handle data from reactstrap form needed to in this way below:
-    // console.log(newPetInfo);
+    console.log(newPetInfo);
     console.log("selected petsitter", selectedPetsitter.pk);
     const formData = new FormData();
     for (const field in newPetInfo) {
       formData.append(field, newPetInfo[field]);
+      console.log(toSnakeCase[field], newPetInfo[field]);
       formData.append("petsitter", selectedPetsitter.pk);
     }
     // console.log("add Pet function called");
-    // console.log("here formdata", formData);
+    console.log("here formdata", formData);
 
     axios
       .post(API_URL_PETS, formData)
       .then((response) => {
-        // fetchAllPetsitters();
-        // console.log("here is my response", response);
+        console.log("here is my response", response);
         const responseToPostPetRequest = `${response.data.pet_name} successfully added.`;
         setResponseToPetRequest(responseToPostPetRequest);
         const newPetsList = [...petsList];
@@ -196,7 +208,7 @@ function App() {
           petsitterName: response.data.petsitter,
         };
         newPetsList.push(newPetsJSON);
-        // console.log("new list", newPetsittersList);
+        console.log("new list", newPetsList);
         setPetsitterList(newPetsList);
         loadPetsitterOnClick(selectedPetsitter.pk);
       })
