@@ -182,8 +182,8 @@ function App() {
     console.log("selected petsitter", selectedPetsitter.pk);
     const formData = new FormData();
     for (const field in newPetInfo) {
-      formData.append(field, newPetInfo[field]);
-      console.log(toSnakeCase[field], newPetInfo[field]);
+      formData.append(toSnakeCase[field], newPetInfo[field]);
+      console.log(typeof toSnakeCase[field], newPetInfo[field]);
       formData.append("petsitter", selectedPetsitter.pk);
     }
     // console.log("add Pet function called");

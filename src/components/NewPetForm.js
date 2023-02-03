@@ -207,7 +207,7 @@ const NewPetForm = ({ addPetCallbackFunc, responseToPostPetRequest }) => {
           <Row>
             <Col md={4}>
               <FormGroup className="block-pet-needs-description">
-                <Label for="ppetNeedsDescription">Pet's needs</Label>
+                <Label for="petNeedsDescription">Pet's needs</Label>
                 <Input
                   id="petNeedsDescription"
                   name="petNeedsDescription"
