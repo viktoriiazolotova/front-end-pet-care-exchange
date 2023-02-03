@@ -276,7 +276,7 @@ SelectedPetsitter.propTypes = {
       petTypeNeedsCare: PropTypes.string.isRequired,
       petNeedsDescription: PropTypes.string.isRequired,
       isNeedsCare: PropTypes.bool.isRequired,
-      petsitterName: PropTypes.string.isRequired,
+      petsitterId: PropTypes.number.isRequired,
     })
   ).isRequired,
   selectedPetsitter: PropTypes.shape({

@@ -9,10 +9,10 @@ const Pet = ({
   petTypeNeedsCare,
   petNeedsDescription,
   isNeedsCare,
-  petsitterName,
+  petsitterId,
   removePet,
 }) => {
-  console.log(petName, petTypeNeedsCare);
+  // console.log(petName, petTypeNeedsCare);
 
   return (
     <div className="pet-card">
@@ -23,7 +23,7 @@ const Pet = ({
         Looking for someone to take care me?
         {isNeedsCare ? "yes, needs care" : "no needed care right now"}
       </p>
-      {/* <a href="/petsitters/"> Contact my owner {petsitterName}</a> */}
+      {/* <a href="/petsitters/"> Contact my owner {petsitterId}</a> */}
 
       <Button className="pet-card-button" onClick={() => removePet(petId)}>
         Pet is adopted{" "}
@@ -39,7 +39,7 @@ Pet.propTypes = {
   petTypeNeedsCare: PropTypes.string.isRequired,
   petNeedsDescription: PropTypes.string.isRequired,
   isNeedsCare: PropTypes.bool.isRequired,
-  petsitterName: PropTypes.string.isRequired,
+  petsitterId: PropTypes.number.isRequired,
   removePet: PropTypes.func.isRequired,
 };
 

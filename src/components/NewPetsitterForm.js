@@ -11,9 +11,9 @@ const INITIAL_FORM_DATA = {
   zipcode: "",
   city: "",
   state: "",
-  pet_type_take_care: "",
-  is_available_help: false,
-  is_looking_for_help: false,
+  petTypeTakeCare: "",
+  isAvailableHelp: false,
+  isLookingForHelp: false,
 };
 
 // const isChecked = (param) => {
@@ -30,9 +30,9 @@ const NewPetsitterForm = ({
   const handleNewTextDataChange = (e) => {
     const newFormData = {
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value.toUpperCase(),
     };
-    console.log("here is the new form data", newFormData);
+    // console.log("here is the new form data", newFormData);
     setFormData(newFormData);
   };
 
@@ -41,16 +41,16 @@ const NewPetsitterForm = ({
       ...formData,
       [e.target.name]: e.target.checked,
     };
-    console.log("here is the new form data", newFormData);
+    // console.log("here is the new form data", newFormData);
     setFormData(newFormData);
-    // console.log("inside available", newFormData.is_available_help);
-    // console.log("inside looking", newFormData.is_looking_for_help);
+    // console.log("inside available", newFormData.isAvailableHelp);
+    // console.log("inside looking", newFormData.isAvailableHelp);
   };
 
   const handleNewPetsitterAdd = (e) => {
     e.preventDefault();
     addPetsitterCallbackFunc(formData);
-    setFormData(INITIAL_FORM_DATA);
+    // setFormData(INITIAL_FORM_DATA);
   };
 
   return (
@@ -135,47 +135,47 @@ const NewPetsitterForm = ({
         </Row>
         <FormGroup check>
           <Input
-            id="is_available_help"
-            name="is_available_help"
+            id="isAvailableHelp"
+            name="isAvailableHelp"
             type="checkbox"
             onChange={handleNewDataChecked}
 
             //   onChange={handleNewTextDataChange}
           />
-          <Label check for="is_available_help">
+          <Label check for="isAvailableHelp">
             Available to help
           </Label>
         </FormGroup>
         <FormGroup check>
           <Input
-            id="is_looking_for_help"
-            name="is_looking_for_help"
+            id="isLookingForHelp"
+            name="isLookingForHelp"
             type="checkbox"
             onChange={handleNewDataChecked}
             // onChange={handleNewTextDataChange}
           />
-          <Label check for="is_looking_for_help">
+          <Label check for="isLookingForHelp">
             Looking for help
           </Label>
         </FormGroup>
         <Row>
           <Col md={3}>
             <FormGroup>
-              <Label for="pet_type_take_care">
+              <Label for="petTypeTakeCare">
                 Select pet types you can help with:
               </Label>
               <Input
-                id="pet_type_take_care"
-                name="pet_type_take_care"
+                id="petTypeTakeCare"
+                name="petTypeTakeCare"
                 type="select"
-                value={formData.pet_type_take_care}
+                value={formData.petTypeTakeCare}
                 onChange={handleNewTextDataChange}
               >
                 <option></option>
-                <option>Cat</option>
-                <option>Dog</option>
-                <option>Bird</option>
-                <option>Any</option>
+                <option>CAT</option>
+                <option>DOG</option>
+                <option>BIRD</option>
+                <option>OTHER</option>
               </Input>
             </FormGroup>
           </Col>

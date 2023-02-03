@@ -162,7 +162,7 @@ const NewPetForm = ({ addPetCallbackFunc, responseToPostPetRequest }) => {
   const handleNewDataChangePetForm = (e) => {
     const newFormData = {
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value.toUpperCase(),
     };
     // console.log("here is the new form data for pet", newFormData);
     setFormData(newFormData);
@@ -173,7 +173,7 @@ const NewPetForm = ({ addPetCallbackFunc, responseToPostPetRequest }) => {
       ...formData,
       [e.target.name]: e.target.checked,
     };
-    // console.log("here is the new form data for pet", newFormData);
+    console.log("here is the new form data for pet", newFormData);
     setFormData(newFormData);
     // console.log("inside available", newFormData.is_available_help);
     // console.log("inside looking", newFormData.is_looking_for_help);
@@ -245,10 +245,10 @@ const NewPetForm = ({ addPetCallbackFunc, responseToPostPetRequest }) => {
                 onChange={handleNewDataChangePetForm}
               >
                 <option></option>
-                <option>Cat</option>
-                <option>Dog</option>
-                <option>Bird</option>
-                <option>Other</option>
+                <option>CAT</option>
+                <option>DOG</option>
+                <option>BIRD</option>
+                <option>OTHER</option>
               </Input>
             </FormGroup>
           </Col>

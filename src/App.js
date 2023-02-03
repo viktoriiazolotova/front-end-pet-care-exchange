@@ -15,6 +15,7 @@ function App() {
   const [petsittersList, setPetsitterList] = useState([]);
   const [responseToPostSitterRequest, setResponseToPetsitterRequest] =
     useState("");
+  const [petsList, setPetsList] = useState([]);
   const [responseToPostPetRequest, setResponseToPetRequest] = useState("");
   const [selectedPetsitter, setSelectedPetsitter] = useState({
     pk: 0,
@@ -28,18 +29,24 @@ function App() {
     pet_type_take_care: "",
     photo_petsitter: "",
   });
-  const [petsList, setPetsList] = useState([]);
+  // to decouple data from Python to Javascript
   const toSnakeCase = {
     isAvailableHelp: "is_available_help",
     isLookingForHelp: "is_looking_for_help",
     petTypeTakeCare: "pet_type_take_care",
     photoPetsitter: "photo_petsitter",
-    petId: "pk",
     petName: "pet_name",
     petTypeNeedsCare: "pet_type_needs_care",
     petNeedsDescription: "pet_needs_description",
     isNeedsCare: "is_needs_care",
     petsitterName: "petsitter",
+    name: "name",
+    email: "email",
+    zipcode: "zipcode",
+    city: "city",
+    state: "state",
+    pets: "pets",
+    petsitterId: "petsitter",
   };
 
   const API_URL = "http://localhost:8000/api/petsitters/";
@@ -101,7 +108,7 @@ function App() {
     axios
       .get(`${API_URL}${id}/pets/`)
       .then((res) => {
-        // console.log("res.data:", res.data);
+        console.log("res.data:", res.data);
         const petsAPIResCopy = res.data.map((pet) => {
           return {
             petId: pet.pk,
@@ -109,7 +116,7 @@ function App() {
             petTypeNeedsCare: pet.pet_type_needs_care,
             petNeedsDescription: pet.pet_needs_description,
             isNeedsCare: pet.is_needs_care,
-            petsitterName: pet.petsitter,
+            petsitterId: pet.petsitter,
           };
         });
         setPetsList(petsAPIResCopy);
@@ -138,16 +145,17 @@ function App() {
   const addPetsitter = (newPetsitterInfo) => {
     // in order to handle data from reactstrap form needed to in this way below:
     const formData = new FormData();
-
+    // console.log("here is the newPetsitter info:", newPetsitterInfo);
     for (const field in newPetsitterInfo) {
-      formData.append(field, newPetsitterInfo[field]);
+      formData.append(toSnakeCase[field], newPetsitterInfo[field]);
+      // console.log("field, value:", toSnakeCase[field], newPetsitterInfo[field]);
     }
-    // camelToSnake[field]
-    // console.log("add Petsitter function called");
+    console.log("add Petsitter function called");
     // console.log("here formdata", formData);
 
     axios
-      .post("http://localhost:8000/api/petsitters/", formData)
+      // .post("http://localhost:8000/api/petsitters/", formData)
+      .post(API_URL, formData)
       .then((response) => {
         // fetchAllPetsitters();
         console.log("here is my response", response);
@@ -155,7 +163,6 @@ function App() {
         setResponseToPetsitterRequest(responseToPostSitterRequest);
         const newPetsittersList = [...petsittersList];
         // const newPetsittersList = JSON.parse(JSON.stringify(petsittersList));
-        // const newPetinfo = JSON.parse(JSON.stringify(newPetsitterInfo));
         const newPetsitterJSON = {
           ...newPetsitterInfo,
           id: response.data.pk,
@@ -178,21 +185,20 @@ function App() {
 
   const addPet = (newPetInfo) => {
     // in order to handle data from reactstrap form needed to in this way below:
-    console.log(newPetInfo);
-    console.log("selected petsitter", selectedPetsitter.pk);
+    // console.log(newPetInfo);
+    // console.log("selected petsitter", selectedPetsitter.pk);
     const formData = new FormData();
     for (const field in newPetInfo) {
       formData.append(toSnakeCase[field], newPetInfo[field]);
-      console.log(typeof toSnakeCase[field], newPetInfo[field]);
       formData.append("petsitter", selectedPetsitter.pk);
     }
     // console.log("add Pet function called");
-    console.log("here formdata", formData);
+    // console.log("here formdata", formData);
 
     axios
       .post(API_URL_PETS, formData)
       .then((response) => {
-        console.log("here is my response", response);
+        // console.log("here is my response", response);
         const responseToPostPetRequest = `${response.data.pet_name} successfully added.`;
         setResponseToPetRequest(responseToPostPetRequest);
         const newPetsList = [...petsList];
@@ -205,10 +211,10 @@ function App() {
           petTypeNeedsCare: response.data.pet_type_needs_care,
           petNeedsDescription: response.data.pet_needs_description,
           isNeedsCare: response.data.is_needs_care,
-          petsitterName: response.data.petsitter,
+          petsitterId: response.data.petsitter,
         };
         newPetsList.push(newPetsJSON);
-        console.log("new list", newPetsList);
+        // console.log("new list", newPetsList);
         setPetsitterList(newPetsList);
         loadPetsitterOnClick(selectedPetsitter.pk);
       })
