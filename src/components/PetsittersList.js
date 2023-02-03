@@ -36,7 +36,18 @@ const PetsittersList = ({
           <Row>
             <Col>
               <CardBody>
-                <CardTitle tag="h3">{petsitter.name}</CardTitle>
+                <CardTitle tag="h3">
+                  {" "}
+                  <Link
+                    className="card__link"
+                    // to={`/petsitters/${petsitter.id}/`}
+                    to={`/petsitters/${petsitter.id}/`}
+                    key={petsitter.id}
+                    onClick={() => loadPetsitterOnClick(petsitter.id)}
+                  >
+                    {petsitter.name}
+                  </Link>
+                </CardTitle>
                 <CardSubtitle className="mb-2 text-muted" tag="h6">
                   {petsitter.city}, {petsitter.zipcode}, {petsitter.state}
                 </CardSubtitle>
@@ -69,21 +80,12 @@ const PetsittersList = ({
                     ? "I need help with my pet."
                     : "No need help at this moment."}
                 </CardText>
-                <CardText>
+                {/* <CardText>
                   <IoPaw size="30px" color="#38bac4"></IoPaw>
-                </CardText>
+                </CardText> */}
                 <Button onClick={() => deletePetsitter(petsitter.id)}>
                   Delete
                 </Button>
-                <Link
-                  className="card__link"
-                  to={`/petsitter/${petsitter.id}/`}
-                  key={petsitter.id}
-                  onClick={() => loadPetsitterOnClick(petsitter.id)}
-                  // onClick={() => loadPetsitterOnClick(petsitter)}
-                >
-                  View Details
-                </Link>
               </CardBody>
             </Col>
           </Row>

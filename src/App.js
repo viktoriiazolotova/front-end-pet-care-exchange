@@ -10,6 +10,7 @@ import PetsittersList from "./components/PetsittersList";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import SelectedPetsitter from "./components/SelectedPetsitter";
+// import { useMatch } from "react-router-dom";
 
 function App() {
   const [petsittersList, setPetsitterList] = useState([]);
@@ -29,6 +30,7 @@ function App() {
     pet_type_take_care: "",
     photo_petsitter: "",
   });
+
   // to decouple data from Python to Javascript
   const toSnakeCase = {
     isAvailableHelp: "is_available_help",
@@ -78,6 +80,7 @@ function App() {
   };
 
   useEffect(fetchAllPetsitters, []);
+
   // did not work, needs to redoit what will be in
   // const loadPetsitterOnClick = (petsitter) => {
   //   console.log(`${API_URL}${petsitter.id}/pets/`);
@@ -303,7 +306,7 @@ function App() {
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
           <Route
-            path="petsitters"
+            path="petsitters/"
             element={
               <PetsittersList
                 petsitters={petsittersList}
@@ -312,11 +315,10 @@ function App() {
                 removePet={removePet}
               />
             }
-          />
-
+          ></Route>
           <Route
             // path={`petsitter/${selectedPetsitter.id}/`}
-            path={"petsitter/:petsitterId/"}
+            path="petsitters/:petsitterId/"
             element={
               <SelectedPetsitter
                 pets={petsList}
@@ -325,6 +327,7 @@ function App() {
                 addPetCallbackFunc={addPet}
                 responseToPostPetRequest={responseToPostPetRequest}
                 updatePetsitterAvailability={updatePetsitterAvailability}
+                // loadPetsitterOnClick={loadPetsitterOnClick}
               ></SelectedPetsitter>
             }
           />

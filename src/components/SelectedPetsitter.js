@@ -14,9 +14,11 @@ import Pet from "./Pet";
 import NewPetForm from "./NewPetForm";
 import { Col, Row } from "react-bootstrap";
 import { BsCheckCircle } from "react-icons/bs";
+import { useParams } from "react-router-dom";
 import "./SelectedPetsitter.css";
 
 const SelectedPetsitter = ({
+  petsitters,
   pets,
   selectedPetsitter,
   removePet,
@@ -31,20 +33,24 @@ const SelectedPetsitter = ({
     : "petsitters-not-available";
 
   let availabilityStatus = selectedPetsitter.is_available_help
-    ? "Ready to help"
-    : "Unfortunately, I am busy at the moment";
+    ? "Ready to help."
+    : "Unfortunately, I am busy at the moment.";
 
   let classPetsitterIsLookingForHelp = selectedPetsitter.is_looking_for_help
     ? "petsitters-available"
     : "petsitters-not-available";
 
   let lookingHelpStatus = selectedPetsitter.is_looking_for_help
-    ? "I am looking for help"
-    : "Dont need help right now";
+    ? "I am looking for help."
+    : "Dont need help right now.";
 
   const updatePetsitterStatus = () => {
     updatePetsitterAvailability(!selectedPetsitter.is_available_help);
   };
+
+  let { petsitterId } = useParams();
+  console.log(petsitterId);
+  // useEffect(loadPetsitterOnClick(selectedPetsitter.id), []);
 
   const getPetsCards = (pets) => {
     return pets.map((pet) => (
@@ -55,7 +61,7 @@ const SelectedPetsitter = ({
         petTypeNeedsCare={pet.petTypeNeedsCare}
         petNeedsDescription={pet.petNeedsDescription}
         isNeedsCare={pet.isNeedsCare}
-        petsitterName={pet.petsitterName}
+        petsitterId={pet.petsitterId}
         removePet={removePet}
       />
     ));
@@ -116,6 +122,8 @@ const SelectedPetsitter = ({
                       //   alignItems: "center",
                     }}
                   >
+                    {" "}
+                    {selectedPetsitter.petsitterId}
                     {selectedPetsitter.name}
                   </CardTitle>
                   <CardText
