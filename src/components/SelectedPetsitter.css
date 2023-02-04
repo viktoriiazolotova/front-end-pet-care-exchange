@@ -9,24 +9,58 @@
     /* background: rgb(34,193,195);
     background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(165,241,245,1) 100%); */
 }
-.icons-status {
+/* .icons-status {
     size: 50px;
     color: green
+} */
+
+#button-add-pet {
+    background:#38bac4;
+    margin-right: 5%;
 }
 
-/* .button-selected-petsitter {
+#button-contact-me {
     background: #38bac4;
-    margin-right: 5%;
-    color:black;
-} */
+}
+
 .pets-cards {
     margin-top: 5%;
     padding-left:6%;
+   
 } 
 
 .petsitters-available {
     color: green;
+    margin-right: 2%;
+
+
 }
 .petsitters-not-available {
     color: rgb(212, 23, 23);
+    margin-right: 2%;
+  
 }
+
+#picture-profile {
+    width: 150px;
+    height: 150px;
+    z-index:  1;
+    border-radius: 100px;
+}
+#button-selected-petsitter {
+    background: #38bac4;
+}
+/* #icon-availability {
+    margin-right: 2%;
+}
+#icon-looking-help {
+    margin-right: 2%;
+} */
+.petsitter-status-div {
+    background-color: #f8f9fa;
+    padding: 3%;
+    margin-top: 10%;
+    margin-bottom: 3%;
+}
+                   
+

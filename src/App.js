@@ -249,7 +249,34 @@ function App() {
             const newPetsitter = {
               ...petsitter,
               isAvailableHelp: updatedStatus,
-              // isComplete: !task.isComplete
+            };
+            newPetsittersList.push(newPetsitter);
+          }
+        }
+        setPetsitterList(newPetsittersList);
+        loadPetsitterOnClick(selectedPetsitter.pk);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const updatePetsitterLookingHelp = (updatedStatus) => {
+    // console.log("updateStatusAvailability called");
+    axios
+      .patch(`${API_URL}${selectedPetsitter.pk}/`, {
+        is_looking_for_help: updatedStatus,
+      })
+      .then((response) => {
+        // console.log("here is my response", response);
+        const newPetsittersList = [];
+        for (const petsitter of petsittersList) {
+          if (petsitter.id !== selectedPetsitter.pk) {
+            newPetsittersList.push(petsitter);
+          } else {
+            const newPetsitter = {
+              ...petsitter,
+              isLookingForHelp: updatedStatus,
             };
             newPetsittersList.push(newPetsitter);
           }
@@ -327,6 +354,7 @@ function App() {
                 addPetCallbackFunc={addPet}
                 responseToPostPetRequest={responseToPostPetRequest}
                 updatePetsitterAvailability={updatePetsitterAvailability}
+                updatePetsitterLookingHelp={updatePetsitterLookingHelp}
                 // loadPetsitterOnClick={loadPetsitterOnClick}
               ></SelectedPetsitter>
             }

@@ -4,6 +4,7 @@ import "./PetsittersList.css";
 import { BsCheckCircle } from "react-icons/bs";
 import { Button, Row, Col } from "reactstrap";
 import { IoPaw } from "react-icons/io5";
+// import { GiPaw } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
 import { Card, CardBody, CardTitle, CardSubtitle, CardText } from "reactstrap";
@@ -11,6 +12,8 @@ const PetsittersList = ({
   petsitters,
   loadPetsitterOnClick,
   deletePetsitter,
+  updatePetsitterLookingHelp,
+  updatePetsitterAvailability,
 }) => {
   const getPetsittersCards = (petsitters) => {
     // console.log(petsitters);
@@ -37,7 +40,10 @@ const PetsittersList = ({
             <Col>
               <CardBody>
                 <CardTitle tag="h3">
-                  {" "}
+                  <CardText>
+                    <IoPaw size="30px" color="#38bac4"></IoPaw>
+                    {/* <GiPaw size="30px" color="brown"></GiPaw> */}
+                  </CardText>
                   <Link
                     className="card__link"
                     // to={`/petsitters/${petsitter.id}/`}
@@ -80,9 +86,7 @@ const PetsittersList = ({
                     ? "I need help with my pet."
                     : "No need help at this moment."}
                 </CardText>
-                {/* <CardText>
-                  <IoPaw size="30px" color="#38bac4"></IoPaw>
-                </CardText> */}
+
                 <Button onClick={() => deletePetsitter(petsitter.id)}>
                   Delete
                 </Button>
@@ -121,7 +125,8 @@ PetsittersList.propTypes = {
   ).isRequired,
   deletePetsitter: PropTypes.func.isRequired,
   loadPetsitterOnClick: PropTypes.func.isRequired,
-  // updatePetsitterAvailability: PropTypes.func.isRequired,
+  updatePetsitterLookingHelp: PropTypes.func.isRequired,
+  updatePetsitterAvailability: PropTypes.func.isRequired,
 };
 
 export default PetsittersList;
