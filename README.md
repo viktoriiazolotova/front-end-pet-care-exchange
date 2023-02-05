@@ -6,7 +6,7 @@ Technologies Used:
     3. Backend using Django
 
 Basic Features:
-    1.
+    1.Add petsitters
 
 To start:
     1. Clone the repositary
