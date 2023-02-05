@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Alert from "react-bootstrap/Alert";
 import { BsCheckCircle } from "react-icons/bs";
 import {
@@ -16,9 +16,10 @@ import { Col, Row } from "react-bootstrap";
 import NewPetForm from "./NewPetForm";
 import Pet from "./Pet";
 import "./SelectedPetsitter.css";
+import { useParams } from "react-router";
 
 const SelectedPetsitter = ({
-  petsitters,
+  // petsitters,
   pets,
   selectedPetsitter,
   removePet,
@@ -29,34 +30,35 @@ const SelectedPetsitter = ({
   // updatePetsitterId,
 }) => {
   const [showNewFormAddPet, setNewFormAddPet] = useState(false);
+  // console.log("slected petsitter under selected component", selectedPetsitter);
 
-  let classPetsitterIsAvailable = selectedPetsitter.is_available_help
+  let classPetsitterIsAvailable = selectedPetsitter.isAvailableHelp
     ? "petsitters-available"
     : "petsitters-not-available";
 
-  let availabilityStatus = selectedPetsitter.is_available_help
+  let availabilityStatus = selectedPetsitter.isAvailableHelp
     ? "Ready to help."
     : "Unfortunately, I am busy at the moment.";
 
-  let classPetsitterIsLookingForHelp = selectedPetsitter.is_looking_for_help
+  let classPetsitterIsLookingForHelp = selectedPetsitter.isLookingForHelp
     ? "petsitters-available"
     : "petsitters-not-available";
 
-  let lookingHelpStatus = selectedPetsitter.is_looking_for_help
+  let lookingHelpStatus = selectedPetsitter.isLookingForHelp
     ? "I am looking for help."
     : "Dont need help right now.";
 
   const updatePetsitterStatusAvailable = () => {
-    updatePetsitterAvailability(!selectedPetsitter.is_available_help);
+    updatePetsitterAvailability(!selectedPetsitter.isAvailableHelp);
   };
 
   const updatePetsitterStatusHelp = () => {
-    updatePetsitterLookingHelp(!selectedPetsitter.is_looking_for_help);
+    updatePetsitterLookingHelp(!selectedPetsitter.isLookingForHelp);
   };
-  // const params = useParams();
+  // const petsitterId = useParams();
   // useEffect(() => {
-  //   console.log("Params", params);
-  // }, [params]);
+  //   console.log("Params", petsitterId);
+  // }, [petsitterId]);
 
   const getPetsCards = (pets) => {
     return pets.map((pet) => (
@@ -95,7 +97,7 @@ const SelectedPetsitter = ({
                 >
                   <img
                     alt="pictureProfile"
-                    src={`${selectedPetsitter.photo_petsitter}`}
+                    src={`${selectedPetsitter.photoPetsitter}`}
                     id="picture-profile"
                   ></img>
                   <Button size="sm" type="button">
@@ -114,7 +116,7 @@ const SelectedPetsitter = ({
                       width: "300px",
                     }}
                   >
-                    {selectedPetsitter.petsitterId}
+                    {/* {selectedPetsitter.id} */}
                     {selectedPetsitter.name}
                   </CardTitle>
                   <CardText
@@ -269,20 +271,22 @@ SelectedPetsitter.propTypes = {
     })
   ).isRequired,
   selectedPetsitter: PropTypes.shape({
-    pk: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     zipcode: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
-    is_available_help: PropTypes.bool.isRequired,
-    is_looking_for_help: PropTypes.bool.isRequired,
-    pet_type_take_care: PropTypes.string.isRequired,
-    photo_petsitter: PropTypes.string.isRequired,
+    isAvailableHelp: PropTypes.bool.isRequired,
+    isLookingForHelp: PropTypes.bool.isRequired,
+    petTypeTakeCare: PropTypes.string.isRequired,
+    photoPetsitter: PropTypes.string.isRequired,
   }).isRequired,
   removePet: PropTypes.func.isRequired,
   updatePetsitterAvailability: PropTypes.func.isRequired,
   updatePetsitterLookingHelp: PropTypes.func.isRequired,
+  addPetCallbackFunc: PropTypes.func.isRequired,
+  responseToPostPetRequest: PropTypes.string.isRequired,
 };
 
 export default SelectedPetsitter;

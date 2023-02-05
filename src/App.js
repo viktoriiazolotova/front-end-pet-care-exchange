@@ -19,16 +19,17 @@ function App() {
   const [petsList, setPetsList] = useState([]);
   const [responseToPostPetRequest, setResponseToPetRequest] = useState("");
   const [selectedPetsitter, setSelectedPetsitter] = useState({
-    pk: 0,
-    name: "Viktoriia Zolotova",
+    id: 0,
+    name: "",
     email: "",
     zipcode: "",
     city: "",
     state: "",
-    is_available_help: true,
-    is_looking_for_help: true,
-    pet_type_take_care: "",
-    photo_petsitter: "",
+    isAvailableHelp: false,
+    isLookingForHelp: false,
+    petTypeTakeCare: "",
+    photoPetsitter:
+      "http://localhost:8000/media/images/blank-profile-picture.jpg",
   });
 
   // to decouple data from Python to Javascript
@@ -50,6 +51,24 @@ function App() {
     pets: "pets",
     petsitterId: "petsitter",
   };
+  // const toCamelCase = {
+  //   is_available_help: "isAvailableHelp",
+  //   is_looking_for_help: "isLookingForHelp",
+  //   pet_type_take_care: "petTypeTakeCare",
+  //   photo_petsitter: "photoPetsitter",
+  //   pet_name: "petName",
+  //   pet_type_needs_care: "petTypeNeedsCare",
+  //   pet_needs_description: "petNeedsDescription",
+  //   is_needs_care: "isNeedsCare",
+  //   petsitter: "petsitterName",
+  //   name: "name",
+  //   email: "email",
+  //   zipcode: "zipcode",
+  //   city: "city",
+  //   state: "state",
+  //   pets: "pets",
+  //   id: "pk",
+  // };
 
   const API_URL = "http://localhost:8000/api/petsitters/";
   const API_URL_PETS = "http://localhost:8000/api/pets/";
@@ -81,31 +100,6 @@ function App() {
 
   useEffect(fetchAllPetsitters, []);
 
-  // did not work, needs to redoit what will be in
-  // const loadPetsitterOnClick = (petsitter) => {
-  //   console.log(`${API_URL}${petsitter.id}/pets/`);
-  //   axios
-  //     .get(`${API_URL}${petsitter.id}/pets/`)
-  //     .then((res) => {
-  //       const petsAPIResCopy = res.data.map((pet) => {
-  //         return {
-  //           petId: pet.pk,
-  //           petName: pet.pet_name,
-  //           petType: pet.pet_type,
-  //           petNeedsDescription: pet.pet_needs_description,
-  //           isNeedsCare: pet.is_needs_care,
-  //           petsitterName: pet.petsitter,
-  //         };
-  //       });
-  //       setPetsList(petsAPIResCopy);
-  //       console.log(petsAPIResCopy);
-  //       setSelectedPetsitter(petsitter);
-  //       console.log("selected", petsitter);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
   const loadPets = (id) => {
     // console.log(`${API_URL}${id}/pets/`);
     axios
@@ -134,10 +128,28 @@ function App() {
     // console.log(`${API_URL}${id}/`);
     axios
       .get(`${API_URL}${id}/`)
-      .then((res) => {
-        setSelectedPetsitter(res.data);
-        // console.log("selected petsitter", res.data);
+      .then((response) => {
+        // setSelectedPetsitter(response.data);
+        // console.log(
+        //   "selected petsitter from response - load petsitter",
+        //   response.data
+        // );
         // console.log(selectedPetsitter);
+        const newSelectedPetsitterJson = {
+          id: response.data.pk,
+          name: response.data.name,
+          email: response.data.email,
+          zipcode: response.data.zipcode,
+          city: response.data.city,
+          state: response.data.state,
+          isAvailableHelp: response.data.is_available_help,
+          petTypeTakeCare: response.data.pet_type_take_care,
+          isLookingForHelp: response.data.is_looking_for_help,
+          photoPetsitter: response.data.photo_petsitter,
+        };
+        // console.log(newSelectedPetsitterJson);
+        setSelectedPetsitter(newSelectedPetsitterJson);
+
         loadPets(id);
       })
       .catch((err) => {
@@ -153,7 +165,7 @@ function App() {
       formData.append(toSnakeCase[field], newPetsitterInfo[field]);
       // console.log("field, value:", toSnakeCase[field], newPetsitterInfo[field]);
     }
-    console.log("add Petsitter function called");
+    // console.log("add Petsitter function called");
     // console.log("here formdata", formData);
 
     axios
@@ -175,7 +187,7 @@ function App() {
           photoPetsitter: response.data.photo_petsitter,
         };
         newPetsittersList.push(newPetsitterJSON);
-        console.log("new list after adding new petsitetr", newPetsittersList);
+        // console.log("new list after adding new petsitetr", newPetsittersList);
         setPetsitterList(newPetsittersList);
       })
       .catch((error) => {
@@ -189,11 +201,11 @@ function App() {
   const addPet = (newPetInfo) => {
     // in order to handle data from reactstrap form needed to in this way below:
     // console.log(newPetInfo);
-    // console.log("selected petsitter", selectedPetsitter.pk);
+    // console.log("selected petsitter", selectedPetsitter.id);
     const formData = new FormData();
     for (const field in newPetInfo) {
       formData.append(toSnakeCase[field], newPetInfo[field]);
-      formData.append("petsitter", selectedPetsitter.pk);
+      formData.append("petsitter", selectedPetsitter.id);
     }
     // console.log("add Pet function called");
     // console.log("here formdata", formData);
@@ -219,7 +231,8 @@ function App() {
         newPetsList.push(newPetsJSON);
         // console.log("new list", newPetsList);
         setPetsitterList(newPetsList);
-        loadPetsitterOnClick(selectedPetsitter.pk);
+        loadPetsitterOnClick(selectedPetsitter.id);
+        // fetchAllPetsitters();
       })
       .catch((error) => {
         console.log(error);
@@ -232,18 +245,18 @@ function App() {
   const updatePetsitterAvailability = (updatedStatus) => {
     // console.log("updateStatusAvailability called");
     console.log("updated status passed is", updatedStatus, {
-      is_available_help: updatedStatus,
+      isAvailableHelp: updatedStatus,
     });
-    console.log(`${API_URL}${selectedPetsitter.pk}/`);
+    console.log(`${API_URL}${selectedPetsitter.id}/`);
     const newPetsittersList = [];
     axios
-      .patch(`${API_URL}${selectedPetsitter.pk}/`, {
+      .patch(`${API_URL}${selectedPetsitter.id}/`, {
         is_available_help: updatedStatus,
       })
       .then((response) => {
         console.log("here is my response", response);
         for (const petsitter of petsittersList) {
-          if (petsitter.id !== selectedPetsitter.pk) {
+          if (petsitter.id !== selectedPetsitter.id) {
             newPetsittersList.push(petsitter);
           } else {
             const newPetsitter = {
@@ -254,7 +267,7 @@ function App() {
           }
         }
         setPetsitterList(newPetsittersList);
-        loadPetsitterOnClick(selectedPetsitter.pk);
+        loadPetsitterOnClick(selectedPetsitter.id);
       })
       .catch((err) => {
         console.log(err);
@@ -264,14 +277,14 @@ function App() {
   const updatePetsitterLookingHelp = (updatedStatus) => {
     // console.log("updateStatusAvailability called");
     axios
-      .patch(`${API_URL}${selectedPetsitter.pk}/`, {
+      .patch(`${API_URL}${selectedPetsitter.id}/`, {
         is_looking_for_help: updatedStatus,
       })
       .then((response) => {
         // console.log("here is my response", response);
         const newPetsittersList = [];
         for (const petsitter of petsittersList) {
-          if (petsitter.id !== selectedPetsitter.pk) {
+          if (petsitter.id !== selectedPetsitter.id) {
             newPetsittersList.push(petsitter);
           } else {
             const newPetsitter = {
@@ -282,7 +295,7 @@ function App() {
           }
         }
         setPetsitterList(newPetsittersList);
-        loadPetsitterOnClick(selectedPetsitter.pk);
+        loadPetsitterOnClick(selectedPetsitter.id);
       })
       .catch((err) => {
         console.log(err);
@@ -301,7 +314,7 @@ function App() {
           }
         }
         setPetsitterList(newPetsittersList);
-        console.log(newPetsittersList);
+        // console.log(newPetsittersList);
       })
       .catch((err) => {
         console.log(err);
@@ -320,7 +333,7 @@ function App() {
           }
         }
         setPetsList(newPetList);
-        loadPetsitterOnClick(selectedPetsitter.pk);
+        loadPetsitterOnClick(selectedPetsitter.id);
       })
       .catch((error) => {
         console.log(error);
@@ -339,7 +352,6 @@ function App() {
                 petsitters={petsittersList}
                 deletePetsitter={deletePetsitter}
                 loadPetsitterOnClick={loadPetsitterOnClick}
-                removePet={removePet}
               />
             }
           ></Route>

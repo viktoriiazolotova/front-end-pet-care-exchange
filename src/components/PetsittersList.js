@@ -1,4 +1,4 @@
-import React, { useParams } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import "./PetsittersList.css";
 import { BsCheckCircle } from "react-icons/bs";
@@ -13,11 +13,9 @@ const PetsittersList = ({
   petsitters,
   loadPetsitterOnClick,
   deletePetsitter,
-  updatePetsitterLookingHelp,
-  updatePetsitterAvailability,
 }) => {
   const getPetsittersCards = (petsitters) => {
-    // console.log(petsitters);
+    // console.log("petsitters under petsitterlist: ", petsitters);
 
     return petsitters.map((petsitter) => (
       // console.log({`${petsitter.photoPetsitter}`})
@@ -127,8 +125,6 @@ PetsittersList.propTypes = {
   ).isRequired,
   deletePetsitter: PropTypes.func.isRequired,
   loadPetsitterOnClick: PropTypes.func.isRequired,
-  updatePetsitterLookingHelp: PropTypes.func.isRequired,
-  updatePetsitterAvailability: PropTypes.func.isRequired,
 };
 
 export default PetsittersList;

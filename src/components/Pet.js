@@ -10,7 +10,6 @@ const Pet = ({
   petTypeNeedsCare,
   petNeedsDescription,
   isNeedsCare,
-  petsitterId,
   removePet,
 }) => {
   let petIcon = " ";
@@ -64,7 +63,6 @@ Pet.propTypes = {
   petTypeNeedsCare: PropTypes.string.isRequired,
   petNeedsDescription: PropTypes.string.isRequired,
   isNeedsCare: PropTypes.bool.isRequired,
-  petsitterId: PropTypes.number.isRequired,
   removePet: PropTypes.func.isRequired,
 };
 
