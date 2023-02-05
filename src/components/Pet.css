@@ -3,4 +3,9 @@ background-color:#38bac4 ;
 }
 .pet-card {
     margin-left: 2%;
+    border-radius: 50px;
+}
+#button-adopt-pet {
+    background:#38bac4;
+    margin-right: 5%;
 }

@@ -12,7 +12,7 @@ import {
   Button,
 } from "reactstrap";
 import { Col, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import NewPetForm from "./NewPetForm";
 import Pet from "./Pet";
 import "./SelectedPetsitter.css";
@@ -26,6 +26,7 @@ const SelectedPetsitter = ({
   responseToPostPetRequest,
   updatePetsitterAvailability,
   updatePetsitterLookingHelp,
+  // updatePetsitterId,
 }) => {
   const [showNewFormAddPet, setNewFormAddPet] = useState(false);
 
@@ -52,10 +53,10 @@ const SelectedPetsitter = ({
   const updatePetsitterStatusHelp = () => {
     updatePetsitterLookingHelp(!selectedPetsitter.is_looking_for_help);
   };
-
-  let { petsitterId } = useParams();
-  console.log(petsitterId);
-  // useEffect(loadPetsitterOnClick(selectedPetsitter.id), []);
+  // const params = useParams();
+  // useEffect(() => {
+  //   console.log("Params", params);
+  // }, [params]);
 
   const getPetsCards = (pets) => {
     return pets.map((pet) => (
@@ -204,7 +205,7 @@ const SelectedPetsitter = ({
                   </div>
                   <Row>
                     <Row className="p-4">
-                      <CardSubtitle className="pb-3" tag="h5">
+                      <CardSubtitle className="pb-3 pl-3" tag="h5">
                         My Pets
                       </CardSubtitle>
                       <Col sm="6">

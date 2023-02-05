@@ -1,5 +1,13 @@
 import React from "react";
-import { Button } from "reactstrap";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  CardTitle,
+  CardText,
+  CardSubtitle,
+} from "reactstrap";
 import PropTypes from "prop-types";
 import "./Pet.css";
 
@@ -16,19 +24,30 @@ const Pet = ({
 
   return (
     <div className="pet-card">
-      <p>Name: {petName}</p>
-      <p>Pet type: {petTypeNeedsCare}</p>
-      <p>Pet needs: {petNeedsDescription}</p>
-      <p>
-        Looking for someone to take care me?
-        {isNeedsCare ? "yes, needs care" : "no needed care right now"}
-      </p>
-      {/* <a href="/petsitters/"> Contact my owner {petsitterId}</a> */}
+      <Card
+        className="my-2"
+        style={{
+          width: "18rem",
+        }}
+      >
+        <CardHeader>Pet type: {petTypeNeedsCare}</CardHeader>
+        <CardBody>
+          <CardTitle tag="h5"> Name: {petName}</CardTitle>
+          <CardSubtitle tag="h6">
+            Looking for someone to take care me?
+          </CardSubtitle>
+          <CardText>
+            {isNeedsCare
+              ? "YES, I NEED TO BE TAKE CARED!"
+              : "NO, I AM GOOD NOW!"}
+          </CardText>
+          <CardText>Pet needs: {petNeedsDescription}</CardText>
 
-      <Button className="pet-card-button" onClick={() => removePet(petId)}>
-        Pet is adopted{" "}
-      </Button>
-      <hr></hr>
+          <Button id="button-adopt-pet" onClick={() => removePet(petId)}>
+            Pet is adopted
+          </Button>
+        </CardBody>
+      </Card>
     </div>
   );
 };

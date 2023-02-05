@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useParams } from "react";
 import PropTypes from "prop-types";
 import "./PetsittersList.css";
 import { BsCheckCircle } from "react-icons/bs";
@@ -8,6 +8,7 @@ import { IoPaw } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 import { Card, CardBody, CardTitle, CardSubtitle, CardText } from "reactstrap";
+
 const PetsittersList = ({
   petsitters,
   loadPetsitterOnClick,
@@ -17,6 +18,7 @@ const PetsittersList = ({
 }) => {
   const getPetsittersCards = (petsitters) => {
     // console.log(petsitters);
+
     return petsitters.map((petsitter) => (
       // console.log({`${petsitter.photoPetsitter}`})
       <li key={petsitter.id}>

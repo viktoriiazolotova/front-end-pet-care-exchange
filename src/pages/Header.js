@@ -23,7 +23,7 @@ const Header = () => {
             <LinkContainer to="/">
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/petsitters">
+            <LinkContainer to="/petsitters/">
               <Nav.Link>Petsitters</Nav.Link>
             </LinkContainer>
             {/* <LinkContainer to="/petsitters/:petsitterId">

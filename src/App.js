@@ -20,13 +20,13 @@ function App() {
   const [responseToPostPetRequest, setResponseToPetRequest] = useState("");
   const [selectedPetsitter, setSelectedPetsitter] = useState({
     pk: 0,
-    name: "",
+    name: "Viktoriia Zolotova",
     email: "",
     zipcode: "",
     city: "",
     state: "",
-    is_available_help: false,
-    is_looking_for_help: false,
+    is_available_help: true,
+    is_looking_for_help: true,
     pet_type_take_care: "",
     photo_petsitter: "",
   });
@@ -355,11 +355,9 @@ function App() {
                 responseToPostPetRequest={responseToPostPetRequest}
                 updatePetsitterAvailability={updatePetsitterAvailability}
                 updatePetsitterLookingHelp={updatePetsitterLookingHelp}
-                // loadPetsitterOnClick={loadPetsitterOnClick}
               ></SelectedPetsitter>
             }
           />
-
           <Route
             path="petsitteraccount"
             element={
@@ -369,7 +367,8 @@ function App() {
               />
             }
           />
-          <Route path="signup" element={<SignUp />} />
+          <Route path="signup" element={<SignUp />}></Route>
+
           <Route path="signin" element={<SignIn />} />
           <Route path="*" element={<NoPage />} />
         </Route>
