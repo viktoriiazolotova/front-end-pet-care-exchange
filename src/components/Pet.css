@@ -3,9 +3,17 @@ background-color:#38bac4 ;
 }
 .pet-card {
     margin-left: 2%;
-    border-radius: 50px;
+    border-radius: 30px;
+    background: #e0e0e0;
+    box-shadow: 15px 15px 30px #bebebe,
+               -15px -15px 30px #ffffff;
+               
 }
 #button-adopt-pet {
-    background:#38bac4;
+    background:grey;
+    /* background-color: rgb(194, 168, 243); */
     margin-right: 5%;
+}
+#pet-name {
+    color: blue;
 }

@@ -1,15 +1,8 @@
 import React from "react";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  CardTitle,
-  CardText,
-  CardSubtitle,
-} from "reactstrap";
+import { Button, Card, CardBody, CardTitle, CardText } from "reactstrap";
 import PropTypes from "prop-types";
 import "./Pet.css";
+import { GiHummingbird, GiSittingDog, GiCat, GiPawHeart } from "react-icons/gi";
 
 const Pet = ({
   petId,
@@ -20,6 +13,17 @@ const Pet = ({
   petsitterId,
   removePet,
 }) => {
+  let petIcon = " ";
+  if (petTypeNeedsCare === "CAT") {
+    petIcon = <GiCat size="30px" color="grey" />;
+  } else if (petTypeNeedsCare === "DOG") {
+    petIcon = <GiSittingDog size="30px" color="grey" />;
+  } else if (petTypeNeedsCare === "BIRD") {
+    petIcon = <GiHummingbird size="30px" color="grey" />;
+  } else {
+    petIcon = <GiPawHeart size="30px" color="grey" />;
+  }
+
   // console.log(petName, petTypeNeedsCare);
 
   return (
@@ -30,12 +34,14 @@ const Pet = ({
           width: "18rem",
         }}
       >
-        <CardHeader>Pet type: {petTypeNeedsCare}</CardHeader>
         <CardBody>
-          <CardTitle tag="h5"> Name: {petName}</CardTitle>
-          <CardSubtitle tag="h6">
-            Looking for someone to take care me?
-          </CardSubtitle>
+          <CardTitle id="pet-name" className="mb-4" tag="h5">
+            Name: {petName}
+          </CardTitle>
+          <CardText>
+            {petTypeNeedsCare} {petIcon}
+          </CardText>
+          <CardText tag="h6">Looking for someone to take care me?</CardText>
           <CardText>
             {isNeedsCare
               ? "YES, I NEED TO BE TAKE CARED!"
