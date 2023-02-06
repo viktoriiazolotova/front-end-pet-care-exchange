@@ -10,6 +10,7 @@ import PetsittersList from "./components/PetsittersList";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import SelectedPetsitter from "./components/SelectedPetsitter";
+import Search from "./pages/Search";
 // import { useMatch } from "react-router-dom";
 
 function App() {
@@ -70,13 +71,13 @@ function App() {
   //   id: "pk",
   // };
 
-  // const API_URL = "http://localhost:8000/api/petsitters/";
-  // const API_URL_PETS = "http://localhost:8000/api/pets/";
+  const API_URL = "http://localhost:8000/api/petsitters/";
+  const API_URL_PETS = "http://localhost:8000/api/pets/";
 
-  const API_URL =
-    "https://pet-care-exchange-backend.herokuapp.com/api/petsitters/";
-  const API_URL_PETS =
-    "https://pet-care-exchange-backend.herokuapp.com/api/pets/";
+  // const API_URL =
+  //   "https://pet-care-exchange-backend.herokuapp.com/api/petsitters/";
+  // const API_URL_PETS =
+  //   "https://pet-care-exchange-backend.herokuapp.com/api/pets/";
   const fetchAllPetsitters = () => {
     axios
       .get(API_URL)
@@ -384,6 +385,7 @@ function App() {
               />
             }
           />
+          <Route path="search" element={<Search />}></Route>
           <Route path="signup" element={<SignUp />}></Route>
 
           <Route path="signin" element={<SignIn />} />

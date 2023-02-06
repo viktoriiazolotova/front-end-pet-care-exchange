@@ -1,6 +1,15 @@
 import React from "react";
 import Alert from "react-bootstrap/Alert";
-import { Button, Form, FormGroup, Label, Row, Col, Input } from "reactstrap";
+import {
+  Button,
+  Form,
+  FormGroup,
+  FormText,
+  Label,
+  Row,
+  Col,
+  Input,
+} from "reactstrap";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import "./NewPetsitterForm.css";
@@ -180,6 +189,38 @@ const NewPetsitterForm = ({
             </FormGroup>
           </Col>
         </Row>
+        {/* <Row>
+          <Col>
+            <FormGroup>
+              <Label for="photoPetsitter" sm={6}>
+                Add picture to the profile:
+              </Label>
+              <Col sm={6}>
+                <Input type="file" name="photoPetsitter" id="photoPetsitter" />
+                <FormText color="muted">
+                  Add picture to the profile in format(.png, .jpg, .jpeg),
+                  otherwise it will be defaulted.
+                </FormText>
+              </Col>
+            </FormGroup>
+          </Col>
+        </Row> */}
+
+        {/* <Row>
+          <Col md={4}>
+            <FormGroup>
+              <Label for="zipcode">Zip</Label>
+              <Input
+                id="zipcode"
+                name="zipcode"
+                placeholder="00000"
+                type="text"
+                value={formData.zipcode}
+                onChange={handleNewTextDataChange}
+              />
+            </FormGroup>
+          </Col>
+        </Row> */}
 
         {/* <Button type="submit">Submit form</Button> */}
 

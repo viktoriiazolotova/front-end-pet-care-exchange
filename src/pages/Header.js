@@ -36,7 +36,7 @@ const Header = () => {
             <LinkContainer to="/petsitteraccount">
               <Nav.Link>Become Pet sitter</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/">
+            <LinkContainer to="/search">
               <Nav.Link>
                 <GrSearch size="20px"></GrSearch>Search Petsitter
               </Nav.Link>
