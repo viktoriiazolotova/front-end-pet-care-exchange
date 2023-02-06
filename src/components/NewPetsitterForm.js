@@ -58,7 +58,7 @@ const NewPetsitterForm = ({
       <Form className="petsitter-form" onSubmit={handleNewPetsitterAdd}>
         <h1>Submit a form to become PetSitter</h1>
         <Row>
-          <Col md={3}>
+          <Col md={6}>
             <FormGroup>
               <Label for="name">Name</Label>
               <Input
@@ -72,7 +72,7 @@ const NewPetsitterForm = ({
             </FormGroup>
           </Col>
           <Row>
-            <Col md={3}>
+            <Col md={6}>
               <FormGroup>
                 <Label for="email">Email</Label>
                 <Input
@@ -89,7 +89,7 @@ const NewPetsitterForm = ({
         </Row>
 
         <Row>
-          <Col md={3}>
+          <Col md={4}>
             <FormGroup>
               <Label for="city">City</Label>
               <Input
@@ -104,7 +104,7 @@ const NewPetsitterForm = ({
           </Col>
         </Row>
         <Row>
-          <Col md={3}>
+          <Col md={4}>
             <FormGroup>
               <Label for="state">State</Label>
               <Input
@@ -119,7 +119,7 @@ const NewPetsitterForm = ({
           </Col>
         </Row>
         <Row>
-          <Col md={2}>
+          <Col md={4}>
             <FormGroup>
               <Label for="zipcode">Zip</Label>
               <Input
@@ -159,7 +159,7 @@ const NewPetsitterForm = ({
           </Label>
         </FormGroup>
         <Row>
-          <Col md={3}>
+          <Col md={4}>
             <FormGroup>
               <Label for="petTypeTakeCare">
                 Select pet types you can help with:

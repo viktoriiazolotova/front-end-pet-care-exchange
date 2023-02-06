@@ -1,0 +1,88 @@
+
+ h1 {
+    padding-top: 8%;
+    padding-left: 3%;
+    text-align: center;
+    color: rgb(85, 83, 83);
+    opacity: 0.8;
+    text-shadow: 2px 2px 2px #4ca1a3;
+    
+ }
+
+.home-page {
+    background: rgb(98,90,240);
+    background: linear-gradient(90deg, rgba(98,90,240,1) 0%, rgba(57,206,213,1) 39%, rgba(0,212,255,1) 100%);
+    padding: 3%;
+}
+
+.home-main{
+  padding-top: 3%;
+  padding-bottom: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.home-page-text {
+    padding: 5%;
+    margin-top: 4%;
+}
+
+img{
+    margin-top: 10%;
+    width: 400px;
+    height: 300px;
+    border-radius: 100px;
+    
+}
+
+footer {
+    text-align: center;
+    padding-top: 5%;
+}
+/* Styles for footer social links and copyright line */
+
+.social-media-link {
+   
+    padding-top: 3%;   
+    padding-bottom: 2%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.social-media-link a {
+    color: rgba(98,90,240,1);
+    font-size: 1em;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.social-media-link a:hover {
+    color: rgb(83, 40, 224);
+}
+
+.footer p {
+    font-weight: 600;
+}
+
+/* Small screens */
+/* @media all and (max-width: 500px) {
+    .home-main {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        font-size: 0.5em;
+        row-gap: 50px;
+        width: 100%;
+    }
+} */
+
+
+
+
+
+

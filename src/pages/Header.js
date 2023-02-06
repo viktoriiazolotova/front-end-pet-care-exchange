@@ -10,10 +10,14 @@ import "./Header.css";
 const Header = () => {
   return (
     <>
-      <Navbar bg="light" expand="lg" className="nav-bar">
+      <Navbar bg="light" expand="lg" id="nav-bar">
         <LinkContainer to="/">
           <Navbar.Brand>
-            <GiHollowCat size="30px" color="#38bac4"></GiHollowCat>
+            <GiHollowCat
+              id="nvbar-icon"
+              size="40px"
+              color="#38bac4"
+            ></GiHollowCat>
             PetCareExchange
           </Navbar.Brand>
         </LinkContainer>

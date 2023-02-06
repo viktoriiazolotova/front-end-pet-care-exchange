@@ -1,6 +1,9 @@
-.nav-bar {
-margin-left: 2%;
-font-size: large;
+#nav-bar {
+padding-left: 5%;
+font-size: 1.2rem;
+}
 
+#navbar-icon {
+    margin-right: 5%;
 }
 
