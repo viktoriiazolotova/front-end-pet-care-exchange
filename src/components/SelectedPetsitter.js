@@ -55,6 +55,9 @@ const SelectedPetsitter = ({
   const updatePetsitterStatusHelp = () => {
     updatePetsitterLookingHelp(!selectedPetsitter.isLookingForHelp);
   };
+  // const updatePetsitterStatusHelp = () => {
+  //   updatePetsitterLookingHelp(!selectedPetsitter.isLookingForHelp);
+  // };
   // const petsitterId = useParams();
   // useEffect(() => {
   //   console.log("Params", petsitterId);

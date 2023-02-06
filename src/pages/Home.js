@@ -10,15 +10,19 @@ const Home = () => {
         <div className="home-main">
           <div className="home-page-text">
             <p>
-              Contrary to popular belief, Lorem Ipsum is not simply random text.
-              It has roots in a piece of classical Latin literature from 45 BC,
-              making it over 2000 years old. Richard McClintock, a Latin
-              professor at Hampden-Sydney College in Virginia, looked up one of
-              the more obscure Latin words, consectetur, from a Lorem Ipsum
-              passage, and going through the cites of the word in classical
-              literature, discovered the undoubtable source. Lorem Ipsum comes
-              from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
-              Malorum" (The Extremes of Good and Evil) by Cicero, written in 45
+              <i>PetCareExchange</i> - a community of pet lovers who understand
+              the importance of trust and reliability when it comes to taking
+              care of our furry friends. Our platform allows members to exchange
+              pet sitting services, allowing you to earn "PawHearts" every time
+              you offer your services to another member. And when you need a
+              sitter for your own pet, you can use your PawHearts to secure a
+              trusted and loving pet sitter for free.
+            </p>
+            <p>
+              At PetCareExchange, we believe in paying it forward and fostering
+              a community of pet owners who truly care for each other's animals.
+              So why not join us today and start earning your PawHearts? Your
+              pet will be grateful for the love and care you provide.
             </p>
           </div>
           <div className="home-page-img">

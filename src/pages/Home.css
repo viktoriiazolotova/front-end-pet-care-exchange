@@ -1,23 +1,21 @@
 
- h1 {
-    padding-top: 8%;
+ .home-page p {
     padding-left: 3%;
-    text-align: center;
-    color: rgb(85, 83, 83);
-    opacity: 0.8;
-    text-shadow: 2px 2px 2px #4ca1a3;
-    
+    text-align: left;
+    color: rgb(18, 16, 16);
+    font-size: 1.2rem;
  }
 
 .home-page {
     background: rgb(98,90,240);
     background: linear-gradient(90deg, rgba(98,90,240,1) 0%, rgba(57,206,213,1) 39%, rgba(0,212,255,1) 100%);
     padding: 3%;
+    /* background: url('../assets/IMG_5995.jpeg'); */
 }
 
 .home-main{
-  padding-top: 3%;
-  padding-bottom: 5%;
+  /* padding-top: 3%; */
+  padding-bottom: 2%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -30,7 +28,7 @@
 }
 
 img{
-    margin-top: 10%;
+    margin-top: 25%;
     width: 400px;
     height: 300px;
     border-radius: 100px;

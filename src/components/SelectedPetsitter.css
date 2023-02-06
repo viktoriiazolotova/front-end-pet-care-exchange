@@ -13,19 +13,19 @@
     /* background: rgb(34,193,195);
     background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(165,241,245,1) 100%); */
 }
-/* .icons-status {
-    size: 50px;
-    color: green
-} */
 
 #button-add-pet {
-    background:#38bac4;
+    /* background:#38bac4; */
+    /* background: rgb(98,90,240); */
+    background: linear-gradient(90deg, rgba(98,90,240,1) 0%, rgba(0,212,255,1) 100%);
     margin-right: 5%;
    
 }
 
 #button-contact-me {
-    background: #38bac4;
+    background: linear-gradient(90deg, rgba(98,90,240,1) 0%, rgba(0,212,255,1) 100%);
+    /* background:rgba(0,212,255,1); */
+    /* color: black; */
 }
 
 .pets-cards {
@@ -59,12 +59,7 @@
 #button-selected-petsitter {
     background: #38bac4;
 }
-/* #icon-availability {
-    margin-right: 2%;
-}
-#icon-looking-help {
-    margin-right: 2%;
-} */
+
 .petsitter-status-div {
     background-color: #f8f9fa;
     padding: 3%;

@@ -4,17 +4,18 @@
   
 }
 
+h1 {
+  padding-top: 5%;
+  padding-left: 3%;
+  text-align: center;
+  color: rgb(85, 83, 83);
+  opacity: 0.8;
+  text-shadow: 2px 2px 2px #ebf3f3;
+  
+}
 
 
-/* .App-header {
-  background-color: #a1bdf6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
+
+
 
 
