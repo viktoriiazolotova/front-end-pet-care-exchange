@@ -23,6 +23,7 @@ const INITIAL_FORM_DATA = {
   petTypeTakeCare: "",
   isAvailableHelp: false,
   isLookingForHelp: false,
+  photoPetsitter: "",
 };
 
 // const isChecked = (param) => {
@@ -54,6 +55,14 @@ const NewPetsitterForm = ({
     setFormData(newFormData);
     // console.log("inside available", newFormData.isAvailableHelp);
     // console.log("inside looking", newFormData.isAvailableHelp);
+  };
+  const handleFileInput = (e) => {
+    const newFormData = {
+      ...formData,
+      [e.target.name]: e.target.files[0],
+    };
+    console.log("here is the new form data", newFormData);
+    setFormData(newFormData);
   };
 
   const handleNewPetsitterAdd = (e) => {
@@ -189,14 +198,20 @@ const NewPetsitterForm = ({
             </FormGroup>
           </Col>
         </Row>
-        {/* <Row>
+        <Row>
           <Col>
             <FormGroup>
               <Label for="photoPetsitter" sm={6}>
                 Add picture to the profile:
               </Label>
               <Col sm={6}>
-                <Input type="file" name="photoPetsitter" id="photoPetsitter" />
+                <Input
+                  type="file"
+                  name="photoPetsitter"
+                  id="photoPetsitter"
+                  // value={formData.photoPetsitter}
+                  onChange={handleFileInput}
+                />
                 <FormText color="muted">
                   Add picture to the profile in format(.png, .jpg, .jpeg),
                   otherwise it will be defaulted.
@@ -204,25 +219,7 @@ const NewPetsitterForm = ({
               </Col>
             </FormGroup>
           </Col>
-        </Row> */}
-
-        {/* <Row>
-          <Col md={4}>
-            <FormGroup>
-              <Label for="zipcode">Zip</Label>
-              <Input
-                id="zipcode"
-                name="zipcode"
-                placeholder="00000"
-                type="text"
-                value={formData.zipcode}
-                onChange={handleNewTextDataChange}
-              />
-            </FormGroup>
-          </Col>
-        </Row> */}
-
-        {/* <Button type="submit">Submit form</Button> */}
+        </Row>
 
         <Button type="submit" onClick={() => setShowAlert(true)}>
           Submit form
