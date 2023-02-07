@@ -35,9 +35,10 @@ const Home = () => {
         </div>
       </section>
       <footer className="footer">
-        <h2>Do you have any questions? Contact us:</h2>
+        <h2>Do you have any questions?</h2>
+        <h3> Contact us:</h3>
         <nav>
-          <ul class="social-media-link">
+          <ul className="social-media-link">
             <li>
               <a href="https://www.linkedin.com/in/viktoriiazolotova/">
                 <AiFillLinkedin size="30px"></AiFillLinkedin>LinkedIn

@@ -12,11 +12,11 @@ import {
   Button,
 } from "reactstrap";
 import { Col, Row } from "react-bootstrap";
-// import { useParams } from "react-router-dom";
 import NewPetForm from "./NewPetForm";
 import Pet from "./Pet";
 import "./SelectedPetsitter.css";
 import { useParams } from "react-router";
+// import axios from "axios";
 
 const SelectedPetsitter = ({
   // petsitters,
@@ -27,7 +27,7 @@ const SelectedPetsitter = ({
   responseToPostPetRequest,
   updatePetsitterAvailability,
   updatePetsitterLookingHelp,
-  // updatePetsitterId,
+  loadPetsitterOnClick,
 }) => {
   const [showNewFormAddPet, setNewFormAddPet] = useState(false);
   // console.log("slected petsitter under selected component", selectedPetsitter);
@@ -55,13 +55,15 @@ const SelectedPetsitter = ({
   const updatePetsitterStatusHelp = () => {
     updatePetsitterLookingHelp(!selectedPetsitter.isLookingForHelp);
   };
-  // const updatePetsitterStatusHelp = () => {
-  //   updatePetsitterLookingHelp(!selectedPetsitter.isLookingForHelp);
-  // };
-  // const petsitterId = useParams();
-  // useEffect(() => {
-  //   console.log("Params", petsitterId);
-  // }, [petsitterId]);
+
+  const { id } = useParams();
+  // console.log(id);
+  useEffect(() => {
+    console.log("Params", id);
+    if (selectedPetsitter.name === "") {
+      loadPetsitterOnClick(id);
+    }
+  });
 
   const getPetsCards = (pets) => {
     return pets.map((pet) => (
@@ -290,6 +292,7 @@ SelectedPetsitter.propTypes = {
   updatePetsitterLookingHelp: PropTypes.func.isRequired,
   addPetCallbackFunc: PropTypes.func.isRequired,
   responseToPostPetRequest: PropTypes.string.isRequired,
+  loadPetsitterOnClick: PropTypes.func.isRequired,
 };
 
 export default SelectedPetsitter;

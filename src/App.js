@@ -363,7 +363,7 @@ function App() {
           ></Route>
           <Route
             // path={`petsitter/${selectedPetsitter.id}/`}
-            path="petsitters/:petsitterId/"
+            path="petsitters/:id/"
             element={
               <SelectedPetsitter
                 pets={petsList}
@@ -373,6 +373,7 @@ function App() {
                 responseToPostPetRequest={responseToPostPetRequest}
                 updatePetsitterAvailability={updatePetsitterAvailability}
                 updatePetsitterLookingHelp={updatePetsitterLookingHelp}
+                loadPetsitterOnClick={loadPetsitterOnClick}
               ></SelectedPetsitter>
             }
           />
