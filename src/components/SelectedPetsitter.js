@@ -58,12 +58,18 @@ const SelectedPetsitter = ({
 
   const { id } = useParams();
   // console.log(id);
+  // useEffect(() => {
+  //   console.log("Params", id);
+  //   if (selectedPetsitter.name === "") {
+  //     loadPetsitterOnClick(id);
+  //   }
+  // });
   useEffect(() => {
     console.log("Params", id);
     if (selectedPetsitter.name === "") {
       loadPetsitterOnClick(id);
     }
-  });
+  }, []);
 
   const getPetsCards = (pets) => {
     return pets.map((pet) => (

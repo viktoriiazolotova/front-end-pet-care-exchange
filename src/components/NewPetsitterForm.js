@@ -213,8 +213,8 @@ const NewPetsitterForm = ({
                   onChange={handleFileInput}
                 />
                 <FormText color="muted">
-                  Add picture to the profile in format(.png, .jpg, .jpeg),
-                  otherwise it will be defaulted.
+                  Add picture to the profile in format(.jpg, .jpeg), otherwise
+                  it will be defaulted.
                 </FormText>
               </Col>
             </FormGroup>

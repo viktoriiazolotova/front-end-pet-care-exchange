@@ -13,12 +13,13 @@ const PetsittersList = ({
   loadPetsitterOnClick,
   deletePetsitter,
 }) => {
+  // console.log("we are inside petsitetrslist");
   const getPetsittersCards = (petsitters) => {
     // console.log("petsitters under petsitterlist: ", petsitters);
 
     return petsitters.map((petsitter) => (
-      // console.log({`${petsitter.photoPetsitter}`})
       <li key={petsitter.id}>
+        {/* console.log({`${petsitter.id}`}) */}
         <Card id="petsitter-card">
           <img
             className="image-petsitter"
