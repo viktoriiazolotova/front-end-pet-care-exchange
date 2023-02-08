@@ -182,11 +182,9 @@ const SelectedPetsitter = ({
                     <CardSubtitle className="pb-4" tag="h5">
                       Here is my Contact info: {selectedPetsitter.email}
                     </CardSubtitle>
-
                     <Button id="button-contact-me">
                       Contact me (does not work)
                     </Button>
-
                     <div className="petsitter-status-div">
                       <CardText className="pb-3">
                         Click on the circle to change status:
@@ -245,20 +243,6 @@ const SelectedPetsitter = ({
                       />
                     </Alert>
                     <ul className="pets-cards">{getPetsCards(pets)}</ul>
-                    {/* <Col sm="6">
-                      <img alt="pet_photo1"></img>
-                    </Col>
-                    <Col sm="6">
-                      <img alt="pet_photo2"></img>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col sm="6">
-                      <img alt="pet_photo3"></img>
-                    </Col>
-                    <Col sm="6">
-                      <img alt="pet_photo4"></img>
-                    </Col> */}
                   </Row>
                 </CardBody>
               </div>

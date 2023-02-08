@@ -1,0 +1,28 @@
+card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: .25rem;
+  }
+  
+  .card .card-header {
+    background-color: #fff;
+    border-bottom: none;
+  }
+#button-home {
+    background: linear-gradient(90deg, rgba(98,90,240,1) 0%, rgba(0,212,255,1) 100%);
+}
+
+#card {
+    width: 30rem;
+}
+/* Small screens */
+@media all and (max-width: 500px) {
+    #card {
+        width: auto;
+    }
+}
