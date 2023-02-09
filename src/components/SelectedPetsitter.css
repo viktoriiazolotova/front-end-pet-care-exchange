@@ -1,8 +1,4 @@
-
-.selected-petsitter {
-    margin-top: 5%
-}
-.profile-info-div {
+#profile-info-div {
     border-radius: 20px;
     background: #38bac4;
     display: flex;
@@ -12,6 +8,13 @@
     background: linear-gradient(90deg, rgba(98,90,240,1) 0%, rgba(57,206,213,1) 39%, rgba(0,212,255,1) 100%);
     /* background: rgb(34,193,195);
     background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(165,241,245,1) 100%); */
+}
+#div-name-location {
+    padding-top: 50%;
+    margin-left: 60%;
+}
+#petsitter-name {
+    width: 300px;
 }
 
 #button-add-pet {
@@ -66,4 +69,53 @@
     margin-top: 10%;
     margin-bottom: 3%;
 }
+
+/* small screen */
+@media all and (max-width: 500px) {
+    #div-name-location {
+        margin-left: 15%;
+        padding-left: 0;
+        padding-top: 20%;
+    }
+    #petsitter-name {
+        width: 100px;
+        font-size: 1.2rem;
+    }
+    #picture-profile {
+        width: 120px;
+        height: 120px;
+        z-index:  1;
+        border-radius: 100px;
+    }
+    #petsitter-email {
+        font-size: 0.8rem;
+        word-wrap: break-word;
+    }
+
+  }
+
+  /* medium screen */
+@media all and (max-width: 800px) {
+    #div-name-location {
+        margin-left: 15%;
+        padding-left: 0;
+        padding-top: 20%;
+    }
+    #petsitter-name {
+        width: 150px;
+        font-size: 1.2rem;
+    }
+    #picture-profile {
+        width: 120px;
+        height: 120px;
+        z-index:  1;
+        border-radius: 100px;
+    }
+    #petsitter-email {
+        font-size: 0.8rem;
+        word-wrap: break-word;
+    }
+
+  }
+
 

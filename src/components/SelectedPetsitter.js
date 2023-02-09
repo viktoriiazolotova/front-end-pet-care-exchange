@@ -19,7 +19,6 @@ import { useParams } from "react-router";
 // import axios from "axios";
 
 const SelectedPetsitter = ({
-  // petsitters,
   pets,
   selectedPetsitter,
   removePet,
@@ -87,170 +86,160 @@ const SelectedPetsitter = ({
   };
 
   return (
-    <div className="selected-petsitter">
-      <Container>
-        <Row className="profile-info-div">
-          <div>
-            <div className="Card">
+    <Container className="mt-4 md-4">
+      <Row id="profile-info-div">
+        <div>
+          <div className="Card">
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                width: "150px",
+              }}
+            >
               <div
                 style={{
                   display: "flex",
-                  flexDirection: "row",
-                  width: "150px",
+                  flexDirection: "column",
+                  width: "200px",
                 }}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    width: "200px",
-                  }}
-                >
-                  <img
-                    alt="pictureProfile"
-                    src={`${selectedPetsitter.photoPetsitter}`}
-                    id="picture-profile"
-                  ></img>
-                  <Button size="sm" type="button">
-                    Edit profile
-                  </Button>
-                </div>
-                <div
-                  style={{
-                    paddingTop: "50%",
-                    paddingLeft: "60%",
-                  }}
-                >
-                  <CardTitle
-                    tag="h4"
-                    style={{
-                      width: "300px",
-                    }}
-                  >
-                    {/* {selectedPetsitter.id} */}
-                    {selectedPetsitter.name}
-                  </CardTitle>
-                  <CardText
-                    className="mb-2 text-muted pt-4"
-                    // style={{ paddingTop: "5%" }}
-                  >
-                    {selectedPetsitter.city}, {selectedPetsitter.state},
-                    {selectedPetsitter.zipcode}
-                  </CardText>
-                </div>
+                <img
+                  alt="pictureProfile"
+                  src={`${selectedPetsitter.photoPetsitter}`}
+                  id="picture-profile"
+                ></img>
+                <Button size="sm" type="button">
+                  Edit rofile
+                </Button>
               </div>
-
-              <div style={{ backgroundColor: "#f8f9fa" }}>
-                <div
-                  style={{
-                    height: "100px",
-                    display: "flex",
-                    justifyContent: "end",
-                    textAlign: "center",
-                    padding: "5px",
-                    width: "90%",
-                  }}
-                >
-                  <div>
-                    <p tag="h5">0</p>
-                    <p>PetHearts</p>
-                  </div>
-                  <div className="px-3">
-                    <p tag="h5">0</p>
-                    <p>Reviews</p>
-                  </div>
-                  <div>
-                    <p tag="h5">0</p>
-                    <p>Messages</p>
-                  </div>
-                </div>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "between",
-                  alignItems: "center",
-                }}
-              >
-                <CardBody>
-                  <div
-                    style={{
-                      padding: "2%",
-                      paddingTop: "4%",
-                    }}
-                  >
-                    <CardSubtitle className="pb-4" tag="h5">
-                      Here is my Contact info: {selectedPetsitter.email}
-                    </CardSubtitle>
-                    <Button id="button-contact-me">
-                      Contact me (does not work)
-                    </Button>
-                    <div className="petsitter-status-div">
-                      <CardText className="pb-3">
-                        Click on the circle to change status:
-                      </CardText>
-                      {/* mb-2 means margin bottom */}
-                      <CardSubtitle tag="h6" className="mb-4">
-                        <BsCheckCircle
-                          size="40px"
-                          className={classPetsitterIsAvailable}
-                          onClick={() => {
-                            updatePetsitterStatusAvailable();
-                          }}
-                        ></BsCheckCircle>
-                        Availability:
-                      </CardSubtitle>
-                      <CardText>{availabilityStatus}</CardText>
-                      <CardSubtitle tag="h6" className="mb-2">
-                        <BsCheckCircle
-                          className={classPetsitterIsLookingForHelp}
-                          size="40px"
-                          onClick={() => {
-                            updatePetsitterStatusHelp();
-                          }}
-                        ></BsCheckCircle>
-                        Looking for help:
-                      </CardSubtitle>
-                      <CardText>{lookingHelpStatus}</CardText>
-                    </div>
-                  </div>
-                  <Row>
-                    <Row className="p-4">
-                      <CardSubtitle className="pb-3 pl-3" tag="h5">
-                        My Pets
-                      </CardSubtitle>
-                      <Col sm="6">
-                        <Button
-                          id="button-add-pet"
-                          size="med"
-                          onClick={() => setNewFormAddPet(true)}
-                        >
-                          Add Pet
-                        </Button>
-                        <Button
-                          size="med"
-                          onClick={() => setNewFormAddPet(false)}
-                          disabled={!showNewFormAddPet}
-                        >
-                          Discard
-                        </Button>
-                      </Col>
-                    </Row>
-                    <Alert show={showNewFormAddPet}>
-                      <NewPetForm
-                        responseToPostPetRequest={responseToPostPetRequest}
-                        addPetCallbackFunc={addPetCallbackFunc}
-                      />
-                    </Alert>
-                    <ul className="pets-cards">{getPetsCards(pets)}</ul>
-                  </Row>
-                </CardBody>
+              <div id="div-name-location">
+                <CardTitle tag="h4" id="petsitter-name">
+                  {selectedPetsitter.name}
+                </CardTitle>
+                <CardText className="mb-2 text-muted pt-4">
+                  {selectedPetsitter.city},{" "}
+                  <span style={{ padding: "1%" }}>
+                    {selectedPetsitter.state},
+                  </span>
+                  {selectedPetsitter.zipcode}
+                </CardText>
               </div>
             </div>
+
+            <div style={{ backgroundColor: "#f8f9fa" }}>
+              <div
+                style={{
+                  height: "100px",
+                  display: "flex",
+                  justifyContent: "end",
+                  textAlign: "center",
+                  padding: "5px",
+                  width: "90%",
+                }}
+              >
+                <div>
+                  <p tag="h5">0</p>
+                  <p>PetHearts</p>
+                </div>
+                <div className="px-3">
+                  <p tag="h5">0</p>
+                  <p>Reviews</p>
+                </div>
+                <div>
+                  <p tag="h5">0</p>
+                  <p>Messages</p>
+                </div>
+              </div>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "between",
+                alignItems: "center",
+              }}
+            >
+              <CardBody>
+                <div
+                  style={{
+                    padding: "2%",
+                    paddingTop: "4%",
+                  }}
+                >
+                  <CardSubtitle className="pb-4" tag="h5">
+                    <span className="text-muted ">
+                      Here is my contact info:
+                    </span>
+                    <hr />
+                    <span id="petsitter-email">{selectedPetsitter.email}</span>
+                  </CardSubtitle>
+                  {/* <Button id="button-contact-me">
+                      Contact me (does not work)
+                    </Button> */}
+                  <div className="petsitter-status-div">
+                    <CardText className="pb-3">
+                      Click on the circle to change status:
+                    </CardText>
+                    <CardSubtitle tag="h6" className="mb-4">
+                      <BsCheckCircle
+                        size="40px"
+                        className={classPetsitterIsAvailable}
+                        onClick={() => {
+                          updatePetsitterStatusAvailable();
+                        }}
+                      ></BsCheckCircle>
+                      Availability:
+                    </CardSubtitle>
+                    <CardText>{availabilityStatus}</CardText>
+                    <CardSubtitle tag="h6" className="mb-2">
+                      <BsCheckCircle
+                        className={classPetsitterIsLookingForHelp}
+                        size="40px"
+                        onClick={() => {
+                          updatePetsitterStatusHelp();
+                        }}
+                      ></BsCheckCircle>
+                      Looking for help:
+                    </CardSubtitle>
+                    <CardText>{lookingHelpStatus}</CardText>
+                  </div>
+                </div>
+                <Row>
+                  <Row className="p-4">
+                    <CardSubtitle className="pb-3 pl-3" tag="h5">
+                      My Pets
+                    </CardSubtitle>
+                    <Col sm="6">
+                      <Button
+                        id="button-add-pet"
+                        size="med"
+                        onClick={() => setNewFormAddPet(true)}
+                      >
+                        Add Pet
+                      </Button>
+                      <Button
+                        size="med"
+                        onClick={() => setNewFormAddPet(false)}
+                        disabled={!showNewFormAddPet}
+                      >
+                        Discard Form
+                      </Button>
+                    </Col>
+                  </Row>
+                  <Alert show={showNewFormAddPet}>
+                    <NewPetForm
+                      responseToPostPetRequest={responseToPostPetRequest}
+                      addPetCallbackFunc={addPetCallbackFunc}
+                    />
+                  </Alert>
+                  <ul className="pets-cards">{getPetsCards(pets)}</ul>
+                </Row>
+              </CardBody>
+            </div>
           </div>
-        </Row>
-      </Container>
-    </div>
+        </div>
+      </Row>
+    </Container>
   );
 };
 

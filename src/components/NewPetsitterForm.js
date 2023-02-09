@@ -78,7 +78,7 @@ const NewPetsitterForm = ({
         <Row>
           <Col md={6}>
             <FormGroup>
-              <Label for="name">Name</Label>
+              <Label for="name">Name *</Label>
               <Input
                 id="name"
                 name="name"
@@ -92,7 +92,7 @@ const NewPetsitterForm = ({
           <Row>
             <Col md={6}>
               <FormGroup>
-                <Label for="email">Email</Label>
+                <Label for="email">Email *</Label>
                 <Input
                   id="email"
                   name="email"
@@ -109,7 +109,7 @@ const NewPetsitterForm = ({
         <Row>
           <Col md={4}>
             <FormGroup>
-              <Label for="city">City</Label>
+              <Label for="city">City *</Label>
               <Input
                 id="city"
                 name="city"
@@ -124,7 +124,7 @@ const NewPetsitterForm = ({
         <Row>
           <Col md={4}>
             <FormGroup>
-              <Label for="state">State</Label>
+              <Label for="state">State *</Label>
               <Input
                 id="state"
                 name="state"
@@ -139,7 +139,7 @@ const NewPetsitterForm = ({
         <Row>
           <Col md={4}>
             <FormGroup>
-              <Label for="zipcode">Zip</Label>
+              <Label for="zipcode">Zip *</Label>
               <Input
                 id="zipcode"
                 name="zipcode"
@@ -176,11 +176,11 @@ const NewPetsitterForm = ({
             Looking for help
           </Label>
         </FormGroup>
-        <Row>
+        <Row className="mt-3">
           <Col md={4}>
             <FormGroup>
               <Label for="petTypeTakeCare">
-                Select pet types you can help with:
+                Select pet types you can help with: *
               </Label>
               <Input
                 id="petTypeTakeCare"
@@ -202,7 +202,7 @@ const NewPetsitterForm = ({
           <Col>
             <FormGroup>
               <Label for="photoPetsitter" sm={6}>
-                Add picture to the profile:
+                Add picture to the profile (optional):
               </Label>
               <Col sm={6}>
                 <Input
@@ -222,7 +222,7 @@ const NewPetsitterForm = ({
         </Row>
 
         <Button type="submit" onClick={() => setShowAlert(true)}>
-          Submit form
+          Submit Form
         </Button>
       </Form>
       <Row>

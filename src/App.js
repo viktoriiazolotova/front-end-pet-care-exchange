@@ -11,7 +11,6 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import SelectedPetsitter from "./components/SelectedPetsitter";
 import Search from "./pages/Search";
-// import { useMatch } from "react-router-dom";
 
 function App() {
   const [petsittersList, setPetsitterList] = useState([]);
@@ -29,8 +28,8 @@ function App() {
     isAvailableHelp: false,
     isLookingForHelp: false,
     petTypeTakeCare: "",
-    photoPetsitter:
-      "http://localhost:8000/media/images/blank-profile-picture.jpg",
+    // photoPetsitter: "http://localhost:8000/media/blank-profile-picture.jpg",
+    photoPetsitter: "",
   });
 
   // to decouple data from Python to Javascript
@@ -71,13 +70,13 @@ function App() {
   //   id: "pk",
   // };
 
-  // const API_URL = "http://localhost:8000/api/petsitters/";
-  // const API_URL_PETS = "http://localhost:8000/api/pets/";
+  const API_URL = "http://localhost:8000/api/petsitters/";
+  const API_URL_PETS = "http://localhost:8000/api/pets/";
 
-  const API_URL =
-    "https://pet-care-exchange-backend.herokuapp.com/api/petsitters/";
-  const API_URL_PETS =
-    "https://pet-care-exchange-backend.herokuapp.com/api/pets/";
+  // const API_URL =
+  //   "https://pet-care-exchange-backend.herokuapp.com/api/petsitters/";
+  // const API_URL_PETS =
+  //   "https://pet-care-exchange-backend.herokuapp.com/api/pets/";
   const fetchAllPetsitters = () => {
     axios
       .get(API_URL)
@@ -236,7 +235,7 @@ function App() {
         };
         newPetsList.push(newPetsJSON);
         // console.log("new list", newPetsList);
-        setPetsitterList(newPetsList);
+        setPetsList(newPetsList);
         loadPetsitterOnClick(selectedPetsitter.id);
         // fetchAllPetsitters();
       })
@@ -362,7 +361,6 @@ function App() {
             }
           ></Route>
           <Route
-            // path={`petsitter/${selectedPetsitter.id}/`}
             path="petsitters/:id/"
             element={
               <SelectedPetsitter

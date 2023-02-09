@@ -51,7 +51,7 @@ const NewPetForm = ({ addPetCallbackFunc, responseToPostPetRequest }) => {
         <Row>
           <Col md={4}>
             <FormGroup>
-              <Label for="petName">Pet Name</Label>
+              <Label for="petName">Pet Name*</Label>
               <Input
                 id="petName"
                 name="petName"
@@ -91,10 +91,10 @@ const NewPetForm = ({ addPetCallbackFunc, responseToPostPetRequest }) => {
           </Label>
         </FormGroup>
 
-        <Row>
+        <Row className="mt-3">
           <Col md={4}>
             <FormGroup>
-              <Label for="petTypeNeedsCare">Your pet species:</Label>
+              <Label for="petTypeNeedsCare">Your pet species*</Label>
               <Input
                 id="petTypeNeedsCare"
                 name="petTypeNeedsCare"
@@ -113,7 +113,7 @@ const NewPetForm = ({ addPetCallbackFunc, responseToPostPetRequest }) => {
         </Row>
 
         <Button type="submit" onClick={() => setShowAlert(true)}>
-          Submit form
+          Submit Form
         </Button>
       </Form>
       <Row>
