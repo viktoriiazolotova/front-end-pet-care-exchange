@@ -110,7 +110,7 @@ const SelectedPetsitter = ({
                   id="picture-profile"
                 ></img>
                 <Button size="sm" type="button">
-                  Edit rofile
+                  Edit profile
                 </Button>
               </div>
               <div id="div-name-location">
