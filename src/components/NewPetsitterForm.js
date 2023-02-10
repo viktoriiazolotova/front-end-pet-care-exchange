@@ -222,6 +222,9 @@ const NewPetsitterForm = ({
         <Button type="submit" onClick={() => setShowAlert(true)}>
           Submit Form
         </Button>
+        {/* <Button className="mr-2" variant="success" href="/petsitters/">
+          Go to Pet sitters
+        </Button> */}
       </Form>
 
       <Row>
