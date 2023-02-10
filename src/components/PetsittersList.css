@@ -1,3 +1,11 @@
+.search-label {
+  /* color: white; */
+  color: rgb(85, 83, 83);
+  /* opacity: 0.8; */
+  /* text-shadow: 2px 2px 2px #ebf3f3; */
+}
+
+
 .petsitters-list h1 {
   text-align: center;
   margin-bottom: 5%;

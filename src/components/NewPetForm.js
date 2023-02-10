@@ -111,7 +111,6 @@ const NewPetForm = ({ addPetCallbackFunc, responseToPostPetRequest }) => {
             </FormGroup>
           </Col>
         </Row>
-
         <Button type="submit" onClick={() => setShowAlert(true)}>
           Submit Form
         </Button>

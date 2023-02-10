@@ -105,7 +105,6 @@ const NewPetsitterForm = ({
             </Col>
           </Row>
         </Row>
-
         <Row>
           <Col md={4}>
             <FormGroup>
@@ -220,11 +219,11 @@ const NewPetsitterForm = ({
             </FormGroup>
           </Col>
         </Row>
-
         <Button type="submit" onClick={() => setShowAlert(true)}>
           Submit Form
         </Button>
       </Form>
+
       <Row>
         <Col md={4}>
           <>
