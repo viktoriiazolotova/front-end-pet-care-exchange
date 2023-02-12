@@ -1,7 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
-import Alert from "react-bootstrap/Alert";
+import { useParams } from "react-router";
+import PropTypes from "prop-types";
+import NewPetForm from "./NewPetForm";
+import Pet from "./Pet";
+import "./SelectedPetsitter.css";
 import { BsCheckCircle } from "react-icons/bs";
 import {
   CardBody,
@@ -11,12 +14,7 @@ import {
   CardSubtitle,
   Button,
 } from "reactstrap";
-import { Col, Row } from "react-bootstrap";
-import NewPetForm from "./NewPetForm";
-import Pet from "./Pet";
-import "./SelectedPetsitter.css";
-import { useParams } from "react-router";
-// import axios from "axios";
+import { Col, Row, Alert } from "react-bootstrap";
 
 const SelectedPetsitter = ({
   pets,
@@ -56,13 +54,7 @@ const SelectedPetsitter = ({
   };
 
   const { id } = useParams();
-  // console.log(id);
-  // useEffect(() => {
-  //   console.log("Params", id);
-  //   if (selectedPetsitter.name === "") {
-  //     loadPetsitterOnClick(id);
-  //   }
-  // });
+
   useEffect(() => {
     console.log("Params", id);
     if (selectedPetsitter.name === "") {
@@ -90,20 +82,8 @@ const SelectedPetsitter = ({
       <Row id="profile-info-div">
         <div>
           <div className="Card">
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                width: "150px",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "200px",
-                }}
-              >
+            <div className="div-picture-name">
+              <div className="div-picture-edit-button">
                 <img
                   alt="pictureProfile"
                   src={`${selectedPetsitter.photoPetsitter}`}
@@ -118,91 +98,63 @@ const SelectedPetsitter = ({
                   {selectedPetsitter.name}
                 </CardTitle>
                 <CardText className="mb-2 text-muted pt-4">
-                  {selectedPetsitter.city},{" "}
-                  <span style={{ padding: "1%" }}>
-                    {selectedPetsitter.state},
-                  </span>
+                  {selectedPetsitter.city},
+                  <span id="state">{selectedPetsitter.state},</span>
                   {selectedPetsitter.zipcode}
                 </CardText>
               </div>
             </div>
-
-            <div style={{ backgroundColor: "#f8f9fa" }}>
-              <div
-                style={{
-                  height: "100px",
-                  display: "flex",
-                  justifyContent: "end",
-                  textAlign: "center",
-                  padding: "5px",
-                  width: "90%",
-                }}
-              >
-                <div>
-                  <p tag="h5">0</p>
-                  <p>PetHearts</p>
-                </div>
-                <div className="px-3">
-                  <p tag="h5">0</p>
-                  <p>Reviews</p>
-                </div>
-                <div>
-                  <p tag="h5">0</p>
-                  <p>Messages</p>
-                </div>
+            <div className="div-pethearts-reviews-msg">
+              <div>
+                <p tag="h5">0</p>
+                <p>PetHearts</p>
+              </div>
+              <div className="px-3">
+                <p tag="h5">0</p>
+                <p>Reviews</p>
+              </div>
+              <div>
+                <p tag="h5">0</p>
+                <p>Messages</p>
               </div>
             </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "between",
-                alignItems: "center",
-              }}
-            >
-              <CardBody>
-                <div
-                  style={{
-                    padding: "2%",
-                    paddingTop: "4%",
-                  }}
-                >
-                  <CardSubtitle className="pb-4" tag="h5">
-                    <span className="text-muted ">
-                      Here is my contact info:
-                    </span>
-                    <hr />
-                    <span id="petsitter-email">{selectedPetsitter.email}</span>
-                  </CardSubtitle>
-                  {/* <Button id="button-contact-me">
+
+            <div className="div-contact-status">
+              <CardBody className="p-2">
+                <CardSubtitle className="pb-4 pt-3" tag="h5">
+                  <span className="text-muted">Here is my contact info:</span>
+                  <hr />
+                  <span id="petsitter-email">{selectedPetsitter.email}</span>
+                </CardSubtitle>
+                {/* <Button id="button-contact-me">
                       Contact me (does not work)
                     </Button> */}
-                  <div className="petsitter-status-div">
-                    <CardText className="pb-3">
-                      Click on the circle to change status:
-                    </CardText>
-                    <CardSubtitle tag="h6" className="mb-4">
-                      <BsCheckCircle
-                        size="40px"
-                        className={classPetsitterIsAvailable}
-                        onClick={() => {
-                          updatePetsitterStatusAvailable();
-                        }}
-                      ></BsCheckCircle>
-                      Availability:
-                    </CardSubtitle>
-                    <CardText>{availabilityStatus}</CardText>
-                    <CardSubtitle tag="h6" className="mb-2">
-                      <BsCheckCircle
-                        className={classPetsitterIsLookingForHelp}
-                        size="40px"
-                        onClick={() => {
-                          updatePetsitterStatusHelp();
-                        }}
-                      ></BsCheckCircle>
-                      Looking for help:
-                    </CardSubtitle>
-                    <CardText>{lookingHelpStatus}</CardText>
-                  </div>
+                <div className="petsitter-status-div">
+                  <CardText className="pb-3">
+                    Click on the circle to change status:
+                  </CardText>
+                  <CardSubtitle tag="h6" className="mb-4">
+                    <BsCheckCircle
+                      size="40px"
+                      className={classPetsitterIsAvailable}
+                      onClick={() => {
+                        updatePetsitterStatusAvailable();
+                      }}
+                    ></BsCheckCircle>
+                    Availability:
+                  </CardSubtitle>
+                  <CardText>{availabilityStatus}</CardText>
+                  <CardSubtitle tag="h6" className="mb-2">
+                    <BsCheckCircle
+                      className={classPetsitterIsLookingForHelp}
+                      size="40px"
+                      onClick={() => {
+                        updatePetsitterStatusHelp();
+                      }}
+                    ></BsCheckCircle>
+                    Looking for help:
+                  </CardSubtitle>
+                  <CardText>{lookingHelpStatus}</CardText>
                 </div>
                 <Row>
                   <Row className="p-4">

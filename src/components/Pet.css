@@ -1,6 +1,7 @@
 .pet-card-button {
 background-color:#38bac4 ;
 }
+
 .pet-card {
     margin-left: 2%;
     border-radius: 30px;
@@ -9,11 +10,13 @@ background-color:#38bac4 ;
                -15px -15px 30px #ffffff;
                
 }
+
 #button-adopt-pet {
     background:grey;
     /* background-color: rgb(194, 168, 243); */
     margin-right: 5%;
 }
+
 #pet-name {
     color: blue;
 }

@@ -10,7 +10,6 @@ import PetsittersList from "./components/PetsittersList";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import SelectedPetsitter from "./components/SelectedPetsitter";
-import Search from "./pages/Search";
 
 function App() {
   const [petsittersList, setPetsitterList] = useState([]);
@@ -51,6 +50,7 @@ function App() {
     pets: "pets",
     petsitterId: "petsitter",
   };
+
   // const toCamelCase = {
   //   is_available_help: "isAvailableHelp",
   //   is_looking_for_help: "isLookingForHelp",
@@ -70,13 +70,13 @@ function App() {
   //   id: "pk",
   // };
 
-  const API_URL = "http://localhost:8000/api/petsitters/";
-  const API_URL_PETS = "http://localhost:8000/api/pets/";
+  // const API_URL = "http://localhost:8000/api/petsitters/";
+  // const API_URL_PETS = "http://localhost:8000/api/pets/";
 
-  // const API_URL =
-  //   "https://pet-care-exchange-backend.herokuapp.com/api/petsitters/";
-  // const API_URL_PETS =
-  //   "https://pet-care-exchange-backend.herokuapp.com/api/pets/";
+  const API_URL =
+    "https://pet-care-exchange-backend.herokuapp.com/api/petsitters/";
+  const API_URL_PETS =
+    "https://pet-care-exchange-backend.herokuapp.com/api/pets/";
   const fetchAllPetsitters = () => {
     axios
       .get(API_URL)
@@ -222,8 +222,6 @@ function App() {
         const responseToPostPetRequest = `${response.data.pet_name} successfully added.`;
         setResponseToPetRequest(responseToPostPetRequest);
         const newPetsList = [...petsList];
-        // const newPetsittersList = JSON.parse(JSON.stringify(petsittersList));
-        // const newPetinfo = JSON.parse(JSON.stringify(newPetsitterInfo));
         const newPetsJSON = {
           ...newPetInfo,
           petId: response.data.pk,
@@ -249,17 +247,17 @@ function App() {
 
   const updatePetsitterAvailability = (updatedStatus) => {
     // console.log("updateStatusAvailability called");
-    console.log("updated status passed is", updatedStatus, {
-      isAvailableHelp: updatedStatus,
-    });
-    console.log(`${API_URL}${selectedPetsitter.id}/`);
+    // console.log("updated status passed is", updatedStatus, {
+    //   isAvailableHelp: updatedStatus,
+    // });
+    // console.log(`${API_URL}${selectedPetsitter.id}/`);
     const newPetsittersList = [];
     axios
       .patch(`${API_URL}${selectedPetsitter.id}/`, {
         is_available_help: updatedStatus,
       })
       .then((response) => {
-        console.log("here is my response", response);
+        // console.log("here is my response", response);
         for (const petsitter of petsittersList) {
           if (petsitter.id !== selectedPetsitter.id) {
             newPetsittersList.push(petsitter);
@@ -351,6 +349,15 @@ function App() {
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
           <Route
+            path="petsitteraccount"
+            element={
+              <NewPetsitterForm
+                addPetsitterCallbackFunc={addPetsitter}
+                responseToPostSitterRequest={responseToPostSitterRequest}
+              />
+            }
+          />
+          <Route
             path="petsitters/"
             element={
               <PetsittersList
@@ -375,18 +382,9 @@ function App() {
               ></SelectedPetsitter>
             }
           />
-          <Route
-            path="petsitteraccount"
-            element={
-              <NewPetsitterForm
-                addPetsitterCallbackFunc={addPetsitter}
-                responseToPostSitterRequest={responseToPostSitterRequest}
-              />
-            }
-          />
-          <Route path="search" element={<Search />}></Route>
-          <Route path="signup" element={<SignUp />}></Route>
 
+          {/* <Route path="search" element={<Search />}></Route> */}
+          <Route path="signup" element={<SignUp />}></Route>
           <Route path="signin" element={<SignIn />} />
           <Route path="*" element={<NoPage />} />
         </Route>

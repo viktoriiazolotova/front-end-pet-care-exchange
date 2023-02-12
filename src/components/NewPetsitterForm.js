@@ -26,10 +26,6 @@ const INITIAL_FORM_DATA = {
   photoPetsitter: "",
 };
 
-// const isChecked = (param) => {
-//   return param ? true : false;
-// };
-
 const NewPetsitterForm = ({
   addPetsitterCallbackFunc,
   responseToPostSitterRequest,
@@ -68,13 +64,13 @@ const NewPetsitterForm = ({
   const handleNewPetsitterAdd = (e) => {
     e.preventDefault();
     addPetsitterCallbackFunc(formData);
-    // setFormData(INITIAL_FORM_DATA);
+    setFormData(INITIAL_FORM_DATA);
   };
 
   return (
     <div className="petsitter-form-page">
       <Form className="petsitter-form" onSubmit={handleNewPetsitterAdd}>
-        <h1>Submit a form to become PetSitter</h1>
+        <h1>Submit a form to become Petsitter</h1>
         <Row>
           <Col md={6}>
             <FormGroup>
@@ -156,8 +152,6 @@ const NewPetsitterForm = ({
             name="isAvailableHelp"
             type="checkbox"
             onChange={handleNewDataChecked}
-
-            //   onChange={handleNewTextDataChange}
           />
           <Label check for="isAvailableHelp">
             Available to help
@@ -169,7 +163,6 @@ const NewPetsitterForm = ({
             name="isLookingForHelp"
             type="checkbox"
             onChange={handleNewDataChecked}
-            // onChange={handleNewTextDataChange}
           />
           <Label check for="isLookingForHelp">
             Looking for help
@@ -208,7 +201,6 @@ const NewPetsitterForm = ({
                   type="file"
                   name="photoPetsitter"
                   id="photoPetsitter"
-                  // value={formData.photoPetsitter}
                   onChange={handleFileInput}
                 />
                 <FormText color="muted">
@@ -219,12 +211,21 @@ const NewPetsitterForm = ({
             </FormGroup>
           </Col>
         </Row>
-        <Button type="submit" onClick={() => setShowAlert(true)}>
-          Submit Form
-        </Button>
-        {/* <Button className="mr-2" variant="success" href="/petsitters/">
-          Go to Pet sitters
-        </Button> */}
+        <Row>
+          <Col lg={12}>
+            <Button type="submit" onClick={() => setShowAlert(true)}>
+              Submit Form
+            </Button>
+            {/* <Button type="reset" onClick={() => setFormData(INITIAL_FORM_DATA)}>
+              Reset
+            </Button> */}
+          </Col>
+          <Col lg={12} className="mt-2">
+            <Button outline color="primary" href="/petsitters/">
+              Go to Petsitters
+            </Button>
+          </Col>
+        </Row>
       </Form>
 
       <Row>
@@ -240,7 +241,6 @@ const NewPetsitterForm = ({
                   ? `${responseToPostSitterRequest}`
                   : " "}
               </p>
-
               <div className="d-flex justify-content-end">
                 <Button
                   onClick={() => setShowAlert(false)}

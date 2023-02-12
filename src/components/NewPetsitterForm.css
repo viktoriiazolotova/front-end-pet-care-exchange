@@ -1,14 +1,13 @@
-/* h1 {
-    font-size: 0.5rem;
-} */
 .petsitter-alert {
     margin-left: 5%;
 }
 
 .petsitter-form {
- /* background-color: aqua; */
     margin: 5%;
 }
-/* .petsitter-form-page {
-       text-align: center;
+
+/* #button-go-petsitters{
+    background: linear-gradient(90deg, rgba(98,90,240,1) 0%, rgba(0,212,255,1) 100%);
+    color: yellow;
 } */
+

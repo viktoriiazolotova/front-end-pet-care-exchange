@@ -9,10 +9,11 @@ card {
     border-radius: .25rem;
   }
   
-  .card .card-header {
+.card .card-header {
     background-color: #fff;
     border-bottom: none;
   }
+
 #button-home {
     background: linear-gradient(90deg, rgba(98,90,240,1) 0%, rgba(0,212,255,1) 100%);
 }
@@ -20,6 +21,7 @@ card {
 #card {
     width: 30rem;
 }
+
 /* Small screens */
 @media all and (max-width: 500px) {
     #card {

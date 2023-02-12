@@ -12,7 +12,6 @@ const NoPage = () => {
           <span className="card-subtitle mb-2 text-muted text-center">
             Page Could Not Be Found
           </span>
-
           <div className="card-body mx-auto">
             <a
               id="button-home"

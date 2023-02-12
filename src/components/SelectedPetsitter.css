@@ -6,29 +6,57 @@
     margin: 5%;  
     background: rgb(98,90,240);
     background: linear-gradient(90deg, rgba(98,90,240,1) 0%, rgba(57,206,213,1) 39%, rgba(0,212,255,1) 100%);
-    /* background: rgb(34,193,195);
-    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(165,241,245,1) 100%); */
 }
+.div-picture-name {
+    display: flex;
+    flex-direction: row;
+    width: 150px;
+}
+
+.div-picture-edit-button {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    padding-top: 3%;
+}
+
 #div-name-location {
     padding-top: 50%;
     margin-left: 60%;
 }
+
+.div-pethearts-reviews-msg {
+    height: 100px;
+    display: flex;
+    justify-content: end;
+    text-align: center;
+    padding: 2%;
+    padding-right: 5%;
+    background-color:#f8f9fa;
+}
+
 #petsitter-name {
     width: 300px;
 }
 
+#state {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.div-contact-status {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
 #button-add-pet {
-    /* background:#38bac4; */
-    /* background: rgb(98,90,240); */
     background: linear-gradient(90deg, rgba(98,90,240,1) 0%, rgba(0,212,255,1) 100%);
-    margin-right: 5%;
-   
+    margin-right: 5%;  
 }
 
 #button-contact-me {
     background: linear-gradient(90deg, rgba(98,90,240,1) 0%, rgba(0,212,255,1) 100%);
-    /* background:rgba(0,212,255,1); */
-    /* color: black; */
 }
 
 .pets-cards {
@@ -38,19 +66,16 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content:flex-start;
-   
 } 
 
 .petsitters-available {
     color: green;
     margin-right: 2%;
-
-
 }
+
 .petsitters-not-available {
     color: rgb(212, 23, 23);
     margin-right: 2%;
-  
 }
 
 #picture-profile {
@@ -59,6 +84,7 @@
     z-index:  1;
     border-radius: 100px;
 }
+
 #button-selected-petsitter {
     background: #38bac4;
 }
@@ -66,7 +92,7 @@
 .petsitter-status-div {
     background-color: #f8f9fa;
     padding: 3%;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-bottom: 3%;
 }
 
@@ -97,17 +123,23 @@
   /* medium screen */
 @media all and (max-width: 800px) {
     #div-name-location {
-        margin-left: 15%;
+        margin-left: 40%;
         padding-left: 0;
         padding-top: 20%;
     }
+    .div-picture-edit-button {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        padding-top: 10%;
+    }
     #petsitter-name {
-        width: 150px;
+        width: 200px;
         font-size: 1.2rem;
     }
     #picture-profile {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
         z-index:  1;
         border-radius: 100px;
     }

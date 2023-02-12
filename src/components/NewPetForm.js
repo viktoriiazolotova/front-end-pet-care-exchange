@@ -10,7 +10,6 @@ const INITIAL_FORM_DATA = {
   petTypeNeedsCare: "",
   petNeedsDescription: "",
   isNeedsCare: false,
-  //   petsitter: ""?
 };
 
 const NewPetForm = ({ addPetCallbackFunc, responseToPostPetRequest }) => {
@@ -40,8 +39,6 @@ const NewPetForm = ({ addPetCallbackFunc, responseToPostPetRequest }) => {
   const handleNewPetAdd = (e) => {
     e.preventDefault();
     addPetCallbackFunc(formData);
-    // #it does not clear pets needs field
-    // setFormData(INITIAL_FORM_DATA);
   };
 
   return (

@@ -23,8 +23,6 @@ const Pet = ({
     petIcon = <GiPawHeart size="30px" color="grey" />;
   }
 
-  // console.log(petName, petTypeNeedsCare);
-
   return (
     <div className="pet-card">
       <Card

@@ -2,7 +2,7 @@ import React from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { GiHollowCat } from "react-icons/gi";
-import { GrSearch } from "react-icons/gr";
+// import { GrSearch } from "react-icons/gr";
 import { LinkContainer } from "react-router-bootstrap";
 import { Outlet } from "react-router-dom";
 import "./Header.css";
@@ -27,20 +27,17 @@ const Header = () => {
             <LinkContainer to="/">
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/petsitteraccount">
+              <Nav.Link>Become Petsitter</Nav.Link>
+            </LinkContainer>
             <LinkContainer to="/petsitters/">
               <Nav.Link>Petsitters</Nav.Link>
             </LinkContainer>
-            {/* <LinkContainer to="/petsitters/:petsitterId">
-              <Nav.Link>Petsitter</Nav.Link>
-            </LinkContainer> */}
-            <LinkContainer to="/petsitteraccount">
-              <Nav.Link>Become Pet sitter</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/search">
+            {/* <LinkContainer to="/search">
               <Nav.Link>
                 <GrSearch size="20px"></GrSearch>Search Petsitter
               </Nav.Link>
-            </LinkContainer>
+            </LinkContainer> */}
             <LinkContainer to="/signup">
               <Nav.Link>SignUp</Nav.Link>
             </LinkContainer>

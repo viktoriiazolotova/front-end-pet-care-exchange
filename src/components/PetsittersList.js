@@ -105,11 +105,11 @@ const PetsittersList = ({
     <div className="petsitters-list">
       <h1>Find the pet owner near you:</h1>
       <Form className="container">
-        <Row>
-          <Col md={4} sm={12}>
+        <Row className="justify-content-center">
+          <Col lg={4} md={6} sm={6}>
             <FormGroup>
-              <Label className="search-label" tag="h5" for="searchCity">
-                Search by city:
+              <Label className="filter-label" tag="h5" for="searchCity">
+                {/* Search by city: */}
               </Label>
               <Input
                 id="searchCity"
@@ -121,11 +121,11 @@ const PetsittersList = ({
             </FormGroup>
           </Col>
         </Row>
-        <Row>
-          <Col>
+        <Row className="justify-content-center">
+          <Col lg={4} md={6} sm={6}>
             <FormGroup check>
-              <Label className="search-label" check for="showAvailable">
-                Show only available to help
+              <Label className="filter-label" check for="showAvailable">
+                Show available to help
               </Label>
               <Input
                 id="showAvailable"
@@ -135,10 +135,12 @@ const PetsittersList = ({
               />
             </FormGroup>
           </Col>
-          <Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col lg={4} md={6} sm={6}>
             <FormGroup check>
-              <Label className="search-label" check for="showLookingHelp">
-                Looking for help
+              <Label className="filter-label" check for="showLookingHelp">
+                Show looking for help
               </Label>
               <Input
                 id="showLookingHelp"

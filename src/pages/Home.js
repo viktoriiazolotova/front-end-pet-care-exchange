@@ -28,7 +28,6 @@ const Home = () => {
           <div className="home-page-img">
             <img
               src={require("../assets/photo-1472491235688-bdc81a63246e.jpeg")}
-              // src={require("../assets/IMG_5995.jpeg")}
               alt="pet-cat"
             />
           </div>

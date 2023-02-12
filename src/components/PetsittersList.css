@@ -1,25 +1,28 @@
-.search-label {
-  /* color: white; */
+.filter-label {
   color: rgb(85, 83, 83);
-  /* opacity: 0.8; */
-  /* text-shadow: 2px 2px 2px #ebf3f3; */
-}
-
+  font-weight: 500;
+  margin-bottom: 2%;
+ }
 
 .petsitters-list h1 {
   text-align: center;
-  margin-bottom: 5%;
+  margin-bottom: 3%;
 }
+
 .petsitters-list {
   background: rgb(98,90,240);
   background: linear-gradient(90deg, rgba(98,90,240,1) 0%, rgba(57,206,213,1) 39%, rgba(0,212,255,1) 100%);
 }
+
 .petsitters-list-no-bullet {
   list-style: none;
   display: flex;
   flex-direction: row; 
   flex-wrap: wrap;
   justify-content: space-around;
+  margin-top: 3%;
+  margin-left: 0;
+  margin-bottom: 0;
 }
  
 .petsitters-available {
@@ -36,6 +39,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  align-items: center;
   padding: 3%;
   margin: 2%;
   border-radius: 2rem;
@@ -43,7 +47,6 @@
 }
 
 .image-petsitter {
-  margin-top: 5%;
   width:200px;
   height:200px;
 }
@@ -60,8 +63,10 @@
      }
   .image-petsitter {
     margin-top: 5%;
-    margin-left: 30%;
     width:100px;
     height:100px;
+  }
+  .petsitters-list-no-bullet {
+    padding-left: 0;
   }
 }
