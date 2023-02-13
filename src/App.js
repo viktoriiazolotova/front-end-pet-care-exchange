@@ -10,6 +10,11 @@ import PetsittersList from "./components/PetsittersList";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import SelectedPetsitter from "./components/SelectedPetsitter";
+import AuthProvider from "./contexts/AuthContext";
+import Profile from "./components/Profile";
+import ForgotPassword from "./components/ForgotPassword";
+import PrivateRoute from "./components/PrivateRoute";
+import UpdateProfile from "./components/UpdateProfile";
 
 function App() {
   const [petsittersList, setPetsitterList] = useState([]);
@@ -70,13 +75,13 @@ function App() {
   //   id: "pk",
   // };
 
-  // const API_URL = "http://localhost:8000/api/petsitters/";
-  // const API_URL_PETS = "http://localhost:8000/api/pets/";
+  const API_URL = "http://localhost:8000/api/petsitters/";
+  const API_URL_PETS = "http://localhost:8000/api/pets/";
 
-  const API_URL =
-    "https://pet-care-exchange-backend.herokuapp.com/api/petsitters/";
-  const API_URL_PETS =
-    "https://pet-care-exchange-backend.herokuapp.com/api/pets/";
+  // const API_URL =
+  //   "https://pet-care-exchange-backend.herokuapp.com/api/petsitters/";
+  // const API_URL_PETS =
+  //   "https://pet-care-exchange-backend.herokuapp.com/api/pets/";
   const fetchAllPetsitters = () => {
     axios
       .get(API_URL)
@@ -345,50 +350,71 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Header />}>
-          <Route index element={<Home />} />
-          <Route
-            path="petsitteraccount"
-            element={
-              <NewPetsitterForm
-                addPetsitterCallbackFunc={addPetsitter}
-                responseToPostSitterRequest={responseToPostSitterRequest}
-              />
-            }
-          />
-          <Route
-            path="petsitters/"
-            element={
-              <PetsittersList
-                petsitters={petsittersList}
-                deletePetsitter={deletePetsitter}
-                loadPetsitterOnClick={loadPetsitterOnClick}
-              />
-            }
-          ></Route>
-          <Route
-            path="petsitters/:id/"
-            element={
-              <SelectedPetsitter
-                pets={petsList}
-                selectedPetsitter={selectedPetsitter}
-                removePet={removePet}
-                addPetCallbackFunc={addPet}
-                responseToPostPetRequest={responseToPostPetRequest}
-                updatePetsitterAvailability={updatePetsitterAvailability}
-                updatePetsitterLookingHelp={updatePetsitterLookingHelp}
-                loadPetsitterOnClick={loadPetsitterOnClick}
-              ></SelectedPetsitter>
-            }
-          />
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Header />}>
+            <Route index element={<Home />} />
+            <Route
+              path="petsitteraccount"
+              // element={
+              //   <NewPetsitterForm
+              //     addPetsitterCallbackFunc={addPetsitter}
+              //     responseToPostSitterRequest={responseToPostSitterRequest}
+              //   />
+              // }
+              element={
+                <PrivateRoute>
+                  <NewPetsitterForm
+                    addPetsitterCallbackFunc={addPetsitter}
+                    responseToPostSitterRequest={responseToPostSitterRequest}
+                  />
+                </PrivateRoute>
+              }
+            />
 
-          {/* <Route path="search" element={<Search />}></Route> */}
-          <Route path="signup" element={<SignUp />}></Route>
-          <Route path="signin" element={<SignIn />} />
-          <Route path="*" element={<NoPage />} />
-        </Route>
-      </Routes>
+            <Route
+              path="petsitters/"
+              element={
+                <PetsittersList
+                  petsitters={petsittersList}
+                  deletePetsitter={deletePetsitter}
+                  loadPetsitterOnClick={loadPetsitterOnClick}
+                />
+              }
+            ></Route>
+            <Route
+              path="petsitters/:id/"
+              element={
+                <SelectedPetsitter
+                  pets={petsList}
+                  selectedPetsitter={selectedPetsitter}
+                  removePet={removePet}
+                  addPetCallbackFunc={addPet}
+                  responseToPostPetRequest={responseToPostPetRequest}
+                  updatePetsitterAvailability={updatePetsitterAvailability}
+                  updatePetsitterLookingHelp={updatePetsitterLookingHelp}
+                  loadPetsitterOnClick={loadPetsitterOnClick}
+                ></SelectedPetsitter>
+              }
+            />
+
+            {/* <Route path="search" element={<Search />}></Route> */}
+
+            <Route path="signup" element={<SignUp />}></Route>
+            <Route path="signin" element={<SignIn />} />
+            <Route
+              path="profile"
+              element=<PrivateRoute>{<Profile />}</PrivateRoute>
+            />
+            <Route path="forgot-password" element={<ForgotPassword />} />
+            <Route
+              path="update-profile"
+              element=<PrivateRoute>{<UpdateProfile />}</PrivateRoute>
+            />
+            <Route path="*" element={<NoPage />} />
+          </Route>
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

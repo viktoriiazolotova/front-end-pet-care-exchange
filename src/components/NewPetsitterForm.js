@@ -13,6 +13,8 @@ import {
 import PropTypes from "prop-types";
 import { useState } from "react";
 import "./NewPetsitterForm.css";
+// import { useAuth } from "../contexts/AuthContext";
+// import { useRef } from "react";
 
 const INITIAL_FORM_DATA = {
   name: "",
@@ -32,6 +34,9 @@ const NewPetsitterForm = ({
 }) => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const [showAlert, setShowAlert] = useState(false);
+
+  // const emailRef = useRef();
+  // const { currentUser } = useAuth();
 
   const handleNewTextDataChange = (e) => {
     const newFormData = {
@@ -92,6 +97,8 @@ const NewPetsitterForm = ({
                 <Input
                   id="email"
                   name="email"
+                  // ref={emailRef}
+                  // defaultValue={currentUser.email}
                   placeholder="email placeholder"
                   type="text"
                   value={FormData.email}
