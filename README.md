@@ -1,14 +1,15 @@
-#PetCareExchange App
+# PetCareExchange App
 
 PetCareExchange is a web application for pet owners to exchange pet care services for free.
 Whether you are going out of town or just need a break, PetCare Exchange connects you with other pet owners in your community to help take care of your furry friends.
 
-##Technologies Used:
+## Technologies Used:
+
     1. React.js: a JavaScript library for building user interfaces.
     2. Bootstrap: a popular front-end component library.
     3. Django: a high-level Python web framework for the backend https://github.com/viktoriiazolotova/django-react-pet-care-exchange
 
-##Basic Features:
+## Basic Features:
 
     1. User can register to become petsitter, update availability staus and looking to help status.
     2. Petsitter can add, delete the pet profile.
@@ -16,13 +17,14 @@ Whether you are going out of town or just need a break, PetCare Exchange connect
     4. User can filter petsiterrs by status: available to help, looking for help.
 
 
-##Getting Started
+## Getting Started
+
     1. Clone the repository:
-    $ git clone https://github.com/viktoriiazolotova/front-end-pet-care-exchange.git
+    `$ git clone https://github.com/viktoriiazolotova/front-end-pet-care-exchange.git`
     2. Install the dependencies:
-    $ yarn add
+    `$ yarn add`
     3. Start the development server:
-    $ yarn start
+    `$ yarn start`
     4. Navigate to http://localhost:3000 in your browser to access the application.
     
 
