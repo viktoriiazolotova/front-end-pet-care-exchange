@@ -70,13 +70,13 @@ function App() {
   //   id: "pk",
   // };
 
-  const API_URL = "http://localhost:8000/api/petsitters/";
-  const API_URL_PETS = "http://localhost:8000/api/pets/";
+  // const API_URL = "http://localhost:8000/api/petsitters/";
+  // const API_URL_PETS = "http://localhost:8000/api/pets/";
 
-  // const API_URL =
-  //   "https://pet-care-exchange-backend.herokuapp.com/api/petsitters/";
-  // const API_URL_PETS =
-  //   "https://pet-care-exchange-backend.herokuapp.com/api/pets/";
+  const API_URL =
+    "https://pet-care-exchange-backend.herokuapp.com/api/petsitters/";
+  const API_URL_PETS =
+    "https://pet-care-exchange-backend.herokuapp.com/api/pets/";
   const fetchAllPetsitters = () => {
     axios
       .get(API_URL)

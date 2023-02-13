@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import "./PetsittersList.css";
 import { BsCheckCircle } from "react-icons/bs";
 import { Button } from "reactstrap";
+import Alert from "react-bootstrap/Alert";
 import { Link } from "react-router-dom";
 import { Card, CardBody, CardTitle, CardSubtitle, CardText } from "reactstrap";
 import { Form, FormGroup, Label, Row, Col, Input } from "reactstrap";
@@ -42,63 +43,73 @@ const PetsittersList = ({
         checkboxLookingHelpPetsitters(availableFiltered);
       petsitters = lookingHelpFiltered;
     }
-    return petsitters.map((petsitter) => (
-      <li key={petsitter.id}>
-        <Card id="petsitter-card">
-          <img
-            className="image-petsitter"
-            alt="Sample"
-            src={`${petsitter.photoPetsitter}`}
-          ></img>
-          <CardBody>
-            <CardTitle tag="h3">
-              <Link
-                className="card__link"
-                to={`/petsitters/${petsitter.id}/`}
-                key={petsitter.id}
-                onClick={() => loadPetsitterOnClick(petsitter.id)}
-              >
-                {petsitter.name}
-              </Link>
-            </CardTitle>
-            <CardSubtitle className="mb-2 text-muted" tag="h6">
-              {petsitter.city}, {petsitter.zipcode}, {petsitter.state}
-            </CardSubtitle>
-            <CardText tag="h6">Availability:</CardText>
-            <CardText>
-              <BsCheckCircle
-                size="20px"
-                className={`${
-                  petsitter.isAvailableHelp
-                    ? "petsitters-available"
-                    : "petsitters-not-available"
-                }`}
-              ></BsCheckCircle>{" "}
-              {petsitter.isAvailableHelp
-                ? `I can help you with ${petsitter.petTypeTakeCare}.`
-                : "Sorry, I am busy right now."}
-            </CardText>
-            <CardText tag="h6">Looking for help:</CardText>
-            <CardText>
-              <BsCheckCircle
-                size="20px"
-                className={`${
-                  petsitter.isLookingForHelp
-                    ? "petsitters-available"
-                    : "petsitters-not-available"
-                }`}
-              ></BsCheckCircle>{" "}
-              {petsitter.isLookingForHelp
-                ? "I need help with my pet."
-                : "No need help at this moment."}
-            </CardText>
-            <Button onClick={() => deletePetsitter(petsitter.id)}>
-              Delete
-            </Button>
-          </CardBody>
-        </Card>
-      </li>
-    ));
+    if (!petsitters || petsitters.length <= 0) {
+      return (
+        <div>
+          <Alert id="alert-no-found" variant="info">
+            <CardText>Ops, no one here yet!</CardText>
+          </Alert>
+        </div>
+      );
+    } else {
+      return petsitters.map((petsitter) => (
+        <li key={petsitter.id}>
+          <Card id="petsitter-card">
+            <img
+              className="image-petsitter"
+              alt="Sample"
+              src={`${petsitter.photoPetsitter}`}
+            ></img>
+            <CardBody>
+              <CardTitle tag="h3">
+                <Link
+                  className="card__link"
+                  to={`/petsitters/${petsitter.id}/`}
+                  key={petsitter.id}
+                  onClick={() => loadPetsitterOnClick(petsitter.id)}
+                >
+                  {petsitter.name}
+                </Link>
+              </CardTitle>
+              <CardSubtitle className="mb-2 text-muted" tag="h6">
+                {petsitter.city}, {petsitter.zipcode}, {petsitter.state}
+              </CardSubtitle>
+              <CardText tag="h6">Availability:</CardText>
+              <CardText>
+                <BsCheckCircle
+                  size="20px"
+                  className={`${
+                    petsitter.isAvailableHelp
+                      ? "petsitters-available"
+                      : "petsitters-not-available"
+                  }`}
+                ></BsCheckCircle>{" "}
+                {petsitter.isAvailableHelp
+                  ? `I can help you with ${petsitter.petTypeTakeCare}.`
+                  : "Sorry, I am busy right now."}
+              </CardText>
+              <CardText tag="h6">Looking for help:</CardText>
+              <CardText>
+                <BsCheckCircle
+                  size="20px"
+                  className={`${
+                    petsitter.isLookingForHelp
+                      ? "petsitters-available"
+                      : "petsitters-not-available"
+                  }`}
+                ></BsCheckCircle>{" "}
+                {petsitter.isLookingForHelp
+                  ? "I need help with my pet."
+                  : "No need help at this moment."}
+              </CardText>
+              <Button onClick={() => deletePetsitter(petsitter.id)}>
+                Delete
+              </Button>
+            </CardBody>
+          </Card>
+        </li>
+      ));
+    }
   };
 
   return (
@@ -108,13 +119,13 @@ const PetsittersList = ({
         <Row className="justify-content-center">
           <Col lg={4} md={6} sm={6}>
             <FormGroup>
-              <Label className="filter-label" tag="h5" for="searchCity">
-                {/* Search by city: */}
+              <Label className="filter-label" for="searchCity">
+                Enter the city:
               </Label>
               <Input
                 id="searchCity"
                 name="searchCity"
-                placeholder="Enter the city"
+                // placeholder="Enter the city"
                 type="text"
                 onChange={(e) => setSearchCity(e.target.value.toUpperCase())}
               />
@@ -152,6 +163,9 @@ const PetsittersList = ({
           </Col>
         </Row>
       </Form>
+      {/* <ul className="petsitters-list-no-bullet">
+        {getPetsittersCards(petsitters)}
+      </ul> */}
       <ul className="petsitters-list-no-bullet">
         {getPetsittersCards(petsitters)}
       </ul>

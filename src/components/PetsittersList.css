@@ -23,6 +23,7 @@
   margin-top: 3%;
   margin-left: 0;
   margin-bottom: 0;
+  padding-left: 0;
 }
  
 .petsitters-available {
@@ -49,6 +50,14 @@
 .image-petsitter {
   width:200px;
   height:200px;
+}
+
+#alert-no-found {
+  border-radius: 20px;
+  border: #8696eb 1px solid;
+  box-shadow: 2px 10px 10px #6173d7;
+  font-size: 1.2rem;
+
 }
 
 /* Small screens */
