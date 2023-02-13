@@ -94,7 +94,7 @@ const SelectedPetsitter = ({
                 </Button>
               </div>
               <div id="div-name-location">
-                <CardTitle tag="h4" id="petsitter-name">
+                <CardTitle tag="h1" id="petsitter-name">
                   {selectedPetsitter.name}
                 </CardTitle>
                 <CardText className="mb-2 text-muted pt-4">
@@ -106,22 +106,26 @@ const SelectedPetsitter = ({
             </div>
             <div className="div-pethearts-reviews-msg">
               <div>
-                <p tag="h5">0</p>
+                <p tag="h2">0</p>
                 <p>PetHearts</p>
               </div>
               <div className="px-3">
-                <p tag="h5">0</p>
+                <p tag="h2">0</p>
                 <p>Reviews</p>
               </div>
               <div>
-                <p tag="h5">0</p>
+                <p tag="h2">0</p>
                 <p>Messages</p>
               </div>
             </div>
 
             <div className="div-contact-status">
               <CardBody className="p-2">
-                <CardSubtitle className="pb-4 pt-3" tag="h5">
+                <CardSubtitle
+                  id="contact-info-title"
+                  className="pb-4 pt-3"
+                  tag="h2"
+                >
                   <span className="text-muted">Here is my contact info:</span>
                   <hr />
                   <span id="petsitter-email">{selectedPetsitter.email}</span>
@@ -133,9 +137,13 @@ const SelectedPetsitter = ({
                   <CardText className="pb-3">
                     Click on the circle to change status:
                   </CardText>
-                  <CardSubtitle tag="h6" className="mb-4">
+                  <CardSubtitle
+                    id="availabity-status"
+                    tag="h3"
+                    className="mb-4"
+                  >
                     <BsCheckCircle
-                      size="40px"
+                      size="30px"
                       className={classPetsitterIsAvailable}
                       onClick={() => {
                         updatePetsitterStatusAvailable();
@@ -144,10 +152,14 @@ const SelectedPetsitter = ({
                     Availability:
                   </CardSubtitle>
                   <CardText>{availabilityStatus}</CardText>
-                  <CardSubtitle tag="h6" className="mb-2">
+                  <CardSubtitle
+                    id="looking-help-status"
+                    tag="h3"
+                    className="mb-2"
+                  >
                     <BsCheckCircle
                       className={classPetsitterIsLookingForHelp}
-                      size="40px"
+                      size="30px"
                       onClick={() => {
                         updatePetsitterStatusHelp();
                       }}
@@ -158,7 +170,7 @@ const SelectedPetsitter = ({
                 </div>
                 <Row>
                   <Row className="p-4">
-                    <CardSubtitle className="pb-3 pl-3" tag="h5">
+                    <CardSubtitle id="add-pets" className="pb-3 pl-3" tag="h2">
                       My Pets
                     </CardSubtitle>
                     <Col sm="6">

@@ -51,6 +51,17 @@
   width:200px;
   height:200px;
 }
+#id-petsitteer-name {
+  font-size: 1.5rem;
+}
+#id-petsitteer-location {
+  font-size: 1rem;
+}
+.status {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
 
 #alert-no-found {
   border-radius: 20px;
@@ -77,5 +88,16 @@
   }
   .petsitters-list-no-bullet {
     padding-left: 0;
+  }
+  #id-petsitteer-name {
+    font-size: 1.2rem;
+  }
+  #id-petsitteer-location {
+    font-size: 1rem;
+  }
+  .status {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0;
   }
 }

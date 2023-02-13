@@ -46,7 +46,7 @@ const NewPetForm = ({ addPetCallbackFunc, responseToPostPetRequest }) => {
       <Form className="pet-form" onSubmit={handleNewPetAdd}>
         <h3>Submit a form to add Pet</h3>
         <Row>
-          <Col md={4}>
+          <Col md={6} lg={6}>
             <FormGroup>
               <Label for="petName">Pet Name*</Label>
               <Input
@@ -60,7 +60,7 @@ const NewPetForm = ({ addPetCallbackFunc, responseToPostPetRequest }) => {
             </FormGroup>
           </Col>
           <Row>
-            <Col md={4}>
+            <Col md={6} lg={6}>
               <FormGroup className="block-pet-needs-description">
                 <Label for="petNeedsDescription">Pet's needs</Label>
                 <Input
@@ -89,7 +89,7 @@ const NewPetForm = ({ addPetCallbackFunc, responseToPostPetRequest }) => {
         </FormGroup>
 
         <Row className="mt-3">
-          <Col md={4}>
+          <Col md={6} lg={6}>
             <FormGroup>
               <Label for="petTypeNeedsCare">Your pet species*</Label>
               <Input

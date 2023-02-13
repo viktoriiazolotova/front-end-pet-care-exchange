@@ -12,7 +12,7 @@ background-color:#38bac4 ;
 }
 
 #button-adopt-pet {
-    background:grey;
+    /* background:rgb(177, 175, 175); */
     /* background-color: rgb(194, 168, 243); */
     margin-right: 5%;
 }

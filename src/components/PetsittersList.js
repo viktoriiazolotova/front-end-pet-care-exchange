@@ -57,11 +57,11 @@ const PetsittersList = ({
           <Card id="petsitter-card">
             <img
               className="image-petsitter"
-              alt="Sample"
+              alt="petsitterPhoto"
               src={`${petsitter.photoPetsitter}`}
             ></img>
             <CardBody>
-              <CardTitle tag="h3">
+              <CardTitle id="id-petsitteer-name" tag="h2">
                 <Link
                   className="card__link"
                   to={`/petsitters/${petsitter.id}/`}
@@ -71,10 +71,14 @@ const PetsittersList = ({
                   {petsitter.name}
                 </Link>
               </CardTitle>
-              <CardSubtitle className="mb-2 text-muted" tag="h6">
+              <CardSubtitle
+                id="id-petsitteer-location"
+                className="mb-3 mt-2 text-muted"
+                tag="h3"
+              >
                 {petsitter.city}, {petsitter.zipcode}, {petsitter.state}
               </CardSubtitle>
-              <CardText tag="h6">Availability:</CardText>
+              <CardText className="status">Availability:</CardText>
               <CardText>
                 <BsCheckCircle
                   size="20px"
@@ -83,12 +87,12 @@ const PetsittersList = ({
                       ? "petsitters-available"
                       : "petsitters-not-available"
                   }`}
-                ></BsCheckCircle>{" "}
+                ></BsCheckCircle>
                 {petsitter.isAvailableHelp
                   ? `I can help you with ${petsitter.petTypeTakeCare}.`
                   : "Sorry, I am busy right now."}
               </CardText>
-              <CardText tag="h6">Looking for help:</CardText>
+              <CardText className="status">Looking for help:</CardText>
               <CardText>
                 <BsCheckCircle
                   size="20px"

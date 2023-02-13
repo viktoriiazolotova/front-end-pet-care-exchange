@@ -49,8 +49,6 @@ const NewPetsitterForm = ({
     };
     // console.log("here is the new form data", newFormData);
     setFormData(newFormData);
-    // console.log("inside available", newFormData.isAvailableHelp);
-    // console.log("inside looking", newFormData.isAvailableHelp);
   };
   const handleFileInput = (e) => {
     const newFormData = {
@@ -64,7 +62,6 @@ const NewPetsitterForm = ({
   const handleNewPetsitterAdd = (e) => {
     e.preventDefault();
     addPetsitterCallbackFunc(formData);
-    setFormData(INITIAL_FORM_DATA);
   };
 
   return (
