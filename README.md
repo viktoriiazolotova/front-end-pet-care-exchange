@@ -19,19 +19,19 @@ Whether you are going out of town or just need a break, PetCare Exchange connect
 
 ## Getting Started
 
--Clone the repository:
-    ```
-    $ git clone https://github.com/viktoriiazolotova/front-end-pet-care-exchange.git
-    ```
--Install the dependencies:
-    ```
-    $ yarn add
-    ```
--Start the development server:
-    ```
-    $ yarn start
-    ```
--Navigate to http://localhost:3000 in your browser to access the application.
+- Clone the repository:
+```
+$ git clone https://github.com/viktoriiazolotova/front-end-pet-care-exchange.git
+```
+- Install the dependencies:
+```
+$ yarn add
+```
+- Start the development server:
+```
+$ yarn start
+```
+- Navigate to http://localhost:3000 in your browser to access the application.
     
 
    
