@@ -5,27 +5,33 @@ Whether you are going out of town or just need a break, PetCare Exchange connect
 
 ## Technologies Used:
 
-    1. React.js: a JavaScript library for building user interfaces.
-    2. Bootstrap: a popular front-end component library.
-    3. Django: a high-level Python web framework for the backend https://github.com/viktoriiazolotova/django-react-pet-care-exchange
+    - React.js: a JavaScript library for building user interfaces.
+    - Bootstrap: a popular front-end component library.
+    - Django: a high-level Python web framework for the backend https://github.com/viktoriiazolotova/django-react-pet-care-exchange
 
 ## Basic Features:
 
-    1. User can register to become petsitter, update availability staus and looking to help status.
-    2. Petsitter can add, delete the pet profile.
-    3. Users can search for petsitter by the city name.
-    4. User can filter petsiterrs by status: available to help, looking for help.
+    - User can register to become petsitter, update availability staus and looking to help status.
+    - Petsitter can add, delete the pet profile.
+    - Users can search for petsitter by the city name.
+    - User can filter petsiterrs by status: available to help, looking for help.
 
 
 ## Getting Started
 
-    1. Clone the repository:
-    `$ git clone https://github.com/viktoriiazolotova/front-end-pet-care-exchange.git`
-    2. Install the dependencies:
-    `$ yarn add`
-    3. Start the development server:
-    `$ yarn start`
-    4. Navigate to http://localhost:3000 in your browser to access the application.
+    Clone the repository:
+    ```
+    $ git clone https://github.com/viktoriiazolotova/front-end-pet-care-exchange.git
+    ```
+    Install the dependencies:
+    ```
+    $ yarn add
+    ```
+    Start the development server:
+    ```
+    $ yarn start
+    ```
+    Navigate to http://localhost:3000 in your browser to access the application.
     
 
    
