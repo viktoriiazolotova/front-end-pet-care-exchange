@@ -45,7 +45,6 @@ const Pet = ({
               : "NO, I AM GOOD NOW!"}
           </CardText>
           <CardText>Pet needs: {petNeedsDescription}</CardText>
-          <Button id="button-adopt-pet">Edit</Button>
           <Button id="button-adopt-pet" onClick={() => removePet(petId)}>
             Pet is adopted
           </Button>

@@ -17,6 +17,7 @@ function App() {
     useState("");
   const [petsList, setPetsList] = useState([]);
   const [responseToPostPetRequest, setResponseToPetRequest] = useState("");
+
   const [selectedPetsitter, setSelectedPetsitter] = useState({
     id: 0,
     name: "",
@@ -51,25 +52,6 @@ function App() {
     petsitterId: "petsitter",
   };
 
-  // const toCamelCase = {
-  //   is_available_help: "isAvailableHelp",
-  //   is_looking_for_help: "isLookingForHelp",
-  //   pet_type_take_care: "petTypeTakeCare",
-  //   photo_petsitter: "photoPetsitter",
-  //   pet_name: "petName",
-  //   pet_type_needs_care: "petTypeNeedsCare",
-  //   pet_needs_description: "petNeedsDescription",
-  //   is_needs_care: "isNeedsCare",
-  //   petsitter: "petsitterName",
-  //   name: "name",
-  //   email: "email",
-  //   zipcode: "zipcode",
-  //   city: "city",
-  //   state: "state",
-  //   pets: "pets",
-  //   id: "pk",
-  // };
-
   // const API_URL = "http://localhost:8000/api/petsitters/";
   // const API_URL_PETS = "http://localhost:8000/api/pets/";
 
@@ -81,7 +63,6 @@ function App() {
     axios
       .get(API_URL)
       .then((res) => {
-        // console.log(res.data);
         const petsittersAPIResCopy = res.data.map((petsitter) => {
           return {
             id: petsitter.pk,
@@ -106,7 +87,6 @@ function App() {
   useEffect(fetchAllPetsitters, []);
 
   const loadPets = (id) => {
-    // console.log(`${API_URL}${id}/pets/`);
     axios
       .get(`${API_URL}${id}/pets/`)
       .then((res) => {
@@ -122,7 +102,6 @@ function App() {
           };
         });
         setPetsList(petsAPIResCopy);
-        // console.log(petsAPIResCopy);
       })
       .catch((err) => {
         console.log(err);
@@ -130,16 +109,9 @@ function App() {
   };
 
   const loadPetsitterOnClick = (id) => {
-    // console.log(`${API_URL}${id}/`);
     axios
       .get(`${API_URL}${id}/`)
       .then((response) => {
-        // setSelectedPetsitter(response.data);
-        // console.log(
-        //   "selected petsitter from response - load petsitter",
-        //   response.data
-        // );
-        // console.log(selectedPetsitter);
         const newSelectedPetsitterJson = {
           id: response.data.pk,
           name: response.data.name,
@@ -152,7 +124,6 @@ function App() {
           isLookingForHelp: response.data.is_looking_for_help,
           photoPetsitter: response.data.photo_petsitter,
         };
-        // console.log(newSelectedPetsitterJson);
         setSelectedPetsitter(newSelectedPetsitterJson);
 
         loadPets(id);
@@ -165,24 +136,17 @@ function App() {
   const addPetsitter = (newPetsitterInfo) => {
     // in order to handle data from reactstrap form needed to in this way below:
     const formData = new FormData();
-    // console.log("here is the newPetsitter info:", newPetsitterInfo);
     for (const field in newPetsitterInfo) {
       formData.append(toSnakeCase[field], newPetsitterInfo[field]);
       // console.log("field, value:", toSnakeCase[field], newPetsitterInfo[field]);
     }
-    // console.log("add Petsitter function called");
-    // console.log("here formdata", formData);
 
     axios
-      // .post("http://localhost:8000/api/petsitters/", formData)
       .post(API_URL, formData)
       .then((response) => {
-        // fetchAllPetsitters();
-        console.log("here is my response", response);
         const responseToPostSitterRequest = `${response.data.name} successfully added.`;
         setResponseToPetsitterRequest(responseToPostSitterRequest);
         const newPetsittersList = [...petsittersList];
-        // const newPetsittersList = JSON.parse(JSON.stringify(petsittersList));
         const newPetsitterJSON = {
           ...newPetsitterInfo,
           id: response.data.pk,
@@ -192,7 +156,6 @@ function App() {
           photoPetsitter: response.data.photo_petsitter,
         };
         newPetsittersList.push(newPetsitterJSON);
-        // console.log("new list after adding new petsitetr", newPetsittersList);
         setPetsitterList(newPetsittersList);
       })
       .catch((error) => {
@@ -205,20 +168,14 @@ function App() {
 
   const addPet = (newPetInfo) => {
     // in order to handle data from reactstrap form needed to in this way below:
-    // console.log(newPetInfo);
-    // console.log("selected petsitter", selectedPetsitter.id);
     const formData = new FormData();
     for (const field in newPetInfo) {
       formData.append(toSnakeCase[field], newPetInfo[field]);
       formData.append("petsitter", selectedPetsitter.id);
     }
-    // console.log("add Pet function called");
-    // console.log("here formdata", formData);
-
     axios
       .post(API_URL_PETS, formData)
       .then((response) => {
-        // console.log("here is my response", response);
         const responseToPostPetRequest = `${response.data.pet_name} successfully added.`;
         setResponseToPetRequest(responseToPostPetRequest);
         const newPetsList = [...petsList];
@@ -232,10 +189,8 @@ function App() {
           petsitterId: response.data.petsitter,
         };
         newPetsList.push(newPetsJSON);
-        // console.log("new list", newPetsList);
         setPetsList(newPetsList);
         loadPetsitterOnClick(selectedPetsitter.id);
-        // fetchAllPetsitters();
       })
       .catch((error) => {
         console.log(error);
@@ -246,18 +201,12 @@ function App() {
   };
 
   const updatePetsitterAvailability = (updatedStatus) => {
-    // console.log("updateStatusAvailability called");
-    // console.log("updated status passed is", updatedStatus, {
-    //   isAvailableHelp: updatedStatus,
-    // });
-    // console.log(`${API_URL}${selectedPetsitter.id}/`);
     const newPetsittersList = [];
     axios
       .patch(`${API_URL}${selectedPetsitter.id}/`, {
         is_available_help: updatedStatus,
       })
       .then((response) => {
-        // console.log("here is my response", response);
         for (const petsitter of petsittersList) {
           if (petsitter.id !== selectedPetsitter.id) {
             newPetsittersList.push(petsitter);
@@ -278,13 +227,11 @@ function App() {
   };
 
   const updatePetsitterLookingHelp = (updatedStatus) => {
-    // console.log("updateStatusAvailability called");
     axios
       .patch(`${API_URL}${selectedPetsitter.id}/`, {
         is_looking_for_help: updatedStatus,
       })
       .then((response) => {
-        // console.log("here is my response", response);
         const newPetsittersList = [];
         for (const petsitter of petsittersList) {
           if (petsitter.id !== selectedPetsitter.id) {
@@ -306,7 +253,6 @@ function App() {
   };
 
   const deletePetsitter = (id) => {
-    // console.log("deletePetsitter Called");
     axios
       .delete(`${API_URL}${id}/`)
       .then(() => {
@@ -317,7 +263,6 @@ function App() {
           }
         }
         setPetsitterList(newPetsittersList);
-        // console.log(newPetsittersList);
       })
       .catch((err) => {
         console.log(err);
@@ -382,8 +327,6 @@ function App() {
               ></SelectedPetsitter>
             }
           />
-
-          {/* <Route path="search" element={<Search />}></Route> */}
           <Route path="signup" element={<SignUp />}></Route>
           <Route path="signin" element={<SignIn />} />
           <Route path="*" element={<NoPage />} />
