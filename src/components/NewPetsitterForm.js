@@ -88,7 +88,7 @@ const NewPetsitterForm = ({
           <Row>
             <Col md={6}>
               <FormGroup>
-                <Label for="email">Email *</Label>
+                <Label for="email">Email for contacting *</Label>
                 <Input
                   id="email"
                   name="email"
