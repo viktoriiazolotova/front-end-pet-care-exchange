@@ -28,7 +28,7 @@
 .div-pethearts-reviews-msg {
     height: 100px;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     text-align: center;
     padding: 2%;
     padding-right: 5%;
