@@ -107,7 +107,7 @@ const SelectedPetsitter = ({
             <div className="div-pethearts-reviews-msg">
               <div>
                 <p tag="h2">0</p>
-                <p>PetHearts</p>
+                <p>PawHearts</p>
               </div>
               <div className="px-3">
                 <p tag="h2">0</p>
