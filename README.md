@@ -1,6 +1,6 @@
 # PetCareExchange App
 
-PetCareExchange is a web application for pet owners to exchange pet care services for free.
+**PetCareExchange** is a web application for pet owners to exchange pet care services for free.
 Whether you are going out of town or just need a break, PetCare Exchange connects you with other pet owners in your community to help take care of your furry friends. 
 
 ## Demo: 
@@ -14,9 +14,9 @@ Here are some screenshots of the PetCareExchange App:
 
 ## Technologies Used:
 
-- React.js: a JavaScript library for building user interfaces.
-- Bootstrap: a popular front-end component library.
-- Django: a high-level Python web framework for the backend https://github.com/viktoriiazolotova/django-react-pet-care-exchange
+- **React.js:** a JavaScript library for building user interfaces.
+- **Bootstrap:** a popular front-end component library.
+- **Django:** a high-level Python web framework for the backend https://github.com/viktoriiazolotova/django-react-pet-care-exchange
 
 ## Features:
 
@@ -48,6 +48,13 @@ To use the app, you can register as a petsitter and create a pet profile. Once y
 
 ## Technology Stack
 PetCareExchange was built using React.js for the frontend, Bootstrap for the UI components, and Django for the backend. React.js was chosen for its simplicity and speed of development, while Bootstrap was used for its pre-built UI components that helped speed up the frontend development process. Django was chosen for its powerful ORM and built-in admin interface.
+
+## Future Enhancements
+- **User login and authorization:** Implement a user authentication and authorization system, allowing users to create accounts and securely log in to the platform.
+- **Credit System:** Introduce a credit system to the app, where users can earn or purchase credits by providing services to other pet owners.
+- **Message System:** Implement a messaging feature that allows pet owners and sitters to communicate with each other within the app.
+- **Reservation System:** Create a reservation system where pet owners can reserve an available pet sitter and receive confirmation of the reservation via email.
+These future enhancements will improve the functionality and usability of PetCareExchange, and make the platform more efficient and convenient for pet owners and sitters alike.
     
 
    
