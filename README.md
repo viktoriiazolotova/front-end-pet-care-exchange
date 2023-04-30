@@ -1,7 +1,7 @@
 # PetCareExchange App
 
 PetCareExchange is a web application for pet owners to exchange pet care services for free.
-Whether you are going out of town or just need a break, PetCare Exchange connects you with other pet owners in your community to help take care of your furry friends.
+Whether you are going out of town or just need a break, PetCare Exchange connects you with other pet owners in your community to help take care of your furry friends. Demo: https://www.youtube.com/watch?v=2J2XKKKPKHU.
 
 ## Technologies Used:
 
